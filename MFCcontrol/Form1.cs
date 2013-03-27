@@ -32,7 +32,7 @@ namespace MFCcontrol
         private static double[] currentADin;
         private DaqAction daqInput;
         public DaqAction daqOutputMFC;
-        public DaqAction daqOutputBiases;
+        
         internal int curRow_ADoutTable;
         internal bool recipeRunning;
         internal bool AinGraphUpdateState;
@@ -40,6 +40,8 @@ namespace MFCcontrol
         private double[] presentMFCsetting;
         private static Ke648xGUI PicoammForm;
         static private Ke648xControl PicoammControl;
+        
+        // TODO Remove
         static private ConfigBiasOutForm configBiasForm1;
 
         // state of the MFCs for the recipe to be used
@@ -68,7 +70,6 @@ namespace MFCcontrol
             //Used for Drawing Rows in MFC table
             tableLayoutPanel1.CellPaint += tableLayoutPanel_CellPaint;
             tableLayoutPanel2.CellPaint += tableLayoutPanel_CellPaint;
-            tableLayoutPanel3.CellPaint += tableLayoutPanel_CellPaint;
 
             // Initialized Saved Settings Values Into Form
 
@@ -85,13 +86,6 @@ namespace MFCcontrol
 
             daqInput = new DaqAction();
             daqOutputMFC = new DaqAction();
-            daqOutputBiases = new DaqAction(-1 * Settings1.Default.sensorBiasMaxRange, Settings1.Default.sensorBiasMaxRange);
-
-            // Ready fields for Daq Bias Output
-            VdsUpDown.Maximum = Convert.ToDecimal(Settings1.Default.sensorBiasMaxRange);
-            VgsUpDown.Maximum = Convert.ToDecimal(Settings1.Default.sensorBiasMaxRange);
-            VdsUpDown.Minimum = -1 * Convert.ToDecimal(Settings1.Default.sensorBiasMaxRange);
-            VgsUpDown.Minimum = -1 * Convert.ToDecimal(Settings1.Default.sensorBiasMaxRange);
 
             watch = new GenStopwatch();
 
@@ -129,6 +123,9 @@ namespace MFCcontrol
 
             //Let recipe control panel know about parent form
             mfcRecipeControl1.parentForm = this;
+
+            //Let sensor bias user control know about parent form
+            sensorBiasControl1.parentForm = this;
 
             // Let MFC Control Panels know that about parent form so they can interact with it
             mfcControl1.parentForm = this;
@@ -190,12 +187,7 @@ namespace MFCcontrol
                 mfcControl4.EnableUserControl();
             }
 
-            //If DAQ Analog Out is Enabled in Settings file, Update Checkmark and Zero Bias Outputs
-            if (Settings1.Default.sensorBiasEnable == true)
-            {
-                biasOutsBox.Checked = Settings1.Default.sensorBiasEnable;
-                ZeroAllBiasOutputs();
-            }
+           sensorBiasControl1.SensorBiasControlInit();
 
         }
 
@@ -542,53 +534,10 @@ namespace MFCcontrol
 
         }
 
-        //TODO FIX OR  REMOVE
         internal void resetGraphButton_Click(object sender, EventArgs e)
         {
             graphMfcs1.resetGraphButton_Click(sender, e);
         }
-
-        // TODO REMOVE
-        //private void graphUpdateUD_ValueChanged(object sender, EventArgs e)
-        //{
-        //    //On Startup this value is 0, in this case don't overwritten saved GraphTimeUpdate value
-        //    if (graphUpdateUDbox.Value != 0)
-        //    {
-        //        Settings1.Default.GraphTimeUpdateMS = Convert.ToInt32(graphUpdateUDbox.Value * 1000);
-        //        Settings1.Default.ADacquireTime_ms = Convert.ToInt32(graphUpdateUDbox.Value * 1000);
-        //    }
-
-        //    timerADacquire.SetInterval(Settings1.Default.ADacquireTime_ms);
-        //    timerADgraph.SetInterval(Settings1.Default.GraphTimeUpdateMS);
-        //    Settings1.Default.Save();
-        // }
-
-        // TODO Remove
-
-        //private void AinGraphUpdateBox_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    //Only Graph AD Input if both Update Box is Checked and MFC Control is enabled
-        //    if ((AinGraphUpdateBox.Checked == true) && Settings1.Default.mfcMainControlEnable)
-        //    {
-        //        AinGraphUpdateState = true;
-        //        timerADgraph.StartTimer();
-        //    }
-        //    else
-        //    {
-        //        AinGraphUpdateState = false;
-        //        timerADgraph.StopTimer();
-        //    }
-        //}
-
-        //TODO REMOVE
-
-        //private void samplesToResetUpDown_ValueChanged(object sender, EventArgs e)
-        //{
-        //    Settings1.Default.SamplesToGraphReset = Convert.ToInt32(samplesToResetUpDown.Value);
-        //    Settings1.Default.Save();
-        //}
-
-
 
 
         private void ke648xStart_Click(object sender, EventArgs e)
@@ -617,7 +566,7 @@ namespace MFCcontrol
         }
 
         //Used for Drawing Rows in MFC Table
-        private void tableLayoutPanel_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
+        internal void tableLayoutPanel_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
         {
             e.Graphics.DrawLine(Pens.Black, e.CellBounds.Location, new Point(e.CellBounds.Right, e.CellBounds.Top));
         }
@@ -638,22 +587,7 @@ namespace MFCcontrol
             }
         }
 
-        private void ZeroAllBiasOutputs()
-        {
-            try
-            {
-                daqOutputBiases.UpdateDaqOut(Settings1.Default.sensorVgsDaqAO, Convert.ToDouble(0));
-                daqOutputBiases.UpdateDaqOut(Settings1.Default.sensorVdsDaqAO, Convert.ToDouble(0));
-            }
-            catch
-            {
-                DaqOutputProblem();
-            }
-            vdsPresValTextBox.Text = "0.00";
-            vgsPresValTextBox.Text = "0.00";
-            VgsUpDown.Value = 0;
-            VdsUpDown.Value = 0;
-        }
+       
 
         private void controlPicoammBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -708,81 +642,6 @@ namespace MFCcontrol
             graphMfcs1.AinGraphUpdateBox_CheckedChanged(this, EventArgs.Empty);
         }
 
-        private void biasOutsBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (biasOutsBox.Checked == true)
-            {
-                VgsUpDown.Enabled = true;
-                VdsUpDown.Enabled = true;
-                ZeroAllBiasOutputs();
-            }
-            else
-            {
-                VgsUpDown.Enabled = false;
-                VdsUpDown.Enabled = false;
-                ZeroAllBiasOutputs();
-            }
-            Settings1.Default.sensorBiasEnable = biasOutsBox.Checked;
-        }
-
-        private void vdsLockCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (vdsLockCheckBox.Checked == true)
-            {
-                VdsUpDown.Enabled = false;
-            }
-            else if ((vdsLockCheckBox.Checked == false) && (Settings1.Default.sensorBiasEnable == true))
-            {
-                VdsUpDown.Enabled = true;
-            }
-            Settings1.Default.sensorVdsDaqLock = vdsLockCheckBox.Checked;
-        }
-
-        private void vgsLockCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (vgsLockCheckBox.Checked == true)
-            {
-                VgsUpDown.Enabled = false;
-            }
-            else if ((vgsLockCheckBox.Checked == false) && (Settings1.Default.sensorBiasEnable == true))
-            {
-                VgsUpDown.Enabled = true;
-            }
-            Settings1.Default.sensorVgsDaqLock = vgsLockCheckBox.Checked;
-        }
-
-        private void VdsUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                daqOutputBiases.UpdateDaqOut(Settings1.Default.sensorVdsDaqAO, Convert.ToDouble(VdsUpDown.Value));
-            }
-            catch
-            {
-                DaqOutputProblem();
-            }
-            vdsPresValTextBox.Text = VdsUpDown.Value.ToString("0.00");
-        }
-
-        private void VgsUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                daqOutputBiases.UpdateDaqOut(Settings1.Default.sensorVgsDaqAO, Convert.ToDouble(VgsUpDown.Value));
-            }
-            catch
-            {
-                DaqOutputProblem();
-            }
-            vgsPresValTextBox.Text = VgsUpDown.Value.ToString("0.00");
-        }
-
-        private void configBiasOutputButton_Click(object sender, EventArgs e)
-        {
-            configBiasForm1 = new ConfigBiasOutForm();
-
-            configBiasForm1.ShowDialog();
-        }
 
     }
 

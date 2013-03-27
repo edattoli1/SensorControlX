@@ -126,6 +126,12 @@
     <Compile Include="RecipeView.Designer.cs">
       <DependentUpon>RecipeView.cs</DependentUpon>
     </Compile>
+    <Compile Include="SensorBiasControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SensorBiasControl.Designer.cs">
+      <DependentUpon>SensorBiasControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings1.cs" />
     <Compile Include="Settings1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -164,6 +170,9 @@
     </Compile>
     <EmbeddedResource Include="RecipeView.resx">
       <DependentUpon>RecipeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SensorBiasControl.resx">
+      <DependentUpon>SensorBiasControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="GraphAsync1_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
