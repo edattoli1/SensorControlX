@@ -107,6 +107,7 @@ namespace MFCcontrol
             parentForm.mfcControl4.DisableUserControl();
 
             startButton.Enabled = false;
+            loadFlowsButton.Enabled = false;
             exitRecipeButton.Enabled = true;
 
             parentForm.recipeRunning = true;
@@ -262,6 +263,7 @@ namespace MFCcontrol
             parentForm.resetGraphButton_Click(this, EventArgs.Empty);
             parentForm.Form1_Load(this, EventArgs.Empty);
             startButton.Enabled = true;
+            loadFlowsButton.Enabled = true;
             viewFlowRecipe.Enabled = true;
         }
 

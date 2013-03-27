@@ -72,7 +72,7 @@ namespace MFCcontrol
 
             // Initialized Saved Settings Values Into Form
 
-            samplesToResetUpDown.Value = Settings1.Default.SamplesToGraphReset;
+            graphMfcs1.samplesToResetUpDown.Value = Settings1.Default.SamplesToGraphReset;
             AinGraphUpdateState = true;
 
             stateMFCs = new bool[Settings1.Default.MFCcontrol_numMFCs];
@@ -106,7 +106,7 @@ namespace MFCcontrol
             timerADgraph.SetInterval(Settings1.Default.GraphTimeUpdateMS);
 
             //Set NumericUpDown Control box for Graph Update Time to Saved Value
-            graphUpdateUDbox.Value = Convert.ToDecimal(Settings1.Default.GraphTimeUpdateMS) / 1000;
+            graphMfcs1.graphUpdateUDbox.Value = Convert.ToDecimal(Settings1.Default.GraphTimeUpdateMS) / 1000;
 
             timerADoutUpdate = new GenTimer();
             timerADoutUpdate.AutoResetEnable();
@@ -122,7 +122,10 @@ namespace MFCcontrol
             curRow_ADoutTable = 0;
             ADgraphUpdateCnt = 0;
 
-            timeElapsedBox.Text = (watch.GetMsElapsed() / 3600.0).ToString();
+            graphMfcs1.timeElapsedBox.Text = (watch.GetMsElapsed() / 3600.0).ToString();
+
+            //Let graph user control  know about parent form
+            graphMfcs1.parentForm = this;
 
             //Let recipe control panel know about parent form
             mfcRecipeControl1.parentForm = this;
@@ -133,17 +136,6 @@ namespace MFCcontrol
             mfcControl3.parentForm = this;
             mfcControl4.parentForm = this;
 
-            chart1.ChartAreas[0].Axes[0].Title = "Time (min)";
-            chart1.ChartAreas[0].Axes[1].Title = "MFC Flow (sccm)";
-            chart1.Series[0].Name = Settings1.Default.MFC1Gas;
-            chart1.Series[1].Name = Settings1.Default.MFC2Gas;
-            chart1.Series[2].Name = Settings1.Default.MFC3Gas;
-            chart1.Series[3].Name = Settings1.Default.MFC4Gas;
-
-            chart1.Series[0].Enabled = Settings1.Default.MFC1PlotEnable;
-            chart1.Series[1].Enabled = Settings1.Default.MFC2PlotEnable;
-            chart1.Series[2].Enabled = Settings1.Default.MFC3PlotEnable;
-            chart1.Series[3].Enabled = Settings1.Default.MFC4PlotEnable;
 
             //Set MFC Main Control Check Box to saved Value
             mfcMainControlEnable.Checked = Settings1.Default.mfcMainControlEnable;
@@ -223,7 +215,7 @@ namespace MFCcontrol
                 return;
             }
 
-            timeElapsedBox.Text = text;
+            graphMfcs1.timeElapsedBox.Text = text;
             mfcControl1.UpdatePresFlowBox(DaqAction.GetMFCflowFromVolts(currentADin[0], 1));
             mfcControl2.UpdatePresFlowBox(DaqAction.GetMFCflowFromVolts(currentADin[1], 2));
             mfcControl3.UpdatePresFlowBox(DaqAction.GetMFCflowFromVolts(currentADin[2], 3));
@@ -445,10 +437,10 @@ namespace MFCcontrol
 
             double time = Math.Round(Convert.ToDouble(watch.GetMsElapsed()) / 1000.0 / 60.0, 2);
 
-            chart1.Series[0].Points.AddXY(time, DaqAction.GetMFCflowFromVolts(currentADin[0], 1));
-            chart1.Series[1].Points.AddXY(time, DaqAction.GetMFCflowFromVolts(currentADin[1], 2));
-            chart1.Series[2].Points.AddXY(time, DaqAction.GetMFCflowFromVolts(currentADin[2], 3));
-            chart1.Series[3].Points.AddXY(time, DaqAction.GetMFCflowFromVolts(currentADin[3], 4));
+            graphMfcs1.chart1.Series[0].Points.AddXY(time, DaqAction.GetMFCflowFromVolts(currentADin[0], 1));
+            graphMfcs1.chart1.Series[1].Points.AddXY(time, DaqAction.GetMFCflowFromVolts(currentADin[1], 2));
+            graphMfcs1.chart1.Series[2].Points.AddXY(time, DaqAction.GetMFCflowFromVolts(currentADin[2], 3));
+            graphMfcs1.chart1.Series[3].Points.AddXY(time, DaqAction.GetMFCflowFromVolts(currentADin[3], 4));
 
             ADgraphUpdateCnt++;
             if (ADgraphUpdateCnt >= Settings1.Default.SamplesToGraphReset)
@@ -507,18 +499,18 @@ namespace MFCcontrol
             mfcControl2.UpdateConfig();
             mfcControl3.UpdateConfig();
             mfcControl4.UpdateConfig();
-            chart1.Series[0].Name = Settings1.Default.MFC1Gas;
-            chart1.Series[1].Name = Settings1.Default.MFC2Gas;
-            chart1.Series[2].Name = Settings1.Default.MFC3Gas;
-            chart1.Series[3].Name = Settings1.Default.MFC4Gas;
+            graphMfcs1.chart1.Series[0].Name = Settings1.Default.MFC1Gas;
+            graphMfcs1.chart1.Series[1].Name = Settings1.Default.MFC2Gas;
+            graphMfcs1.chart1.Series[2].Name = Settings1.Default.MFC3Gas;
+            graphMfcs1.chart1.Series[3].Name = Settings1.Default.MFC4Gas;
         }
 
         public void MfcPlotCheck_CheckedChanged(int MFCnumber, bool checkState)
         {
             if (checkState == true)
-                chart1.Series[MFCnumber - 1].Enabled = true;
+                graphMfcs1.chart1.Series[MFCnumber - 1].Enabled = true;
             else
-                chart1.Series[MFCnumber - 1].Enabled = false;
+                graphMfcs1.chart1.Series[MFCnumber - 1].Enabled = false;
 
         }
 
@@ -550,51 +542,51 @@ namespace MFCcontrol
 
         }
 
-
+        //TODO FIX OR  REMOVE
         internal void resetGraphButton_Click(object sender, EventArgs e)
         {
-            chart1.Series[0].Points.Clear();
-            chart1.Series[1].Points.Clear();
-            chart1.Series[2].Points.Clear();
-            chart1.Series[3].Points.Clear();
+            graphMfcs1.resetGraphButton_Click(sender, e);
         }
 
-        private void graphUpdateUD_ValueChanged(object sender, EventArgs e)
-        {
-            //On Startup this value is 0, in this case don't overwritten saved GraphTimeUpdate value
-            if (graphUpdateUDbox.Value != 0)
-            {
-                Settings1.Default.GraphTimeUpdateMS = Convert.ToInt32(graphUpdateUDbox.Value * 1000);
-                Settings1.Default.ADacquireTime_ms = Convert.ToInt32(graphUpdateUDbox.Value * 1000);
-            }
+        // TODO REMOVE
+        //private void graphUpdateUD_ValueChanged(object sender, EventArgs e)
+        //{
+        //    //On Startup this value is 0, in this case don't overwritten saved GraphTimeUpdate value
+        //    if (graphUpdateUDbox.Value != 0)
+        //    {
+        //        Settings1.Default.GraphTimeUpdateMS = Convert.ToInt32(graphUpdateUDbox.Value * 1000);
+        //        Settings1.Default.ADacquireTime_ms = Convert.ToInt32(graphUpdateUDbox.Value * 1000);
+        //    }
 
-            timerADacquire.SetInterval(Settings1.Default.ADacquireTime_ms);
-            timerADgraph.SetInterval(Settings1.Default.GraphTimeUpdateMS);
-            Settings1.Default.Save();
-        }
+        //    timerADacquire.SetInterval(Settings1.Default.ADacquireTime_ms);
+        //    timerADgraph.SetInterval(Settings1.Default.GraphTimeUpdateMS);
+        //    Settings1.Default.Save();
+        // }
 
         // TODO Remove
 
-        private void AinGraphUpdateBox_CheckedChanged(object sender, EventArgs e)
-        {
-            //Only Graph AD Input if both Update Box is Checked and MFC Control is enabled
-            if ((AinGraphUpdateBox.Checked == true) && Settings1.Default.mfcMainControlEnable)
-            {
-                AinGraphUpdateState = true;
-                timerADgraph.StartTimer();
-            }
-            else
-            {
-                AinGraphUpdateState = false;
-                timerADgraph.StopTimer();
-            }
-        }
+        //private void AinGraphUpdateBox_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    //Only Graph AD Input if both Update Box is Checked and MFC Control is enabled
+        //    if ((AinGraphUpdateBox.Checked == true) && Settings1.Default.mfcMainControlEnable)
+        //    {
+        //        AinGraphUpdateState = true;
+        //        timerADgraph.StartTimer();
+        //    }
+        //    else
+        //    {
+        //        AinGraphUpdateState = false;
+        //        timerADgraph.StopTimer();
+        //    }
+        //}
 
-        private void samplesToResetUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            Settings1.Default.SamplesToGraphReset = Convert.ToInt32(samplesToResetUpDown.Value);
-            Settings1.Default.Save();
-        }
+        //TODO REMOVE
+
+        //private void samplesToResetUpDown_ValueChanged(object sender, EventArgs e)
+        //{
+        //    Settings1.Default.SamplesToGraphReset = Convert.ToInt32(samplesToResetUpDown.Value);
+        //    Settings1.Default.Save();
+        //}
 
 
 
@@ -713,7 +705,7 @@ namespace MFCcontrol
                 mfcRecipeControl1.startButton.Enabled = false;
             }
             Settings1.Default.mfcMainControlEnable = mfcMainControlEnable.Checked;
-            AinGraphUpdateBox_CheckedChanged(this, EventArgs.Empty);
+            graphMfcs1.AinGraphUpdateBox_CheckedChanged(this, EventArgs.Empty);
         }
 
         private void biasOutsBox_CheckedChanged(object sender, EventArgs e)

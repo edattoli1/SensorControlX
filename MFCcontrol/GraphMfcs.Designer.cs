@@ -103,6 +103,7 @@
             0,
             0,
             0});
+            this.samplesToResetUpDown.ValueChanged += new System.EventHandler(this.samplesToResetUpDown_ValueChanged);
             // 
             // label14
             // 
@@ -123,6 +124,7 @@
             this.AinGraphUpdateBox.Size = new System.Drawing.Size(15, 14);
             this.AinGraphUpdateBox.TabIndex = 22;
             this.AinGraphUpdateBox.UseVisualStyleBackColor = true;
+            this.AinGraphUpdateBox.CheckedChanged += new System.EventHandler(this.AinGraphUpdateBox_CheckedChanged);
             // 
             // label13
             // 
@@ -160,6 +162,7 @@
             0,
             0,
             65536});
+            this.graphUpdateUDbox.ValueChanged += new System.EventHandler(this.graphUpdateUD_ValueChanged);
             // 
             // label12
             // 
@@ -178,6 +181,7 @@
             this.resetGraphButton.TabIndex = 18;
             this.resetGraphButton.Text = "Reset Graph";
             this.resetGraphButton.UseVisualStyleBackColor = true;
+            this.resetGraphButton.Click += new System.EventHandler(this.resetGraphButton_Click);
             // 
             // label1
             // 
@@ -247,6 +251,7 @@
             this.Controls.Add(this.panel3);
             this.Name = "GraphMfcs";
             this.Size = new System.Drawing.Size(919, 325);
+            this.Load += new System.EventHandler(this.GraphMfcs_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.samplesToResetUpDown)).EndInit();
@@ -260,15 +265,15 @@
 
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.NumericUpDown samplesToResetUpDown;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckBox AinGraphUpdateBox;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.NumericUpDown graphUpdateUDbox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button resetGraphButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox timeElapsedBox;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        internal System.Windows.Forms.NumericUpDown samplesToResetUpDown;
+        internal System.Windows.Forms.NumericUpDown graphUpdateUDbox;
+        internal System.Windows.Forms.TextBox timeElapsedBox;
+        internal System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
