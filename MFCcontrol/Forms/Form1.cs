@@ -534,6 +534,7 @@ namespace MFCcontrol
 
         }
 
+        // Needed for user control classes
         internal void resetGraphButton_Click(object sender, EventArgs e)
         {
             graphMfcs1.resetGraphButton_Click(sender, e);
@@ -550,6 +551,7 @@ namespace MFCcontrol
 
 
         //Helper Functions
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         internal void DaqOutputProblem()
         {
@@ -587,7 +589,7 @@ namespace MFCcontrol
             }
         }
 
-       
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void controlPicoammBox_CheckedChanged(object sender, EventArgs e)
         {

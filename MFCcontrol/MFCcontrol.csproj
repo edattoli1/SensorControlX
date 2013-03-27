@@ -78,58 +78,58 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigBiasOutForm.cs">
+    <Compile Include="Forms\ConfigBiasOutForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConfigBiasOutForm.Designer.cs">
+    <Compile Include="Forms\ConfigBiasOutForm.Designer.cs">
       <DependentUpon>ConfigBiasOutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConfigureMFCs.cs">
+    <Compile Include="Forms\ConfigureMFCs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConfigureMFCs.Designer.cs">
+    <Compile Include="Forms\ConfigureMFCs.Designer.cs">
       <DependentUpon>ConfigureMFCs.cs</DependentUpon>
     </Compile>
-    <Compile Include="DaqAction.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="HelperClasses\DaqAction.cs" />
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="GenStopwatch.cs" />
-    <Compile Include="GenTimer.cs" />
+    <Compile Include="HelperClasses\GenStopwatch.cs" />
+    <Compile Include="HelperClasses\GenTimer.cs" />
     <Compile Include="GraphMfcs.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GraphMfcs.Designer.cs">
       <DependentUpon>GraphMfcs.cs</DependentUpon>
     </Compile>
-    <Compile Include="HiResTimer.cs" />
-    <Compile Include="MFCcontrolTemplate.cs">
+    <Compile Include="HelperClasses\HiResTimer.cs" />
+    <Compile Include="UserControls\MFCcontrolTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MFCcontrolTemplate.Designer.cs">
+    <Compile Include="UserControls\MFCcontrolTemplate.Designer.cs">
       <DependentUpon>MFCcontrolTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="MFCRecipeControl.cs">
+    <Compile Include="UserControls\MFCRecipeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MFCRecipeControl.Designer.cs">
+    <Compile Include="UserControls\MFCRecipeControl.Designer.cs">
       <DependentUpon>MFCRecipeControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RecipeView.cs">
+    <Compile Include="Forms\RecipeView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RecipeView.Designer.cs">
+    <Compile Include="Forms\RecipeView.Designer.cs">
       <DependentUpon>RecipeView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SensorBiasControl.cs">
+    <Compile Include="UserControls\SensorBiasControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SensorBiasControl.Designer.cs">
+    <Compile Include="UserControls\SensorBiasControl.Designer.cs">
       <DependentUpon>SensorBiasControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings1.cs" />
@@ -138,24 +138,24 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings1.settings</DependentUpon>
     </Compile>
-    <Compile Include="SShtLoad.cs" />
-    <Compile Include="Util.cs" />
-    <EmbeddedResource Include="ConfigBiasOutForm.resx">
+    <Compile Include="HelperClasses\SShtLoad.cs" />
+    <Compile Include="HelperClasses\Util.cs" />
+    <EmbeddedResource Include="Forms\ConfigBiasOutForm.resx">
       <DependentUpon>ConfigBiasOutForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ConfigureMFCs.resx">
+    <EmbeddedResource Include="Forms\ConfigureMFCs.resx">
       <DependentUpon>ConfigureMFCs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GraphMfcs.resx">
       <DependentUpon>GraphMfcs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MFCcontrolTemplate.resx">
+    <EmbeddedResource Include="UserControls\MFCcontrolTemplate.resx">
       <DependentUpon>MFCcontrolTemplate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MFCRecipeControl.resx">
+    <EmbeddedResource Include="UserControls\MFCRecipeControl.resx">
       <DependentUpon>MFCRecipeControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -168,10 +168,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RecipeView.resx">
+    <EmbeddedResource Include="Forms\RecipeView.resx">
       <DependentUpon>RecipeView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SensorBiasControl.resx">
+    <EmbeddedResource Include="UserControls\SensorBiasControl.resx">
       <DependentUpon>SensorBiasControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="GraphAsync1_TemporaryKey.pfx" />
