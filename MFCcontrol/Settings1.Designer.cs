@@ -406,5 +406,29 @@ namespace MFCcontrol {
                 this["PicoammRange"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PicoammRefreshRead {
+            get {
+                return ((bool)(this["PicoammRefreshRead"]));
+            }
+            set {
+                this["PicoammRefreshRead"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double PicoammNPLC {
+            get {
+                return ((double)(this["PicoammNPLC"]));
+            }
+            set {
+                this["PicoammNPLC"] = value;
+            }
+        }
     }
 }

@@ -11,7 +11,7 @@ using NationalInstruments.NI4882;
 // Undefine #define K6487 if you have a 6487 and want to control voltage output
 // This is a singleton class (only one instance is allowed)
 
-namespace Ke648x
+namespace MFCcontrol
 {
     public class Ke648xControl
     {
@@ -89,11 +89,10 @@ namespace Ke648x
         {
             string initString1 = ":SYST:PRES;:SENS:FUNC 'CURR';:SENS:CURR:RANG 2E-";
             string nplcString = ":SENS:CURR:DC:NPLC ";
-            //int picoAmmRange = 6;
             double NPLCcycles = 1;
 
             //reset 6487
-            device.Write(initString1);
+            device.Write(initString1 + Settings1.Default.PicoammRange.ToString());
 
             //turn off digital averaging filter
             device.Write(":SENS:AVER:STAT OFF");
@@ -137,6 +136,33 @@ namespace Ke648x
             device.Write(":SENS:CURR:RANG 2E-" + newRange.ToString());
             device.Write(":INIT");
             
+        }
+
+        public double GetReading()
+        {
+            double returnValue = 0;
+            string retrievedString = "0";
+            
+
+            device.Write(":ABORT");
+            device.Write(":ARM:COUNT 1");
+            device.Write(":INIT");
+            device.Write(":READ?");
+
+            try
+            {
+                //byteArray = device.ReadByteArray(14);
+                retrievedString = device.ReadString(14);
+            }
+            catch (Exception exception)
+            {
+                System.Windows.Forms.MessageBox.Show(exception.Message);
+            }
+
+            //returnValue = BitConverter.ToDouble(byteArray, 0);
+            returnValue = Convert.ToDouble(retrievedString);
+
+            return returnValue;
         }
 
 

@@ -9,28 +9,56 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NationalInstruments.NI4882;
 
-namespace Ke648x
+namespace MFCcontrol
 {
     public partial class Ke648xGUI : Form
     {
 
         private Ke648xControl pAmm;
+        private GenTimer readTimer;
+        private bool gpibBusy;
 
         public Ke648xGUI(Ke648xControl pAmmIn)
         {
             InitializeComponent();
             pAmm = pAmmIn;
+            readTimer = new GenTimer();
+        }
+
+        private void Ke648xGUI_Load(object sender, EventArgs e)
+        {
+            picoammRangeUpDown.Value = Settings1.Default.PicoammRange;
+
+            readTimer.SetInterval(100);
+            readTimer.TimerElapsed += ReadTimerHandler;
+            gpibBusy = false;
+            refreshPicoammRead.Checked = Settings1.Default.PicoammRefreshRead;
 
 
         }
 
-        private void startGPIBbutton_Click(object sender, EventArgs e)
+
+        private void ReadTimerHandler(object obj, EventArgs e)
         {
-            
-            pAmm.InitSession();
-            string stringRead = pAmm.GetIdentString();
+            if (gpibBusy == true)
+                return;
+            else
+            {
+                UpdatePresCurrent();
+            }
+        }
 
+        private void UpdatePresCurrent()
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke((Action)UpdatePresCurrent);
+                return;
+            }
 
+            gpibBusy = true;
+            presPicoammRead.Text = pAmm.GetReading().ToString();
+            gpibBusy = false;
 
         }
 
@@ -56,9 +84,37 @@ namespace Ke648x
         {
             int newRange = Convert.ToInt32(picoammRangeUpDown.Value);
 
-            pAmm.SetRange(newRange);
+            if (newRange != Settings1.Default.PicoammRange)
+            {
+                pAmm.SetRange(newRange);
+                Settings1.Default.PicoammRange = newRange;
+            }
 
         }
+
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            presPicoammRead.Text = pAmm.GetReading().ToString();
+        }
+
+        private void refreshPicoammRead_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings1.Default.PicoammRefreshRead = refreshPicoammRead.Checked;
+
+            if (refreshPicoammRead.Checked == true)
+                readTimer.StartTimer();
+            else
+                readTimer.StopTimer();
+
+        }
+
+        private void nplcUpDown_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

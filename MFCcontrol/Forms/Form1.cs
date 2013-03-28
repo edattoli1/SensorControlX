@@ -11,7 +11,6 @@ using System.IO;
 using System.Threading;
 using System.Diagnostics;
 using System.Runtime;
-using Ke648x;
 
 namespace MFCcontrol
 {
@@ -239,7 +238,7 @@ namespace MFCcontrol
             }
         }
 
-        delegate void UpdateADgraphDelegate();
+        //delegate void UpdateADgraphDelegate();
 
         private bool UpdateADgraphBusy = false;
         internal bool UpdateADacquireBusy = false;
@@ -422,7 +421,8 @@ namespace MFCcontrol
 
             if (InvokeRequired)
             {
-                BeginInvoke(new UpdateADgraphDelegate(UpdateADgraph));
+                //BeginInvoke(new UpdateADgraphDelegate(UpdateADgraph));
+                BeginInvoke((Action)UpdateADgraph);
                 return;
             }
 
