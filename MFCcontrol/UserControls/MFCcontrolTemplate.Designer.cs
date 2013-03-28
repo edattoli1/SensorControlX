@@ -61,15 +61,15 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(498, 38);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(498, 31);
             this.tableLayoutPanel1.TabIndex = 35;
             // 
             // mfc1PresFlowBox
             // 
             this.mfc1PresFlowBox.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.mfc1PresFlowBox.Enabled = false;
-            this.mfc1PresFlowBox.Location = new System.Drawing.Point(376, 8);
-            this.mfc1PresFlowBox.Margin = new System.Windows.Forms.Padding(8);
+            this.mfc1PresFlowBox.Location = new System.Drawing.Point(373, 5);
+            this.mfc1PresFlowBox.Margin = new System.Windows.Forms.Padding(5);
             this.mfc1PresFlowBox.Name = "mfc1PresFlowBox";
             this.mfc1PresFlowBox.Size = new System.Drawing.Size(45, 22);
             this.mfc1PresFlowBox.TabIndex = 30;
@@ -78,8 +78,8 @@
             // 
             this.mfc1TextBox.DecimalPlaces = 2;
             this.mfc1TextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.mfc1TextBox.Location = new System.Drawing.Point(299, 8);
-            this.mfc1TextBox.Margin = new System.Windows.Forms.Padding(8);
+            this.mfc1TextBox.Location = new System.Drawing.Point(296, 5);
+            this.mfc1TextBox.Margin = new System.Windows.Forms.Padding(5);
             this.mfc1TextBox.Name = "mfc1TextBox";
             this.mfc1TextBox.Size = new System.Drawing.Size(54, 22);
             this.mfc1TextBox.TabIndex = 16;
@@ -88,8 +88,8 @@
             // mfc1maxLabel
             // 
             this.mfc1maxLabel.AutoSize = true;
-            this.mfc1maxLabel.Location = new System.Drawing.Point(230, 8);
-            this.mfc1maxLabel.Margin = new System.Windows.Forms.Padding(8);
+            this.mfc1maxLabel.Location = new System.Drawing.Point(227, 5);
+            this.mfc1maxLabel.Margin = new System.Windows.Forms.Padding(5);
             this.mfc1maxLabel.Name = "mfc1maxLabel";
             this.mfc1maxLabel.Size = new System.Drawing.Size(32, 17);
             this.mfc1maxLabel.TabIndex = 20;
@@ -98,8 +98,8 @@
             // mfc1GasName
             // 
             this.mfc1GasName.AutoSize = true;
-            this.mfc1GasName.Location = new System.Drawing.Point(53, 8);
-            this.mfc1GasName.Margin = new System.Windows.Forms.Padding(8);
+            this.mfc1GasName.Location = new System.Drawing.Point(50, 5);
+            this.mfc1GasName.Margin = new System.Windows.Forms.Padding(5);
             this.mfc1GasName.Name = "mfc1GasName";
             this.mfc1GasName.Size = new System.Drawing.Size(34, 17);
             this.mfc1GasName.TabIndex = 23;
@@ -109,8 +109,8 @@
             // 
             this.mfc1Display.AutoSize = true;
             this.mfc1Display.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.mfc1Display.Location = new System.Drawing.Point(8, 8);
-            this.mfc1Display.Margin = new System.Windows.Forms.Padding(8);
+            this.mfc1Display.Location = new System.Drawing.Point(5, 5);
+            this.mfc1Display.Margin = new System.Windows.Forms.Padding(5);
             this.mfc1Display.Name = "mfc1Display";
             this.mfc1Display.Size = new System.Drawing.Size(16, 17);
             this.mfc1Display.TabIndex = 10;
@@ -124,7 +124,7 @@
             this.mfc1CheckBox.Location = new System.Drawing.Point(159, 8);
             this.mfc1CheckBox.Margin = new System.Windows.Forms.Padding(8);
             this.mfc1CheckBox.Name = "mfc1CheckBox";
-            this.mfc1CheckBox.Size = new System.Drawing.Size(18, 17);
+            this.mfc1CheckBox.Size = new System.Drawing.Size(15, 14);
             this.mfc1CheckBox.TabIndex = 15;
             this.mfc1CheckBox.UseVisualStyleBackColor = true;
             this.mfc1CheckBox.CheckedChanged += new System.EventHandler(this.mfc1CheckBox_CheckedChanged);
@@ -137,7 +137,7 @@
             this.mfc1PlotCheck.Location = new System.Drawing.Point(456, 8);
             this.mfc1PlotCheck.Margin = new System.Windows.Forms.Padding(8);
             this.mfc1PlotCheck.Name = "mfc1PlotCheck";
-            this.mfc1PlotCheck.Size = new System.Drawing.Size(18, 17);
+            this.mfc1PlotCheck.Size = new System.Drawing.Size(15, 14);
             this.mfc1PlotCheck.TabIndex = 27;
             this.mfc1PlotCheck.UseVisualStyleBackColor = true;
             this.mfc1PlotCheck.CheckedChanged += new System.EventHandler(this.mfc1PlotCheck_CheckedChanged);
@@ -148,7 +148,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "MFCcontrolTemplate";
-            this.Size = new System.Drawing.Size(505, 45);
+            this.Size = new System.Drawing.Size(498, 37);
             this.Load += new System.EventHandler(this.MFCcontrolTemplate_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

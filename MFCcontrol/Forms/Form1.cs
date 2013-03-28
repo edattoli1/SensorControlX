@@ -62,7 +62,7 @@ namespace MFCcontrol
             InitializeComponent();
 
             //Used for Drawing Rows in MFC table
-            tableLayoutPanel1.CellPaint += tableLayoutPanel_CellPaint;
+            //tableLayoutPanel1.CellPaint += tableLayoutPanel_CellPaint;
             tableLayoutPanel2.CellPaint += tableLayoutPanel_CellPaint;
 
             // Initialized Saved Settings Values Into Form
@@ -566,7 +566,8 @@ namespace MFCcontrol
         //Used for Drawing Rows in MFC Table
         internal void tableLayoutPanel_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
         {
-            e.Graphics.DrawLine(Pens.Black, e.CellBounds.Location, new Point(e.CellBounds.Right, e.CellBounds.Top));
+            //e.Graphics.DrawLine(Pens.Black, e.CellBounds.Location, new Point(e.CellBounds.Right, e.CellBounds.Top));
+            e.Graphics.DrawLine(Pens.Black, new Point(e.CellBounds.Left, e.CellBounds.Bottom), new Point(e.CellBounds.Right, e.CellBounds.Bottom));
         }
 
         internal void ZeroAllMFCOutputs()

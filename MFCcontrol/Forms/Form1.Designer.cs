@@ -34,10 +34,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.mfcMainControlEnable = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.mfcControl4 = new MFCcontrol.MFCcontrolTemplate();
-            this.mfcControl1 = new MFCcontrol.MFCcontrolTemplate();
-            this.mfcControl2 = new MFCcontrol.MFCcontrolTemplate();
-            this.mfcControl3 = new MFCcontrol.MFCcontrolTemplate();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label16 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -49,13 +45,23 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.controlPicoammBox = new System.Windows.Forms.CheckBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.mfCcontrolTemplate3 = new MFCcontrol.MFCcontrolTemplate();
+            this.mfcControl4 = new MFCcontrol.MFCcontrolTemplate();
+            this.mfcControl1 = new MFCcontrol.MFCcontrolTemplate();
+            this.mfcControl2 = new MFCcontrol.MFCcontrolTemplate();
+            this.mfcControl3 = new MFCcontrol.MFCcontrolTemplate();
+            this.mfCcontrolTemplate1 = new MFCcontrol.MFCcontrolTemplate();
+            this.mfCcontrolTemplate2 = new MFCcontrol.MFCcontrolTemplate();
+            this.sensorBiasControl1 = new MFCcontrol.SensorBiasControl();
             this.graphMfcs1 = new MFCcontrol.GraphMfcs();
             this.mfcRecipeControl1 = new MFCcontrol.MfcRecipeControl();
-            this.sensorBiasControl1 = new MFCcontrol.SensorBiasControl();
+            this.mfCcontrolTemplate4 = new MFCcontrol.MFCcontrolTemplate();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -63,7 +69,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.01739F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(10, 10);
+            this.label2.Location = new System.Drawing.Point(13, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(183, 20);
             this.label2.TabIndex = 12;
@@ -93,21 +99,19 @@
             // 
             // panel1
             // 
+            this.panel1.AutoScroll = true;
+            this.panel1.AutoScrollMargin = new System.Drawing.Size(5, 0);
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.mfcMainControlEnable);
             this.panel1.Controls.Add(this.tableLayoutPanel2);
-            this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Controls.Add(this.configMFCsButton);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(43, 336);
+            this.panel1.Location = new System.Drawing.Point(17, 82);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(506, 303);
+            this.panel1.Size = new System.Drawing.Size(535, 180);
             this.panel1.TabIndex = 13;
             // 
             // mfcMainControlEnable
             // 
             this.mfcMainControlEnable.AutoSize = true;
-            this.mfcMainControlEnable.Location = new System.Drawing.Point(26, 267);
+            this.mfcMainControlEnable.Location = new System.Drawing.Point(28, 289);
             this.mfcMainControlEnable.Name = "mfcMainControlEnable";
             this.mfcMainControlEnable.Size = new System.Drawing.Size(111, 21);
             this.mfcMainControlEnable.TabIndex = 37;
@@ -119,47 +123,27 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.mfCcontrolTemplate4, 0, 7);
+            this.tableLayoutPanel2.Controls.Add(this.mfCcontrolTemplate3, 0, 6);
             this.tableLayoutPanel2.Controls.Add(this.mfcControl4, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.mfcControl1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.mfcControl2, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.mfcControl3, 0, 2);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 75);
+            this.tableLayoutPanel2.Controls.Add(this.mfCcontrolTemplate1, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.mfCcontrolTemplate2, 0, 5);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(498, 174);
+            this.tableLayoutPanel2.RowCount = 8;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(496, 321);
             this.tableLayoutPanel2.TabIndex = 36;
-            // 
-            // mfcControl4
-            // 
-            this.mfcControl4.Location = new System.Drawing.Point(3, 132);
-            this.mfcControl4.Name = "mfcControl4";
-            this.mfcControl4.Size = new System.Drawing.Size(487, 39);
-            this.mfcControl4.TabIndex = 35;
-            // 
-            // mfcControl1
-            // 
-            this.mfcControl1.Location = new System.Drawing.Point(3, 3);
-            this.mfcControl1.Name = "mfcControl1";
-            this.mfcControl1.Size = new System.Drawing.Size(492, 37);
-            this.mfcControl1.TabIndex = 36;
-            // 
-            // mfcControl2
-            // 
-            this.mfcControl2.Location = new System.Drawing.Point(3, 46);
-            this.mfcControl2.Name = "mfcControl2";
-            this.mfcControl2.Size = new System.Drawing.Size(492, 31);
-            this.mfcControl2.TabIndex = 37;
-            // 
-            // mfcControl3
-            // 
-            this.mfcControl3.Location = new System.Drawing.Point(3, 89);
-            this.mfcControl3.Name = "mfcControl3";
-            this.mfcControl3.Size = new System.Drawing.Size(492, 33);
-            this.mfcControl3.TabIndex = 38;
             // 
             // tableLayoutPanel1
             // 
@@ -178,7 +162,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label5, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.label4, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.label6, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 43);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(17, 46);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -242,7 +226,7 @@
             // 
             // configMFCsButton
             // 
-            this.configMFCsButton.Location = new System.Drawing.Point(236, 255);
+            this.configMFCsButton.Location = new System.Drawing.Point(179, 280);
             this.configMFCsButton.Name = "configMFCsButton";
             this.configMFCsButton.Size = new System.Drawing.Size(87, 43);
             this.configMFCsButton.TabIndex = 25;
@@ -277,7 +261,7 @@
             this.panel5.Controls.Add(this.controlPicoammBox);
             this.panel5.Controls.Add(this.label7);
             this.panel5.Controls.Add(this.picoammSettingsButton);
-            this.panel5.Location = new System.Drawing.Point(47, 668);
+            this.panel5.Location = new System.Drawing.Point(43, 719);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(305, 100);
             this.panel5.TabIndex = 23;
@@ -293,6 +277,75 @@
             this.controlPicoammBox.UseVisualStyleBackColor = true;
             this.controlPicoammBox.CheckedChanged += new System.EventHandler(this.controlPicoammBox_CheckedChanged);
             // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.mfcMainControlEnable);
+            this.panel2.Controls.Add(this.tableLayoutPanel1);
+            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Controls.Add(this.configMFCsButton);
+            this.panel2.Location = new System.Drawing.Point(25, 336);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(565, 341);
+            this.panel2.TabIndex = 38;
+            // 
+            // mfCcontrolTemplate3
+            // 
+            this.mfCcontrolTemplate3.Location = new System.Drawing.Point(3, 243);
+            this.mfCcontrolTemplate3.Name = "mfCcontrolTemplate3";
+            this.mfCcontrolTemplate3.Size = new System.Drawing.Size(487, 34);
+            this.mfCcontrolTemplate3.TabIndex = 40;
+            // 
+            // mfcControl4
+            // 
+            this.mfcControl4.Location = new System.Drawing.Point(3, 123);
+            this.mfcControl4.Name = "mfcControl4";
+            this.mfcControl4.Size = new System.Drawing.Size(487, 34);
+            this.mfcControl4.TabIndex = 35;
+            // 
+            // mfcControl1
+            // 
+            this.mfcControl1.Location = new System.Drawing.Point(3, 3);
+            this.mfcControl1.Name = "mfcControl1";
+            this.mfcControl1.Size = new System.Drawing.Size(490, 34);
+            this.mfcControl1.TabIndex = 36;
+            // 
+            // mfcControl2
+            // 
+            this.mfcControl2.Location = new System.Drawing.Point(3, 43);
+            this.mfcControl2.Name = "mfcControl2";
+            this.mfcControl2.Size = new System.Drawing.Size(490, 31);
+            this.mfcControl2.TabIndex = 37;
+            // 
+            // mfcControl3
+            // 
+            this.mfcControl3.Location = new System.Drawing.Point(3, 83);
+            this.mfcControl3.Name = "mfcControl3";
+            this.mfcControl3.Size = new System.Drawing.Size(490, 33);
+            this.mfcControl3.TabIndex = 38;
+            // 
+            // mfCcontrolTemplate1
+            // 
+            this.mfCcontrolTemplate1.Location = new System.Drawing.Point(3, 163);
+            this.mfCcontrolTemplate1.Name = "mfCcontrolTemplate1";
+            this.mfCcontrolTemplate1.Size = new System.Drawing.Size(487, 34);
+            this.mfCcontrolTemplate1.TabIndex = 39;
+            // 
+            // mfCcontrolTemplate2
+            // 
+            this.mfCcontrolTemplate2.Location = new System.Drawing.Point(3, 203);
+            this.mfCcontrolTemplate2.Name = "mfCcontrolTemplate2";
+            this.mfCcontrolTemplate2.Size = new System.Drawing.Size(487, 34);
+            this.mfCcontrolTemplate2.TabIndex = 40;
+            // 
+            // sensorBiasControl1
+            // 
+            this.sensorBiasControl1.Location = new System.Drawing.Point(384, 694);
+            this.sensorBiasControl1.Name = "sensorBiasControl1";
+            this.sensorBiasControl1.Size = new System.Drawing.Size(485, 161);
+            this.sensorBiasControl1.TabIndex = 27;
+            // 
             // graphMfcs1
             // 
             this.graphMfcs1.Location = new System.Drawing.Point(25, 5);
@@ -302,28 +355,28 @@
             // 
             // mfcRecipeControl1
             // 
-            this.mfcRecipeControl1.Location = new System.Drawing.Point(567, 347);
+            this.mfcRecipeControl1.Location = new System.Drawing.Point(611, 347);
             this.mfcRecipeControl1.Name = "mfcRecipeControl1";
             this.mfcRecipeControl1.Size = new System.Drawing.Size(302, 273);
             this.mfcRecipeControl1.TabIndex = 25;
             // 
-            // sensorBiasControl1
+            // mfCcontrolTemplate4
             // 
-            this.sensorBiasControl1.Location = new System.Drawing.Point(384, 658);
-            this.sensorBiasControl1.Name = "sensorBiasControl1";
-            this.sensorBiasControl1.Size = new System.Drawing.Size(485, 161);
-            this.sensorBiasControl1.TabIndex = 27;
+            this.mfCcontrolTemplate4.Location = new System.Drawing.Point(3, 283);
+            this.mfCcontrolTemplate4.Name = "mfCcontrolTemplate4";
+            this.mfCcontrolTemplate4.Size = new System.Drawing.Size(487, 34);
+            this.mfCcontrolTemplate4.TabIndex = 41;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(956, 867);
+            this.ClientSize = new System.Drawing.Size(1654, 867);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.sensorBiasControl1);
             this.Controls.Add(this.graphMfcs1);
             this.Controls.Add(this.mfcRecipeControl1);
             this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "Form1";
             this.Text = "Main Control";
@@ -331,12 +384,13 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -367,6 +421,11 @@
         private GraphMfcs graphMfcs1;
         private SensorBiasControl sensorBiasControl1;
         internal System.Windows.Forms.CheckBox controlPicoammBox;
+        internal MFCcontrolTemplate mfCcontrolTemplate3;
+        internal MFCcontrolTemplate mfCcontrolTemplate1;
+        internal MFCcontrolTemplate mfCcontrolTemplate2;
+        private System.Windows.Forms.Panel panel2;
+        internal MFCcontrolTemplate mfCcontrolTemplate4;
         
     }
 }
