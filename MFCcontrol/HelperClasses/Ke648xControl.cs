@@ -89,7 +89,6 @@ namespace MFCcontrol
         {
             string initString1 = ":SYST:PRES;:SENS:FUNC 'CURR';:SENS:CURR:RANG 2E-";
             string nplcString = ":SENS:CURR:DC:NPLC ";
-            double NPLCcycles = 1;
 
             //reset 6487
             device.Write(initString1 + Settings1.Default.PicoammRange.ToString());
@@ -107,7 +106,7 @@ namespace MFCcontrol
             device.Write(":SENS:CURR:MED:STAT OFF");
 
             //set up NPLC (analog filter)
-            device.Write(nplcString + NPLCcycles.ToString());
+            device.Write(nplcString + Settings1.Default.PicoammNPLC.ToString());
 
             //set up arm and trace
             device.Write(":ARM:COUNT INF; :TRACE:CLE; :TRACE:POINTS 1; :TRACE:FEED SENS; :TRACE:FEED SENS; :TRACE:FEED:CONT NEXT;"
@@ -138,7 +137,7 @@ namespace MFCcontrol
             
         }
 
-        public double GetReading()
+        public async Task<double> GetReading()
         {
             double returnValue = 0;
             string retrievedString = "0";
@@ -165,6 +164,12 @@ namespace MFCcontrol
             return returnValue;
         }
 
+        public void ChangeNplc(double newNplcVal)
+        {
+            device.Write(":ABORT");
+            device.Write(":SENS:CURR:DC:NPLC " + newNplcVal.ToString());
+            device.Write(":INIT");
+        }
 
         //private string ReplaceCommonEscapeSequences(string s)
         //{

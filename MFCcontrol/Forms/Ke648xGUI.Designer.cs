@@ -38,9 +38,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.nplcUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picoammRangeUpDown)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -82,7 +82,7 @@
             // 
             // presPicoammRead
             // 
-            this.presPicoammRead.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.presPicoammRead.BackColor = System.Drawing.Color.Silver;
             this.presPicoammRead.Location = new System.Drawing.Point(21, 13);
             this.presPicoammRead.Name = "presPicoammRead";
             this.presPicoammRead.Size = new System.Drawing.Size(100, 22);
@@ -160,28 +160,9 @@
             this.panel2.Size = new System.Drawing.Size(173, 196);
             this.panel2.TabIndex = 11;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.01739F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(18, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 20);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "SETTINGS";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 132);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 17);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "NPLC Cycles";
-            // 
             // nplcUpDown
             // 
+            this.nplcUpDown.DecimalPlaces = 2;
             this.nplcUpDown.Location = new System.Drawing.Point(20, 157);
             this.nplcUpDown.Maximum = new decimal(new int[] {
             60,
@@ -202,6 +183,26 @@
             0,
             0});
             this.nplcUpDown.ValueChanged += new System.EventHandler(this.nplcUpDown_ValueChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(17, 132);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 17);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "NPLC Cycles";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.01739F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(18, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(97, 20);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "SETTINGS";
             // 
             // Ke648xGUI
             // 

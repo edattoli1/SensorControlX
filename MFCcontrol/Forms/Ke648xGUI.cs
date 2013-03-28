@@ -17,10 +17,12 @@ namespace MFCcontrol
         private Ke648xControl pAmm;
         private GenTimer readTimer;
         private bool gpibBusy;
+        internal double presReading;
 
         public Ke648xGUI(Ke648xControl pAmmIn)
         {
             InitializeComponent();
+            presReading = 0;
             pAmm = pAmmIn;
             readTimer = new GenTimer();
         }
@@ -29,21 +31,25 @@ namespace MFCcontrol
         {
             picoammRangeUpDown.Value = Settings1.Default.PicoammRange;
 
-            readTimer.SetInterval(100);
+            readTimer.SetInterval(200);
             readTimer.TimerElapsed += ReadTimerHandler;
             gpibBusy = false;
             refreshPicoammRead.Checked = Settings1.Default.PicoammRefreshRead;
-
+            nplcUpDown.Value = Convert.ToDecimal(Settings1.Default.PicoammNPLC);
 
         }
 
 
-        private void ReadTimerHandler(object obj, EventArgs e)
+        private async void ReadTimerHandler(object obj, EventArgs e)
         {
             if (gpibBusy == true)
                 return;
             else
             {
+                gpibBusy = true;
+                presReading = await pAmm.GetReading();
+                gpibBusy = false;
+
                 UpdatePresCurrent();
             }
         }
@@ -56,9 +62,7 @@ namespace MFCcontrol
                 return;
             }
 
-            gpibBusy = true;
-            presPicoammRead.Text = pAmm.GetReading().ToString();
-            gpibBusy = false;
+            presPicoammRead.Text = presReading.ToString();
 
         }
 
@@ -94,10 +98,10 @@ namespace MFCcontrol
 
 
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            presPicoammRead.Text = pAmm.GetReading().ToString();
-        }
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    presPicoammRead.Text = pAmm.GetReading().ToString();
+        //}
 
         private void refreshPicoammRead_CheckedChanged(object sender, EventArgs e)
         {
@@ -112,6 +116,13 @@ namespace MFCcontrol
 
         private void nplcUpDown_ValueChanged(object sender, EventArgs e)
         {
+            double newNplc = Convert.ToDouble(nplcUpDown.Value);
+
+            if (newNplc != Settings1.Default.PicoammNPLC)
+            {
+                pAmm.ChangeNplc(newNplc);
+                Settings1.Default.PicoammNPLC = newNplc;
+            }
 
         }
 
