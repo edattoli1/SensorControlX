@@ -77,36 +77,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ke6487control.exe" size="10752">
-      <assemblyIdentity name="ke6487control" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>aSeqRpTNr+diFINUx/AfFPLrZPczfUSRvbRDrY1VS5c=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SensorControl.exe" size="76288">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SensorControl.exe" size="80384">
       <assemblyIdentity name="SensorControl" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dMiey5M/QLGyRZp4PqVhV49ii8QRQUJapdo2CXq6OG8=</dsig:DigestValue>
+        <dsig:DigestValue>BoxCicnylxPt9VtOtfOyhs8TncHWKTcPpBZ5GEb29Ec=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="SensorControl.exe.config" size="7837">
+  <file name="SensorControl.exe.config" size="8053">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>J+4M/QcX4Uw8P6wl1khBOmMY4/QefLCmXgzdHsbZNDM=</dsig:DigestValue>
+      <dsig:DigestValue>yZ2xYHDAMyjeIP0v4OAKU17rr+MAglWFaJashl1N01c=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

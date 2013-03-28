@@ -89,11 +89,11 @@ namespace Ke648x
         {
             string initString1 = ":SYST:PRES;:SENS:FUNC 'CURR';:SENS:CURR:RANG 2E-";
             string nplcString = ":SENS:CURR:DC:NPLC ";
-            int picoAmmRange = 6;
+            //int picoAmmRange = 6;
             double NPLCcycles = 1;
 
-            //reset 6487, set range
-            device.Write(initString1 + picoAmmRange.ToString());
+            //reset 6487
+            device.Write(initString1);
 
             //turn off digital averaging filter
             device.Write(":SENS:AVER:STAT OFF");
@@ -130,6 +130,15 @@ namespace Ke648x
             //Start measurements
             device.Write(":INIT");
         }
+
+        public void SetRange(int newRange)
+        {
+            device.Write(":ABORT");
+            device.Write(":SENS:CURR:RANG 2E-" + newRange.ToString());
+            device.Write(":INIT");
+            
+        }
+
 
         //private string ReplaceCommonEscapeSequences(string s)
         //{

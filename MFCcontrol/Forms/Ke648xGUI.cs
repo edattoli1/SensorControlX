@@ -52,5 +52,13 @@ namespace Ke648x
             base.OnClosing(e);
         }
 
+        private void picoammRangeUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            int newRange = Convert.ToInt32(picoammRangeUpDown.Value);
+
+            pAmm.SetRange(newRange);
+
+        }
+
     }
 }

@@ -19,8 +19,6 @@ C:\Users\pat\Documents\Visual Studio 2012\Projects\SensorControl\MFCcontrol\obj\
 C:\Users\pat\Documents\Visual Studio 2012\Projects\SensorControl\MFCcontrol\obj\Debug\MFCcontrol.Form1.resources
 C:\Users\pat\Documents\Visual Studio 2012\Projects\SensorControl\MFCcontrol\obj\Debug\MFCcontrol.Properties.Resources.resources
 C:\Users\pat\Documents\Visual Studio 2012\Projects\SensorControl\MFCcontrol\obj\Debug\MFCcontrol.RecipeView.resources
-C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControl\MFCcontrol\bin\Debug\ke6487control.exe
-C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControl\MFCcontrol\bin\Debug\ke6487control.pdb
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControl\MFCcontrol\obj\Debug\MFCcontrol.csprojResolveAssemblyReference.cache
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControl\MFCcontrol\obj\Debug\MFCcontrol.ConfigureMFCs.resources
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControl\MFCcontrol\obj\Debug\MFCcontrol.Form1.resources
@@ -41,3 +39,4 @@ C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControl\MFCcontrol\obj
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControl\MFCcontrol\obj\Debug\MFCcontrol.MfcRecipeControl.resources
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControl\MFCcontrol\obj\Debug\MFCcontrol.GraphMfcs.resources
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControl\MFCcontrol\obj\Debug\MFCcontrol.SensorBiasControl.resources
+C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControl\MFCcontrol\obj\Debug\Ke648x.Ke648xGUI.resources

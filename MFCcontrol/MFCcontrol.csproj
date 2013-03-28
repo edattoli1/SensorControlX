@@ -64,6 +64,7 @@
     <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="NationalInstruments.Common, Version=13.0.40.188, Culture=neutral, PublicKeyToken=dc6ad606294fc298, processorArchitecture=MSIL" />
     <Reference Include="NationalInstruments.DAQmx, Version=9.6.45.292, Culture=neutral, PublicKeyToken=4febd62461bf11a4, processorArchitecture=x86" />
+    <Reference Include="NationalInstruments.NI4882, Version=13.0.45.159, Culture=neutral, PublicKeyToken=4febd62461bf11a4, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -90,6 +91,12 @@
     <Compile Include="Forms\ConfigureMFCs.Designer.cs">
       <DependentUpon>ConfigureMFCs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Ke648xGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ke648xGUI.Designer.cs">
+      <DependentUpon>Ke648xGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="HelperClasses\DaqAction.cs" />
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
@@ -99,10 +106,11 @@
     </Compile>
     <Compile Include="HelperClasses\GenStopwatch.cs" />
     <Compile Include="HelperClasses\GenTimer.cs" />
-    <Compile Include="GraphMfcs.cs">
+    <Compile Include="HelperClasses\Ke648xControl.cs" />
+    <Compile Include="UserControls\GraphMfcs.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GraphMfcs.Designer.cs">
+    <Compile Include="UserControls\GraphMfcs.Designer.cs">
       <DependentUpon>GraphMfcs.cs</DependentUpon>
     </Compile>
     <Compile Include="HelperClasses\HiResTimer.cs" />
@@ -149,7 +157,10 @@
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GraphMfcs.resx">
+    <EmbeddedResource Include="Forms\Ke648xGUI.resx">
+      <DependentUpon>Ke648xGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\GraphMfcs.resx">
       <DependentUpon>GraphMfcs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MFCcontrolTemplate.resx">
@@ -208,12 +219,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Ke648xControl\Ke648xControl.csproj">
-      <Project>{8fcb1d4f-5fbc-4654-883b-383338893d4a}</Project>
-      <Name>Ke648xControl</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

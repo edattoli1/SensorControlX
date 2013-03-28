@@ -394,5 +394,17 @@ namespace MFCcontrol {
                 this["sensorBiasMaxRange"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
+        public int PicoammRange {
+            get {
+                return ((int)(this["PicoammRange"]));
+            }
+            set {
+                this["PicoammRange"] = value;
+            }
+        }
     }
 }
