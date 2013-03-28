@@ -18,13 +18,15 @@ namespace MFCcontrol
         private GenTimer readTimer;
         private bool gpibBusy;
         internal double presReading;
+        private Form1 parentForm;
 
-        public Ke648xGUI(Ke648xControl pAmmIn)
+        public Ke648xGUI(Form1 parentFormIn, Ke648xControl pAmmIn)
         {
             InitializeComponent();
             presReading = 0;
             pAmm = pAmmIn;
             readTimer = new GenTimer();
+            parentForm = parentFormIn;
         }
 
         private void Ke648xGUI_Load(object sender, EventArgs e)
@@ -78,6 +80,11 @@ namespace MFCcontrol
         {
             // Hides the Form
             this.Visible = false;
+
+            //Allow Main Form Control over Picoammeter Enable
+            parentForm.controlPicoammBox.Enabled = true;
+
+
             // This cancels the closing event, prevents Dispose of the Form
             e.Cancel = true;
             // Throw OnClosing event (normal behavior on Form Closing)

@@ -539,8 +539,9 @@ namespace MFCcontrol
         private void ke648xStart_Click(object sender, EventArgs e)
         {
             if (PicoammForm == null)
-                PicoammForm = new Ke648xGUI(PicoammControl);
+                PicoammForm = new Ke648xGUI(this, PicoammControl);
 
+            controlPicoammBox.Enabled = false;
             PicoammForm.Show();
         }
 
