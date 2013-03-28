@@ -31,9 +31,10 @@ namespace MFCcontrol
                 device = new Device(boardId, (byte)GPIBaddress, (byte)currentSecondaryAddress);
                 //SetupControlState(true);
             }
-            catch (Exception ex)
+            catch (Exception Ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(Ex.Message);
+                ErrorMessage();
             }
             finally
             {
@@ -90,29 +91,32 @@ namespace MFCcontrol
             string initString1 = ":SYST:PRES;:SENS:FUNC 'CURR';:SENS:CURR:RANG 2E-";
             string nplcString = ":SENS:CURR:DC:NPLC ";
 
-            //reset 6487
-            device.Write(initString1 + Settings1.Default.PicoammRange.ToString());
+            try
+            {
 
-            //turn off digital averaging filter
-            device.Write(":SENS:AVER:STAT OFF");
+                //reset 6487
+                device.Write(initString1 + Settings1.Default.PicoammRange.ToString());
 
-            //turn off Zero Check
-            device.Write(":SYST:ZCH:STAT OFF");
+                //turn off digital averaging filter
+                device.Write(":SENS:AVER:STAT OFF");
 
-            //Set up current reporting string on READs from GPIB
-            device.Write(":FORM:ELEM READ");
+                //turn off Zero Check
+                device.Write(":SYST:ZCH:STAT OFF");
 
-            //turn off Median filter
-            device.Write(":SENS:CURR:MED:STAT OFF");
+                //Set up current reporting string on READs from GPIB
+                device.Write(":FORM:ELEM READ");
 
-            //set up NPLC (analog filter)
-            device.Write(nplcString + Settings1.Default.PicoammNPLC.ToString());
+                //turn off Median filter
+                device.Write(":SENS:CURR:MED:STAT OFF");
 
-            //set up arm and trace
-            device.Write(":ARM:COUNT INF; :TRACE:CLE; :TRACE:POINTS 1; :TRACE:FEED SENS; :TRACE:FEED SENS; :TRACE:FEED:CONT NEXT;"
-                 + ":TRIG:COUNT 1");
+                //set up NPLC (analog filter)
+                device.Write(nplcString + Settings1.Default.PicoammNPLC.ToString());
 
-            #if (K6487)
+                //set up arm and trace
+                device.Write(":ARM:COUNT INF; :TRACE:CLE; :TRACE:POINTS 1; :TRACE:FEED SENS; :TRACE:FEED SENS; :TRACE:FEED:CONT NEXT;"
+                     + ":TRIG:COUNT 1");
+
+#if (K6487)
             
             //set Voltage out range
             device.Write(":SOUR:VOLT:RANG 500");
@@ -123,52 +127,88 @@ namespace MFCcontrol
             //turn on Voltage Out
             device.Write(":SOUR:VOLT:STATE ON");
             
-            #endif
+#endif
 
-            //Start measurements
-            device.Write(":INIT");
+                //Start measurements
+                device.Write(":INIT");
+            }
+            catch (Exception Ex)
+            {
+                System.Windows.Forms.MessageBox.Show(Ex.Message);
+                ErrorMessage();
+            }
+
+
         }
 
         public void SetRange(int newRange)
         {
-            device.Write(":ABORT");
-            device.Write(":SENS:CURR:RANG 2E-" + newRange.ToString());
-            device.Write(":INIT");
+
+            try
+            {
+                device.Write(":ABORT");
+                device.Write(":SENS:CURR:RANG 2E-" + newRange.ToString());
+                device.Write(":INIT");
+            }
+            catch (Exception Ex)
+            {
+                System.Windows.Forms.MessageBox.Show(Ex.Message);
+                ErrorMessage();
+            }
             
         }
 
-        public async Task<double> GetReading()
+        public double GetReading()
         {
             double returnValue = 0;
-            string retrievedString = "0";
+            string retrievedString = "0.00";
             
-
+            try
+            {
             device.Write(":ABORT");
             device.Write(":ARM:COUNT 1");
             device.Write(":INIT");
             device.Write(":READ?");
 
-            try
-            {
-                //byteArray = device.ReadByteArray(14);
-                retrievedString = device.ReadString(14);
+            retrievedString = device.ReadString(14);
+            returnValue = Convert.ToDouble(retrievedString);
             }
-            catch (Exception exception)
+            catch (Exception Ex)
             {
-                System.Windows.Forms.MessageBox.Show(exception.Message);
+                System.Windows.Forms.MessageBox.Show(Ex.Message);
+                ErrorMessage();
             }
 
-            //returnValue = BitConverter.ToDouble(byteArray, 0);
-            returnValue = Convert.ToDouble(retrievedString);
 
             return returnValue;
         }
 
         public void ChangeNplc(double newNplcVal)
         {
-            device.Write(":ABORT");
-            device.Write(":SENS:CURR:DC:NPLC " + newNplcVal.ToString());
-            device.Write(":INIT");
+            try
+            {
+                device.Write(":ABORT");
+                device.Write(":SENS:CURR:DC:NPLC " + newNplcVal.ToString());
+                device.Write(":INIT");
+            }
+            catch (Exception Ex)
+            {
+                System.Windows.Forms.MessageBox.Show(Ex.Message);
+                ErrorMessage();
+            }
+        }
+
+        private void ErrorMessage()
+        {
+            string messageBoxText = "Do you want to exit?";
+            string caption = "GPIB Problem";
+            var result = MessageBox.Show(messageBoxText, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Settings1.Default.PicoammeterControlEnable = false;
+                Settings1.Default.Save();
+                Environment.Exit(0);
+            }
         }
 
         //private string ReplaceCommonEscapeSequences(string s)

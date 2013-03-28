@@ -40,9 +40,6 @@ namespace MFCcontrol
         private static Ke648xGUI PicoammForm;
         static private Ke648xControl PicoammControl;
         
-        // TODO Remove
-        static private ConfigBiasOutForm configBiasForm1;
-
         // state of the MFCs for the recipe to be used
         // 0th in array corresponds to MFC 1, .., etc
         internal bool[] stateMFCs;
@@ -52,8 +49,6 @@ namespace MFCcontrol
         internal int[] maxFlowMFCs;
 
         //Helper Classes
-        // TODO remove
-        //private RecipeView RecipeView1;
 
 
         private ConfigureMFCs MFCconfigure1;
@@ -597,6 +592,7 @@ namespace MFCcontrol
             {
                 PicoammControl.InitSession();
                 PicoammControl.InitDevice();
+
                 Settings1.Default.PicoammeterControlEnable = controlPicoammBox.Checked;
                 picoammSettingsButton.Enabled = true;
 

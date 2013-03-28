@@ -40,14 +40,14 @@ namespace MFCcontrol
         }
 
 
-        private async void ReadTimerHandler(object obj, EventArgs e)
+        private void ReadTimerHandler(object obj, EventArgs e)
         {
             if (gpibBusy == true)
                 return;
             else
             {
                 gpibBusy = true;
-                presReading = await pAmm.GetReading();
+                presReading = pAmm.GetReading();
                 gpibBusy = false;
 
                 UpdatePresCurrent();
