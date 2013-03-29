@@ -104,5 +104,8 @@
     <Setting Name="PicoammNPLC" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="SomeTestSetting" Type="System.Object" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

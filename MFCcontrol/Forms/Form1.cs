@@ -105,6 +105,9 @@ namespace MFCcontrol
 
         internal void Form1_Load(object sender, EventArgs e)
         {
+            bool[] hi = { true, false };
+            Settings1.Default.SomeTestSetting = hi;
+
 
             //Make sure counters are at 0 (for DAQ output and Graph Reset count)
             curRow_ADoutTable = 0;

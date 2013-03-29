@@ -430,5 +430,16 @@ namespace MFCcontrol {
                 this["PicoammNPLC"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public object SomeTestSetting {
+            get {
+                return ((object)(this["SomeTestSetting"]));
+            }
+            set {
+                this["SomeTestSetting"] = value;
+            }
+        }
     }
 }
