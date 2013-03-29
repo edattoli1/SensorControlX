@@ -145,14 +145,10 @@ namespace MFCcontrol
             //Set MFC Main Control Check Box to saved Value
             mfcMainControlEnable.Checked = Properties.Settings.Default.mfcMainControlEnable;
 
+
             //Set MFC USer Controls to correct MFC
             for (int j = 0; j < mfcControlArray.Length; j++)
                 mfcControlArray[j].SetMFCnumber(j+1);
-
-            //Default MFC Control State is OFF
-            for (int i = 0; i < mfcControlArray.Length; i++)
-                mfcControlArray[i].DisableUserControl();
-
 
             // Picoammeter init stuff
             picoammSettingsButton.Enabled = false;
@@ -173,15 +169,23 @@ namespace MFCcontrol
             //start AD graph timer (when to graph data from A/D)
             timerADgraph.TimerElapsed += UpdateADgraphHandler;
 
-            //if (Properties.Settings.Default.mfcMainControlEnable == true)
+            //Disable User Control if MFC Control is Saved to Be OFF
+            if (Properties.Settings.Default.mfcMainControlEnable == false)
+            {
+                for (int i = 0; i < mfcControlArray.Length; i++)
+                    mfcControlArray[i].DisableUserControl();
+            }
+
+            //Otherwise Start Acquisition
+            if (Properties.Settings.Default.mfcMainControlEnable == true)
             {
                 timerADacquire.StartTimer();
                 timerADgraph.StartTimer();
                 timerUI.StartTimer();
                 //Zero all AD outputs
                 ZeroAllMFCOutputs();
-                for (int i = 0; i < mfcControlArray.Length; i++)
-                    mfcControlArray[i].EnableUserControl();
+                //for (int i = 0; i < mfcControlArray.Length; i++)
+                //    mfcControlArray[i].EnableUserControl();
             }
 
            sensorBiasControl1.SensorBiasControlInit();
@@ -459,7 +463,7 @@ namespace MFCcontrol
 
         private void configMFCbuttonClick(object sender, EventArgs e)
         {
-            MFCconfigure1 = new ConfigureMFCs();
+            MFCconfigure1 = new ConfigureMFCs(this);
 
             MFCconfigure1.ShowDialog();
 

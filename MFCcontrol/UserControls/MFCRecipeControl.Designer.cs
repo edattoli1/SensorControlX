@@ -122,6 +122,7 @@
             // 
             // exitRecipeButton
             // 
+            this.exitRecipeButton.Enabled = false;
             this.exitRecipeButton.Location = new System.Drawing.Point(8, 204);
             this.exitRecipeButton.Name = "exitRecipeButton";
             this.exitRecipeButton.Size = new System.Drawing.Size(75, 49);
@@ -143,6 +144,7 @@
             // 
             // startButton
             // 
+            this.startButton.Enabled = false;
             this.startButton.Location = new System.Drawing.Point(8, 128);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(75, 23);

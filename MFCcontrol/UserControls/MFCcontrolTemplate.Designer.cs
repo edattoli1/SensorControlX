@@ -77,6 +77,7 @@
             // mfc1TextBox
             // 
             this.mfc1TextBox.DecimalPlaces = 2;
+            this.mfc1TextBox.Enabled = false;
             this.mfc1TextBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.mfc1TextBox.Location = new System.Drawing.Point(296, 5);
             this.mfc1TextBox.Margin = new System.Windows.Forms.Padding(5);
@@ -119,8 +120,6 @@
             // mfc1CheckBox
             // 
             this.mfc1CheckBox.AutoSize = true;
-            this.mfc1CheckBox.Checked = true;
-            this.mfc1CheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.mfc1CheckBox.Location = new System.Drawing.Point(159, 8);
             this.mfc1CheckBox.Margin = new System.Windows.Forms.Padding(8);
             this.mfc1CheckBox.Name = "mfc1CheckBox";

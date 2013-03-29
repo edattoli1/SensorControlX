@@ -30,7 +30,7 @@ namespace MFCcontrol
                for (int i = 0; i < parentForm.mfcControlArray.Length; i++)
                {
                    chart1.Series[i].Name = parentForm.mfcGasNames[i];
-                   chart1.Series[i].Enabled = parentForm.stateMFCs[i];
+                   chart1.Series[i].Enabled = parentForm.mfcPlotEnableArray[i];
                }
            }
         }
