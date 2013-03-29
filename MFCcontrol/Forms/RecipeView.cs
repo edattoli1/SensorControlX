@@ -31,9 +31,9 @@ namespace MFCcontrol
         private void RecipeView_Load(object sender, EventArgs e)
         {
             dataGridView1.ReadOnly = true;
-
+            
             // Create an unbound DataGridView by declaring a column count.
-            dataGridView1.ColumnCount = Settings1.Default.MFCcontrol_numMFCs + 1;
+            dataGridView1.ColumnCount = Properties.Settings.Default.MFCcontrol_numMFCs + 1;
             dataGridView1.ColumnHeadersVisible = true;
 
             // Set the column header style.

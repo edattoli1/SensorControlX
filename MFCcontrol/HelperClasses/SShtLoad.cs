@@ -15,7 +15,7 @@ namespace MFCcontrol
 
         public bool[] LoadMFCstate(string fileName)
         {
-            bool[] returnArray = new bool[Settings1.Default.MFCcontrol_numMFCs];
+            bool[] returnArray = new bool[Properties.Settings.Default.MFCcontrol_numMFCs];
 
             using (SpreadsheetDocument document = SpreadsheetDocument.Open(fileName, false))
             {
@@ -35,13 +35,13 @@ namespace MFCcontrol
                 // a reference to the cell whose address matches the address you've supplied:
                 WorksheetPart wsPart = (WorksheetPart)(wbPart.GetPartById(theSheet.Id));
 
-                int numCols = Settings1.Default.MFCcontrol_numMFCs + 1;
+                int numCols = Properties.Settings.Default.MFCcontrol_numMFCs + 1;
 
                 string[] currentRow = new string[numCols];
 
                 currentRow = XLGetRow(numCols, 1.ToString(), wsPart);
 
-                for (int i = 1; i <= Settings1.Default.MFCcontrol_numMFCs; i++)
+                for (int i = 1; i <= Properties.Settings.Default.MFCcontrol_numMFCs; i++)
                 {
                     if (Convert.ToDouble(currentRow[i]) > 0)
                         returnArray[i - 1] = true;
@@ -56,7 +56,7 @@ namespace MFCcontrol
 
         public int[] LoadMFCmaxFlows(string fileName)
         {
-            int[] returnArray = new int[Settings1.Default.MFCcontrol_numMFCs];
+            int[] returnArray = new int[Properties.Settings.Default.MFCcontrol_numMFCs];
 
             using (SpreadsheetDocument document = SpreadsheetDocument.Open(fileName, false))
             {
@@ -76,13 +76,13 @@ namespace MFCcontrol
                 // a reference to the cell whose address matches the address you've supplied:
                 WorksheetPart wsPart = (WorksheetPart)(wbPart.GetPartById(theSheet.Id));
 
-                int numCols = Settings1.Default.MFCcontrol_numMFCs + 1;
+                int numCols = Properties.Settings.Default.MFCcontrol_numMFCs + 1;
 
                 string[] currentRow = new string[numCols];
 
                 currentRow = XLGetRow(numCols, 2.ToString(), wsPart);
 
-                for (int i = 1; i <= Settings1.Default.MFCcontrol_numMFCs; i++)
+                for (int i = 1; i <= Properties.Settings.Default.MFCcontrol_numMFCs; i++)
                 {
                     returnArray[i - 1] = Convert.ToInt32(currentRow[i]);
                 }
@@ -112,7 +112,7 @@ namespace MFCcontrol
                 // a reference to the cell whose address matches the address you've supplied:
                 WorksheetPart wsPart = (WorksheetPart)(wbPart.GetPartById(theSheet.Id));
 
-                int numCols = Settings1.Default.MFCcontrol_numMFCs + 1;
+                int numCols = Properties.Settings.Default.MFCcontrol_numMFCs + 1;
                 
                 //start at this row in the spreadsheet file
                 int rowIterator = 4;

@@ -27,7 +27,7 @@ namespace MFCcontrol
 
 
         // Reads input values from DAQ,
-        // which DAQs to read from is controlled from Settings1.Default.DAQ_CreateVoltageChannel_AI_chans
+        // which DAQs to read from is controlled from Properties.Settings.Default.DAQ_CreateVoltageChannel_AI_chans
         public void Read(ref double[] currentValue)
         {
             try
@@ -38,7 +38,7 @@ namespace MFCcontrol
                     //Create a virtual channel
                     
                     //"Dev1/ai0,Dev1/ai1"
-                    myTask.AIChannels.CreateVoltageChannel(Settings1.Default.DAQ_CreateVoltageChannel_AI_chans, "",
+                    myTask.AIChannels.CreateVoltageChannel(Properties.Settings.Default.DAQ_CreateVoltageChannel_AI_chans, "",
                         (AITerminalConfiguration.Rse), 0.0,
                         5.0, AIVoltageUnits.Volts);
 
@@ -67,7 +67,7 @@ namespace MFCcontrol
         //zeros all Daq Out Channels
         public void ZeroDaqOuts()
         {
-            for (int i = 0; i < Settings1.Default.MFCcontrol_numMFCs; i++)
+            for (int i = 0; i < Properties.Settings.Default.MFCcontrol_numMFCs; i++)
             {
                     UpdateDaqOut(i, 0);
                 
@@ -142,13 +142,13 @@ namespace MFCcontrol
             switch (mfcNumber)
             {
                 case 1:
-                    return (inputFlow_d / Convert.ToDouble(Settings1.Default.MFC1maxRange)) * 5;
+                    return (inputFlow_d / Convert.ToDouble(Properties.Settings.Default.MFC1maxRange)) * 5;
                 case 2:
-                    return (inputFlow_d / Convert.ToDouble(Settings1.Default.MFC2maxRange)) * 5;
+                    return (inputFlow_d / Convert.ToDouble(Properties.Settings.Default.MFC2maxRange)) * 5;
                 case 3:
-                    return (inputFlow_d / Convert.ToDouble(Settings1.Default.MFC3maxRange)) * 5;
+                    return (inputFlow_d / Convert.ToDouble(Properties.Settings.Default.MFC3maxRange)) * 5;
                 case 4:
-                    return (inputFlow_d / Convert.ToDouble(Settings1.Default.MFC4maxRange)) * 5;
+                    return (inputFlow_d / Convert.ToDouble(Properties.Settings.Default.MFC4maxRange)) * 5;
                 default:
                     return 0;
             }
@@ -159,13 +159,13 @@ namespace MFCcontrol
             switch (mfcNumber)
             {
                 case 1:
-                    return (inputVolts / 5) * Convert.ToDouble(Settings1.Default.MFC1maxRange);
+                    return (inputVolts / 5) * Convert.ToDouble(Properties.Settings.Default.MFC1maxRange);
                 case 2:
-                    return (inputVolts / 5) * Convert.ToDouble(Settings1.Default.MFC2maxRange);
+                    return (inputVolts / 5) * Convert.ToDouble(Properties.Settings.Default.MFC2maxRange);
                 case 3:
-                    return (inputVolts / 5) * Convert.ToDouble(Settings1.Default.MFC3maxRange);
+                    return (inputVolts / 5) * Convert.ToDouble(Properties.Settings.Default.MFC3maxRange);
                 case 4:
-                    return (inputVolts / 5) * Convert.ToDouble(Settings1.Default.MFC4maxRange);
+                    return (inputVolts / 5) * Convert.ToDouble(Properties.Settings.Default.MFC4maxRange);
                 default:
                     return 0;
             }

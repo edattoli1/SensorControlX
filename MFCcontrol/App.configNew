@@ -1,12 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <configuration>
     <configSections>
-        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
-            <section name="MFCcontrol.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+            <section name="MFCcontrol.Settings1" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false"/>
         </sectionGroup>
     </configSections>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+    </startup>
     <userSettings>
-        <MFCcontrol.Properties.Settings>
+        <MFCcontrol.Settings1>
             <setting name="ADacquireTime_ms" serializeAs="String">
                 <value>500</value>
             </setting>
@@ -41,13 +44,16 @@
                 <value>Analyte1</value>
             </setting>
             <setting name="MFC1PlotEnable" serializeAs="String">
-                <value>False</value>
+                <value>True</value>
             </setting>
             <setting name="MFC2PlotEnable" serializeAs="String">
-                <value>False</value>
+                <value>True</value>
             </setting>
             <setting name="GraphTimeUpdateMS" serializeAs="String">
                 <value>500</value>
+            </setting>
+            <setting name="SamplesToGraphReset" serializeAs="String">
+                <value>2000</value>
             </setting>
             <setting name="MFC3Gas" serializeAs="String">
                 <value>Analyte2</value>
@@ -80,10 +86,10 @@
                 <value>False</value>
             </setting>
             <setting name="sensorVdsDaqAO" serializeAs="String">
-                <value>.1</value>
+                <value>Dev2/ao0</value>
             </setting>
             <setting name="sensorVgsDaqAO" serializeAs="String">
-                <value>0</value>
+                <value>Dev2/ao1</value>
             </setting>
             <setting name="sensorBiasEnable" serializeAs="String">
                 <value>False</value>
@@ -98,20 +104,17 @@
                 <value>10</value>
             </setting>
             <setting name="PicoammRange" serializeAs="String">
-                <value>5</value>
+                <value>6</value>
             </setting>
             <setting name="PicoammRefreshRead" serializeAs="String">
                 <value>False</value>
             </setting>
             <setting name="PicoammNPLC" serializeAs="String">
-                <value>6</value>
-            </setting>
-            <setting name="SamplesToGraphRst" serializeAs="String">
-                <value>2000</value>
+                <value>0</value>
             </setting>
             <setting name="Test" serializeAs="String">
-                <value />
+                <value>hi</value>
             </setting>
-        </MFCcontrol.Properties.Settings>
+        </MFCcontrol.Settings1>
     </userSettings>
 </configuration>

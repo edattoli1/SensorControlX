@@ -31,13 +31,13 @@ namespace MFCcontrol
 
         private void Ke648xGUI_Load(object sender, EventArgs e)
         {
-            picoammRangeUpDown.Value = Settings1.Default.PicoammRange;
+            picoammRangeUpDown.Value = Properties.Settings.Default.PicoammRange;
 
             readTimer.SetInterval(200);
             readTimer.TimerElapsed += ReadTimerHandler;
             gpibBusy = false;
-            refreshPicoammRead.Checked = Settings1.Default.PicoammRefreshRead;
-            nplcUpDown.Value = Convert.ToDecimal(Settings1.Default.PicoammNPLC);
+            refreshPicoammRead.Checked = Properties.Settings.Default.PicoammRefreshRead;
+            nplcUpDown.Value = Convert.ToDecimal(Properties.Settings.Default.PicoammNPLC);
 
         }
 
@@ -95,10 +95,10 @@ namespace MFCcontrol
         {
             int newRange = Convert.ToInt32(picoammRangeUpDown.Value);
 
-            if (newRange != Settings1.Default.PicoammRange)
+            if (newRange != Properties.Settings.Default.PicoammRange)
             {
                 pAmm.SetRange(newRange);
-                Settings1.Default.PicoammRange = newRange;
+                Properties.Settings.Default.PicoammRange = newRange;
             }
 
         }
@@ -112,7 +112,7 @@ namespace MFCcontrol
 
         private void refreshPicoammRead_CheckedChanged(object sender, EventArgs e)
         {
-            Settings1.Default.PicoammRefreshRead = refreshPicoammRead.Checked;
+            Properties.Settings.Default.PicoammRefreshRead = refreshPicoammRead.Checked;
 
             if (refreshPicoammRead.Checked == true)
                 readTimer.StartTimer();
@@ -125,10 +125,10 @@ namespace MFCcontrol
         {
             double newNplc = Convert.ToDouble(nplcUpDown.Value);
 
-            if (newNplc != Settings1.Default.PicoammNPLC)
+            if (newNplc != Properties.Settings.Default.PicoammNPLC)
             {
                 pAmm.ChangeNplc(newNplc);
-                Settings1.Default.PicoammNPLC = newNplc;
+                Properties.Settings.Default.PicoammNPLC = newNplc;
             }
 
         }

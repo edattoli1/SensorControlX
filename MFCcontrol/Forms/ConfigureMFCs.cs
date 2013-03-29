@@ -20,15 +20,15 @@ namespace MFCcontrol
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            Settings1.Default.MFC1Gas = mfcTypeBox1.Text;
-            Settings1.Default.MFC1maxRange = mfcMaxFlowBox1.Text;
-            Settings1.Default.MFC2Gas = mfcTypeBox2.Text;
-            Settings1.Default.MFC2maxRange = mfcMaxFlowBox2.Text;
-            Settings1.Default.MFC3Gas = mfcTypeBox3.Text;
-            Settings1.Default.MFC3maxRange = mfcMaxFlowBox3.Text;
-            Settings1.Default.MFC4Gas = mfcTypeBox4.Text;
-            Settings1.Default.MFC4maxRange = mfcMaxFlowBox4.Text;
-            Settings1.Default.Save();
+            Properties.Settings.Default.MFC1Gas = mfcTypeBox1.Text;
+            Properties.Settings.Default.MFC1maxRange = mfcMaxFlowBox1.Text;
+            Properties.Settings.Default.MFC2Gas = mfcTypeBox2.Text;
+            Properties.Settings.Default.MFC2maxRange = mfcMaxFlowBox2.Text;
+            Properties.Settings.Default.MFC3Gas = mfcTypeBox3.Text;
+            Properties.Settings.Default.MFC3maxRange = mfcMaxFlowBox3.Text;
+            Properties.Settings.Default.MFC4Gas = mfcTypeBox4.Text;
+            Properties.Settings.Default.MFC4maxRange = mfcMaxFlowBox4.Text;
+            Properties.Settings.Default.Save();
             this.Close();
         }
 
@@ -39,14 +39,14 @@ namespace MFCcontrol
 
         private void ConfigureMFCs_Load(object sender, EventArgs e)
         {
-            mfcTypeBox1.Text = Settings1.Default.MFC1Gas;
-            mfcMaxFlowBox1.Text = Settings1.Default.MFC1maxRange;
-            mfcTypeBox2.Text = Settings1.Default.MFC2Gas;
-            mfcMaxFlowBox2.Text = Settings1.Default.MFC2maxRange;
-            mfcTypeBox3.Text = Settings1.Default.MFC3Gas;
-            mfcMaxFlowBox3.Text = Settings1.Default.MFC3maxRange;
-            mfcTypeBox4.Text = Settings1.Default.MFC4Gas;
-            mfcMaxFlowBox4.Text = Settings1.Default.MFC4maxRange;
+            mfcTypeBox1.Text = Properties.Settings.Default.MFC1Gas;
+            mfcMaxFlowBox1.Text = Properties.Settings.Default.MFC1maxRange;
+            mfcTypeBox2.Text = Properties.Settings.Default.MFC2Gas;
+            mfcMaxFlowBox2.Text = Properties.Settings.Default.MFC2maxRange;
+            mfcTypeBox3.Text = Properties.Settings.Default.MFC3Gas;
+            mfcMaxFlowBox3.Text = Properties.Settings.Default.MFC3maxRange;
+            mfcTypeBox4.Text = Properties.Settings.Default.MFC4Gas;
+            mfcMaxFlowBox4.Text = Properties.Settings.Default.MFC4maxRange;
             
         }
     }

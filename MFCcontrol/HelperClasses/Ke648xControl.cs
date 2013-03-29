@@ -95,7 +95,7 @@ namespace MFCcontrol
             {
 
                 //reset 6487
-                device.Write(initString1 + Settings1.Default.PicoammRange.ToString());
+                device.Write(initString1 + Properties.Settings.Default.PicoammRange.ToString());
 
                 //turn off digital averaging filter
                 device.Write(":SENS:AVER:STAT OFF");
@@ -110,7 +110,7 @@ namespace MFCcontrol
                 device.Write(":SENS:CURR:MED:STAT OFF");
 
                 //set up NPLC (analog filter)
-                device.Write(nplcString + Settings1.Default.PicoammNPLC.ToString());
+                device.Write(nplcString + Properties.Settings.Default.PicoammNPLC.ToString());
 
                 //set up arm and trace
                 device.Write(":ARM:COUNT INF; :TRACE:CLE; :TRACE:POINTS 1; :TRACE:FEED SENS; :TRACE:FEED SENS; :TRACE:FEED:CONT NEXT;"
@@ -205,8 +205,8 @@ namespace MFCcontrol
             var result = MessageBox.Show(messageBoxText, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                Settings1.Default.PicoammeterControlEnable = false;
-                Settings1.Default.Save();
+                Properties.Settings.Default.PicoammeterControlEnable = false;
+                Properties.Settings.Default.Save();
                 Environment.Exit(0);
             }
         }

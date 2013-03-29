@@ -42,7 +42,7 @@ namespace MFCcontrol
                 VdsUpDown.Enabled = false;
                 ZeroAllBiasOutputs();
             }
-            Settings1.Default.sensorBiasEnable = biasOutsBox.Checked;
+            Properties.Settings.Default.sensorBiasEnable = biasOutsBox.Checked;
         }
 
         private void vdsLockCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -51,11 +51,11 @@ namespace MFCcontrol
             {
                 VdsUpDown.Enabled = false;
             }
-            else if ((vdsLockCheckBox.Checked == false) && (Settings1.Default.sensorBiasEnable == true))
+            else if ((vdsLockCheckBox.Checked == false) && (Properties.Settings.Default.sensorBiasEnable == true))
             {
                 VdsUpDown.Enabled = true;
             }
-            Settings1.Default.sensorVdsDaqLock = vdsLockCheckBox.Checked;
+            Properties.Settings.Default.sensorVdsDaqLock = vdsLockCheckBox.Checked;
         }
 
         private void vgsLockCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -64,18 +64,18 @@ namespace MFCcontrol
             {
                 VgsUpDown.Enabled = false;
             }
-            else if ((vgsLockCheckBox.Checked == false) && (Settings1.Default.sensorBiasEnable == true))
+            else if ((vgsLockCheckBox.Checked == false) && (Properties.Settings.Default.sensorBiasEnable == true))
             {
                 VgsUpDown.Enabled = true;
             }
-            Settings1.Default.sensorVgsDaqLock = vgsLockCheckBox.Checked;
+            Properties.Settings.Default.sensorVgsDaqLock = vgsLockCheckBox.Checked;
         }
 
         private void VdsUpDown_ValueChanged(object sender, EventArgs e)
         {
             try
             {
-                daqOutputBiases.UpdateDaqOut(Settings1.Default.sensorVdsDaqAO, Convert.ToDouble(VdsUpDown.Value));
+                daqOutputBiases.UpdateDaqOut(Properties.Settings.Default.sensorVdsDaqAO, Convert.ToDouble(VdsUpDown.Value));
             }
             catch
             {
@@ -88,7 +88,7 @@ namespace MFCcontrol
         {
             try
             {
-                daqOutputBiases.UpdateDaqOut(Settings1.Default.sensorVgsDaqAO, Convert.ToDouble(VgsUpDown.Value));
+                daqOutputBiases.UpdateDaqOut(Properties.Settings.Default.sensorVgsDaqAO, Convert.ToDouble(VgsUpDown.Value));
             }
             catch
             {
@@ -105,8 +105,8 @@ namespace MFCcontrol
             
             try
             {
-                daqOutputBiases.UpdateDaqOut(Settings1.Default.sensorVgsDaqAO, Convert.ToDouble(0));
-                daqOutputBiases.UpdateDaqOut(Settings1.Default.sensorVdsDaqAO, Convert.ToDouble(0));
+                daqOutputBiases.UpdateDaqOut(Properties.Settings.Default.sensorVgsDaqAO, Convert.ToDouble(0));
+                daqOutputBiases.UpdateDaqOut(Properties.Settings.Default.sensorVdsDaqAO, Convert.ToDouble(0));
             }
             catch
             {
@@ -122,21 +122,21 @@ namespace MFCcontrol
         {
             tableLayoutPanel3.CellPaint += parentForm.tableLayoutPanel_CellPaint;
             
-            daqOutputBiases = new DaqAction(-1 * Settings1.Default.sensorBiasMaxRange, Settings1.Default.sensorBiasMaxRange);
+            daqOutputBiases = new DaqAction(-1 * Properties.Settings.Default.sensorBiasMaxRange, Properties.Settings.Default.sensorBiasMaxRange);
 
             //If DAQ Analog Out is Enabled in Settings file, Update Checkmark and Zero Bias Outputs
-            if (Settings1.Default.sensorBiasEnable == true)
+            if (Properties.Settings.Default.sensorBiasEnable == true)
             {
-                biasOutsBox.Checked = Settings1.Default.sensorBiasEnable;
+                biasOutsBox.Checked = Properties.Settings.Default.sensorBiasEnable;
                 //ZeroAllBiasOutputs();
             }
 
 
             // Ready fields for Daq Bias Output
-            VdsUpDown.Maximum = Convert.ToDecimal(Settings1.Default.sensorBiasMaxRange);
-            VgsUpDown.Maximum = Convert.ToDecimal(Settings1.Default.sensorBiasMaxRange);
-            VdsUpDown.Minimum = -1 * Convert.ToDecimal(Settings1.Default.sensorBiasMaxRange);
-            VgsUpDown.Minimum = -1 * Convert.ToDecimal(Settings1.Default.sensorBiasMaxRange);
+            VdsUpDown.Maximum = Convert.ToDecimal(Properties.Settings.Default.sensorBiasMaxRange);
+            VgsUpDown.Maximum = Convert.ToDecimal(Properties.Settings.Default.sensorBiasMaxRange);
+            VdsUpDown.Minimum = -1 * Convert.ToDecimal(Properties.Settings.Default.sensorBiasMaxRange);
+            VgsUpDown.Minimum = -1 * Convert.ToDecimal(Properties.Settings.Default.sensorBiasMaxRange);
 
 
         }

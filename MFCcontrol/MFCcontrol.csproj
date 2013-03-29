@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <PublishUrl>C:\Users\pat\Desktop\apps_pub\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -38,6 +40,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,6 +50,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>822D93714E06AF21F00AFE7464444C424379C4DC</ManifestCertificateThumbprint>
@@ -107,6 +111,7 @@
     <Compile Include="HelperClasses\GenStopwatch.cs" />
     <Compile Include="HelperClasses\GenTimer.cs" />
     <Compile Include="HelperClasses\Ke648xControl.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="UserControls\GraphMfcs.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -139,12 +144,6 @@
     </Compile>
     <Compile Include="UserControls\SensorBiasControl.Designer.cs">
       <DependentUpon>SensorBiasControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Settings1.cs" />
-    <Compile Include="Settings1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings1.settings</DependentUpon>
     </Compile>
     <Compile Include="HelperClasses\SShtLoad.cs" />
     <Compile Include="HelperClasses\Util.cs" />
@@ -185,10 +184,11 @@
     <EmbeddedResource Include="UserControls\SensorBiasControl.resx">
       <DependentUpon>SensorBiasControl.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App.config" />
-    <None Include="GraphAsync1_TemporaryKey.pfx" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">
@@ -196,10 +196,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Settings1.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

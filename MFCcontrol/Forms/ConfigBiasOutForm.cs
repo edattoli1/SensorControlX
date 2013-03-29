@@ -19,15 +19,15 @@ namespace MFCcontrol
 
         private void ConfigBiasOutForm_Load(object sender, EventArgs e)
         {
-            vdsAOaddressTextbox.Text = Settings1.Default.sensorVdsDaqAO;
-            vgsAOaddressTextbox.Text = Settings1.Default.sensorVgsDaqAO;
+            vdsAOaddressTextbox.Text = Properties.Settings.Default.sensorVdsDaqAO;
+            vgsAOaddressTextbox.Text = Properties.Settings.Default.sensorVgsDaqAO;
         }
 
         private void saveConfigBiasForm_Click(object sender, EventArgs e)
         {
-            Settings1.Default.sensorVdsDaqAO = vdsAOaddressTextbox.Text;
-            Settings1.Default.sensorVgsDaqAO = vgsAOaddressTextbox.Text;
-            Settings1.Default.Save();
+            Properties.Settings.Default.sensorVdsDaqAO = vdsAOaddressTextbox.Text;
+            Properties.Settings.Default.sensorVgsDaqAO = vgsAOaddressTextbox.Text;
+            Properties.Settings.Default.Save();
             this.Close();
         }
 

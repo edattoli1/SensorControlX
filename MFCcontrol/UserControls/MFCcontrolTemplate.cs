@@ -40,12 +40,12 @@ namespace MFCcontrol
             switch (mfcNumber)
             {
                 case (1) :
-                    mfc1GasName.Text = Settings1.Default.MFC1Gas;
-                    mfc1TextBox.Maximum = Convert.ToDecimal(Settings1.Default.MFC1maxRange);
-                    mfc1maxLabel.Text = (Settings1.Default.MFC1maxRange);
-                    mfc1TextBox.Enabled = Settings1.Default.MFC1enable;
-                    mfc1PlotCheck.Checked = Settings1.Default.MFC1PlotEnable;
-                    mfc1CheckBox.Checked = Settings1.Default.MFC1enable;
+                    mfc1GasName.Text = Properties.Settings.Default.MFC1Gas;
+                    mfc1TextBox.Maximum = Convert.ToDecimal(Properties.Settings.Default.MFC1maxRange);
+                    mfc1maxLabel.Text = (Properties.Settings.Default.MFC1maxRange);
+                    mfc1TextBox.Enabled = Properties.Settings.Default.MFC1enable;
+                    mfc1PlotCheck.Checked = Properties.Settings.Default.MFC1PlotEnable;
+                    mfc1CheckBox.Checked = Properties.Settings.Default.MFC1enable;
 
                     mfc1Display.Text = mfcNumber.ToString();
                     mfc1PresFlowBox.Text = 0.ToString();
@@ -53,12 +53,12 @@ namespace MFCcontrol
                     break;
 
                 case (2):
-                    mfc1GasName.Text = Settings1.Default.MFC2Gas;
-                    mfc1TextBox.Maximum = Convert.ToDecimal(Settings1.Default.MFC2maxRange);
-                    mfc1maxLabel.Text = (Settings1.Default.MFC2maxRange);
-                    mfc1TextBox.Enabled = Settings1.Default.MFC2enable;
-                    mfc1PlotCheck.Checked = Settings1.Default.MFC2PlotEnable;
-                    mfc1CheckBox.Checked = Settings1.Default.MFC2enable;
+                    mfc1GasName.Text = Properties.Settings.Default.MFC2Gas;
+                    mfc1TextBox.Maximum = Convert.ToDecimal(Properties.Settings.Default.MFC2maxRange);
+                    mfc1maxLabel.Text = (Properties.Settings.Default.MFC2maxRange);
+                    mfc1TextBox.Enabled = Properties.Settings.Default.MFC2enable;
+                    mfc1PlotCheck.Checked = Properties.Settings.Default.MFC2PlotEnable;
+                    mfc1CheckBox.Checked = Properties.Settings.Default.MFC2enable;
 
                     mfc1Display.Text = mfcNumber.ToString();
                     mfc1PresFlowBox.Text = 0.ToString();
@@ -66,12 +66,12 @@ namespace MFCcontrol
                     break;
 
                 case (3):
-                    mfc1GasName.Text = Settings1.Default.MFC3Gas;
-                    mfc1TextBox.Maximum = Convert.ToDecimal(Settings1.Default.MFC3maxRange);
-                    mfc1maxLabel.Text = (Settings1.Default.MFC3maxRange);
-                    mfc1TextBox.Enabled = Settings1.Default.MFC3enable;
-                    mfc1PlotCheck.Checked = Settings1.Default.MFC3PlotEnable;
-                    mfc1CheckBox.Checked = Settings1.Default.MFC3enable;
+                    mfc1GasName.Text = Properties.Settings.Default.MFC3Gas;
+                    mfc1TextBox.Maximum = Convert.ToDecimal(Properties.Settings.Default.MFC3maxRange);
+                    mfc1maxLabel.Text = (Properties.Settings.Default.MFC3maxRange);
+                    mfc1TextBox.Enabled = Properties.Settings.Default.MFC3enable;
+                    mfc1PlotCheck.Checked = Properties.Settings.Default.MFC3PlotEnable;
+                    mfc1CheckBox.Checked = Properties.Settings.Default.MFC3enable;
 
                     mfc1Display.Text = mfcNumber.ToString();
                     mfc1PresFlowBox.Text = 0.ToString();
@@ -79,12 +79,12 @@ namespace MFCcontrol
                     break;
 
                 case (4):
-                    mfc1GasName.Text = Settings1.Default.MFC4Gas;
-                    mfc1TextBox.Maximum = Convert.ToDecimal(Settings1.Default.MFC4maxRange);
-                    mfc1maxLabel.Text = (Settings1.Default.MFC4maxRange);
-                    mfc1TextBox.Enabled = Settings1.Default.MFC4enable;
-                    mfc1PlotCheck.Checked = Settings1.Default.MFC4PlotEnable;
-                    mfc1CheckBox.Checked = Settings1.Default.MFC4enable;
+                    mfc1GasName.Text = Properties.Settings.Default.MFC4Gas;
+                    mfc1TextBox.Maximum = Convert.ToDecimal(Properties.Settings.Default.MFC4maxRange);
+                    mfc1maxLabel.Text = (Properties.Settings.Default.MFC4maxRange);
+                    mfc1TextBox.Enabled = Properties.Settings.Default.MFC4enable;
+                    mfc1PlotCheck.Checked = Properties.Settings.Default.MFC4PlotEnable;
+                    mfc1CheckBox.Checked = Properties.Settings.Default.MFC4enable;
 
                     mfc1Display.Text = mfcNumber.ToString();
                     mfc1PresFlowBox.Text = 0.ToString();
@@ -100,33 +100,33 @@ namespace MFCcontrol
             switch (mfcNumber)
             {
                 case (1):
-                    mfc1GasName.Text = Settings1.Default.MFC1Gas;
-                    mfc1TextBox.Maximum = Convert.ToDecimal(Settings1.Default.MFC1maxRange);
-                    mfc1maxLabel.Text = (Settings1.Default.MFC1maxRange);
-                    mfc1CheckBox.Checked = Settings1.Default.MFC1enable;
+                    mfc1GasName.Text = Properties.Settings.Default.MFC1Gas;
+                    mfc1TextBox.Maximum = Convert.ToDecimal(Properties.Settings.Default.MFC1maxRange);
+                    mfc1maxLabel.Text = (Properties.Settings.Default.MFC1maxRange);
+                    mfc1CheckBox.Checked = Properties.Settings.Default.MFC1enable;
                     
                     break;
 
                 case (2):
-                    mfc1GasName.Text = Settings1.Default.MFC2Gas;
-                    mfc1TextBox.Maximum = Convert.ToDecimal(Settings1.Default.MFC2maxRange);
-                    mfc1maxLabel.Text = (Settings1.Default.MFC2maxRange);
-                    mfc1CheckBox.Checked = Settings1.Default.MFC2enable;
+                    mfc1GasName.Text = Properties.Settings.Default.MFC2Gas;
+                    mfc1TextBox.Maximum = Convert.ToDecimal(Properties.Settings.Default.MFC2maxRange);
+                    mfc1maxLabel.Text = (Properties.Settings.Default.MFC2maxRange);
+                    mfc1CheckBox.Checked = Properties.Settings.Default.MFC2enable;
                     break;
 
                 case (3):
-                    mfc1GasName.Text = Settings1.Default.MFC3Gas;
-                    mfc1TextBox.Maximum = Convert.ToDecimal(Settings1.Default.MFC3maxRange);
-                    mfc1maxLabel.Text = (Settings1.Default.MFC3maxRange);
-                    mfc1CheckBox.Checked = Settings1.Default.MFC3enable;
+                    mfc1GasName.Text = Properties.Settings.Default.MFC3Gas;
+                    mfc1TextBox.Maximum = Convert.ToDecimal(Properties.Settings.Default.MFC3maxRange);
+                    mfc1maxLabel.Text = (Properties.Settings.Default.MFC3maxRange);
+                    mfc1CheckBox.Checked = Properties.Settings.Default.MFC3enable;
 
                     break;
 
                 case (4):
-                    mfc1GasName.Text = Settings1.Default.MFC4Gas;
-                    mfc1TextBox.Maximum = Convert.ToDecimal(Settings1.Default.MFC4maxRange);
-                    mfc1maxLabel.Text = (Settings1.Default.MFC4maxRange);
-                    mfc1CheckBox.Checked = Settings1.Default.MFC4enable;
+                    mfc1GasName.Text = Properties.Settings.Default.MFC4Gas;
+                    mfc1TextBox.Maximum = Convert.ToDecimal(Properties.Settings.Default.MFC4maxRange);
+                    mfc1maxLabel.Text = (Properties.Settings.Default.MFC4maxRange);
+                    mfc1CheckBox.Checked = Properties.Settings.Default.MFC4enable;
 
                     break;
             }
@@ -211,26 +211,26 @@ namespace MFCcontrol
             switch (mfcNumber)
             {
                 case (1):
-                    Settings1.Default.MFC1enable = mfc1CheckBox.Checked;
-                    Settings1.Default.MFC1PlotEnable = mfc1PlotCheck.Checked;
+                    Properties.Settings.Default.MFC1enable = mfc1CheckBox.Checked;
+                    Properties.Settings.Default.MFC1PlotEnable = mfc1PlotCheck.Checked;
                     break;
 
                 case (2):
-                    Settings1.Default.MFC2enable = mfc1CheckBox.Checked;
-                    Settings1.Default.MFC2PlotEnable = mfc1PlotCheck.Checked;
+                    Properties.Settings.Default.MFC2enable = mfc1CheckBox.Checked;
+                    Properties.Settings.Default.MFC2PlotEnable = mfc1PlotCheck.Checked;
                     break;
 
                 case (3):
-                    Settings1.Default.MFC3enable = mfc1CheckBox.Checked;
-                    Settings1.Default.MFC3PlotEnable = mfc1PlotCheck.Checked;
+                    Properties.Settings.Default.MFC3enable = mfc1CheckBox.Checked;
+                    Properties.Settings.Default.MFC3PlotEnable = mfc1PlotCheck.Checked;
                     break;
 
                 case (4):
-                    Settings1.Default.MFC4enable = mfc1CheckBox.Checked;
-                    Settings1.Default.MFC4PlotEnable = mfc1PlotCheck.Checked;
+                    Properties.Settings.Default.MFC4enable = mfc1CheckBox.Checked;
+                    Properties.Settings.Default.MFC4PlotEnable = mfc1PlotCheck.Checked;
                     break;
             }
-            Settings1.Default.Save();
+            Properties.Settings.Default.Save();
         }
 
 

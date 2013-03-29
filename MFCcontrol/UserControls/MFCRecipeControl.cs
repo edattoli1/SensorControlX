@@ -64,7 +64,7 @@ namespace MFCcontrol
             GCSettings.LatencyMode = GCLatencyMode.SustainedLowLatency;
 
             //Output initial DAQ Output values
-            for (int i = 1; i <= Settings1.Default.MFCcontrol_numMFCs; i++)
+            for (int i = 1; i <= Properties.Settings.Default.MFCcontrol_numMFCs; i++)
             {
                 if (parentForm.stateMFCs[i - 1] == true)
                 {
@@ -131,19 +131,19 @@ namespace MFCcontrol
                 SShtLoad sshtLoad1 = new SShtLoad();
 
                 parentForm.stateMFCs = sshtLoad1.LoadMFCstate(this.openFileDialog1.FileName);
-                Settings1.Default.MFC1enable = parentForm.stateMFCs[0];
-                Settings1.Default.MFC2enable = parentForm.stateMFCs[1];
-                Settings1.Default.MFC3enable = parentForm.stateMFCs[2];
-                Settings1.Default.MFC4enable = parentForm.stateMFCs[3];
+                Properties.Settings.Default.MFC1enable = parentForm.stateMFCs[0];
+                Properties.Settings.Default.MFC2enable = parentForm.stateMFCs[1];
+                Properties.Settings.Default.MFC3enable = parentForm.stateMFCs[2];
+                Properties.Settings.Default.MFC4enable = parentForm.stateMFCs[3];
 
                 parentForm.maxFlowMFCs = sshtLoad1.LoadMFCmaxFlows(this.openFileDialog1.FileName);
 
                 //Update Size of MFCs in Program Wide Value Storage
-                Settings1.Default.MFC1maxRange = parentForm.maxFlowMFCs[0].ToString();
-                Settings1.Default.MFC2maxRange = parentForm.maxFlowMFCs[1].ToString();
-                Settings1.Default.MFC3maxRange = parentForm.maxFlowMFCs[2].ToString();
-                Settings1.Default.MFC4maxRange = parentForm.maxFlowMFCs[3].ToString();
-                Settings1.Default.Save();
+                Properties.Settings.Default.MFC1maxRange = parentForm.maxFlowMFCs[0].ToString();
+                Properties.Settings.Default.MFC2maxRange = parentForm.maxFlowMFCs[1].ToString();
+                Properties.Settings.Default.MFC3maxRange = parentForm.maxFlowMFCs[2].ToString();
+                Properties.Settings.Default.MFC4maxRange = parentForm.maxFlowMFCs[3].ToString();
+                Properties.Settings.Default.Save();
 
                 parentForm.mfcControl1.SetMFCnumber(1);
                 parentForm.mfcControl2.SetMFCnumber(2);
@@ -160,8 +160,8 @@ namespace MFCcontrol
                 double[] currentRow_d;
                 foreach (string[] rowArray in parentForm.ADoutTableValues_s)
                 {
-                    currentRow_d = new double[Settings1.Default.MFCcontrol_numMFCs + 1];
-                    for (int i = 0; i < Settings1.Default.MFCcontrol_numMFCs + 1; i++)
+                    currentRow_d = new double[Properties.Settings.Default.MFCcontrol_numMFCs + 1];
+                    for (int i = 0; i < Properties.Settings.Default.MFCcontrol_numMFCs + 1; i++)
                     {
                         if (rowArray[i] == "")
                             currentRow_d[i] = -1.0;
@@ -178,7 +178,7 @@ namespace MFCcontrol
 
                 foreach (string[] rowArray in parentForm.ADoutTableValues_s)
                 {
-                    currentRow_d = new double[Settings1.Default.MFCcontrol_numMFCs + 1];
+                    currentRow_d = new double[Properties.Settings.Default.MFCcontrol_numMFCs + 1];
 
                     //Load times (column 1 into volts list of arrays
                     currentRow_d[0] = Convert.ToDouble(rowArray[0]);

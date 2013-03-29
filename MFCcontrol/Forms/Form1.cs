@@ -67,14 +67,14 @@ namespace MFCcontrol
 
             // Initialized Saved Settings Values Into Form
 
-            graphMfcs1.samplesToResetUpDown.Value = Settings1.Default.SamplesToGraphReset;
+            graphMfcs1.samplesToResetUpDown.Value = Properties.Settings.Default.SamplesToGraphRst;
             AinGraphUpdateState = true;
 
-            stateMFCs = new bool[Settings1.Default.MFCcontrol_numMFCs];
-            maxFlowMFCs = new int[Settings1.Default.MFCcontrol_numMFCs];
+            stateMFCs = new bool[Properties.Settings.Default.MFCcontrol_numMFCs];
+            maxFlowMFCs = new int[Properties.Settings.Default.MFCcontrol_numMFCs];
 
-            currentADin = new double[Settings1.Default.MFCcontrol_numMFCs];
-            presentMFCsetting = new double[Settings1.Default.MFCcontrol_numMFCs];
+            currentADin = new double[Properties.Settings.Default.MFCcontrol_numMFCs];
+            presentMFCsetting = new double[Properties.Settings.Default.MFCcontrol_numMFCs];
 
             // Initialize Members of Form1 Class
 
@@ -84,30 +84,27 @@ namespace MFCcontrol
             watch = new GenStopwatch();
 
             timerUI = new GenTimer();
-            timerUI.SetInterval(Settings1.Default.timerUI_ms);
+            timerUI.SetInterval(Properties.Settings.Default.timerUI_ms);
 
             //timerADacquire = new HiResTimer();
             timerADacquire = new GenTimer();
-            timerADacquire.SetInterval(Settings1.Default.ADacquireTime_ms);
+            timerADacquire.SetInterval(Properties.Settings.Default.ADacquireTime_ms);
 
             timerADgraph = new GenTimer();
-            timerADgraph.SetInterval(Settings1.Default.GraphTimeUpdateMS);
+            timerADgraph.SetInterval(Properties.Settings.Default.GraphTimeUpdateMS);
 
             //Set NumericUpDown Control box for Graph Update Time to Saved Value
-            graphMfcs1.graphUpdateUDbox.Value = Convert.ToDecimal(Settings1.Default.GraphTimeUpdateMS) / 1000;
+            graphMfcs1.graphUpdateUDbox.Value = Convert.ToDecimal(Properties.Settings.Default.GraphTimeUpdateMS) / 1000;
 
             timerADoutUpdate = new GenTimer();
             timerADoutUpdate.AutoResetEnable();
-            timerADoutUpdate.SetInterval(Settings1.Default.ADoutRefreshTime_ms);
+            timerADoutUpdate.SetInterval(Properties.Settings.Default.ADoutRefreshTime_ms);
 
 
         }
 
         internal void Form1_Load(object sender, EventArgs e)
         {
-            bool[] hi = { true, false };
-            Settings1.Default.SomeTestSetting = hi;
-
 
             //Make sure counters are at 0 (for DAQ output and Graph Reset count)
             curRow_ADoutTable = 0;
@@ -132,7 +129,7 @@ namespace MFCcontrol
 
 
             //Set MFC Main Control Check Box to saved Value
-            mfcMainControlEnable.Checked = Settings1.Default.mfcMainControlEnable;
+            mfcMainControlEnable.Checked = Properties.Settings.Default.mfcMainControlEnable;
 
             //Set MFC USer Controls to correct MFC
             mfcControl1.SetMFCnumber(1);
@@ -147,15 +144,15 @@ namespace MFCcontrol
             mfcControl4.DisableUserControl();
 
             //Set whether recipe controls the following MFCs, stateMFC is logic control at runtime, Settings is permanent store
-            stateMFCs[0] = Settings1.Default.MFC1enable;
-            stateMFCs[1] = Settings1.Default.MFC2enable;
-            stateMFCs[2] = Settings1.Default.MFC3enable;
-            stateMFCs[3] = Settings1.Default.MFC4enable;
+            stateMFCs[0] = Properties.Settings.Default.MFC1enable;
+            stateMFCs[1] = Properties.Settings.Default.MFC2enable;
+            stateMFCs[2] = Properties.Settings.Default.MFC3enable;
+            stateMFCs[3] = Properties.Settings.Default.MFC4enable;
 
             // Picoammeter init stuff
             picoammSettingsButton.Enabled = false;
             PicoammControl = new Ke648xControl();
-            controlPicoammBox.Checked = Settings1.Default.PicoammeterControlEnable;
+            controlPicoammBox.Checked = Properties.Settings.Default.PicoammeterControlEnable;
 
             //start StopWatch
             watch.StartStopwatch();
@@ -171,7 +168,7 @@ namespace MFCcontrol
             //start AD graph timer (when to graph data from A/D)
             timerADgraph.TimerElapsed += UpdateADgraphHandler;
 
-            if (Settings1.Default.mfcMainControlEnable == true)
+            if (Properties.Settings.Default.mfcMainControlEnable == true)
             {
                 timerADacquire.StartTimer();
                 timerADgraph.StartTimer();
@@ -255,7 +252,7 @@ namespace MFCcontrol
             else
             {
                 updateADoutputBusy = true;
-                for (int i = 1; i <= Settings1.Default.MFCcontrol_numMFCs; i++)
+                for (int i = 1; i <= Properties.Settings.Default.MFCcontrol_numMFCs; i++)
                 {
                     // check record of AD out values has a current output for the AD at this particular time (i.e., row)
                     // and check whether current MFC is enabled in the recipe
@@ -365,8 +362,8 @@ namespace MFCcontrol
                 var result = MessageBox.Show(messageBoxText, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    Settings1.Default.mfcMainControlEnable = false;
-                    Settings1.Default.Save();
+                    Properties.Settings.Default.mfcMainControlEnable = false;
+                    Properties.Settings.Default.Save();
                     Environment.Exit(0);
                 }
             }
@@ -433,7 +430,8 @@ namespace MFCcontrol
             graphMfcs1.chart1.Series[3].Points.AddXY(time, DaqAction.GetMFCflowFromVolts(currentADin[3], 4));
 
             ADgraphUpdateCnt++;
-            if (ADgraphUpdateCnt >= Settings1.Default.SamplesToGraphReset)
+
+            if (ADgraphUpdateCnt >= Properties.Settings.Default.SamplesToGraphRst)
             {
                 resetGraphButton_Click(this, EventArgs.Empty);
                 ADgraphUpdateCnt = 0;
@@ -454,11 +452,11 @@ namespace MFCcontrol
             watch.StopStopwatch();
 
             //Zero all AD outputs
-            if (Settings1.Default.mfcMainControlEnable == true)
+            if (Properties.Settings.Default.mfcMainControlEnable == true)
                 ZeroAllMFCOutputs();
 
             //Save all Settings
-            Settings1.Default.Save();
+            Properties.Settings.Default.Save();
 
             //wait for disk writes, our timer handlers to finish before closing file
             while ((saveADdataBusy == true) || (UpdateADacquireBusy == true) || (updateADoutputBusy == true))
@@ -476,7 +474,7 @@ namespace MFCcontrol
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Settings1.Default.Save();
+            Properties.Settings.Default.Save();
         }
 
         private void configMFCbuttonClick(object sender, EventArgs e)
@@ -489,10 +487,10 @@ namespace MFCcontrol
             mfcControl2.UpdateConfig();
             mfcControl3.UpdateConfig();
             mfcControl4.UpdateConfig();
-            graphMfcs1.chart1.Series[0].Name = Settings1.Default.MFC1Gas;
-            graphMfcs1.chart1.Series[1].Name = Settings1.Default.MFC2Gas;
-            graphMfcs1.chart1.Series[2].Name = Settings1.Default.MFC3Gas;
-            graphMfcs1.chart1.Series[3].Name = Settings1.Default.MFC4Gas;
+            graphMfcs1.chart1.Series[0].Name = Properties.Settings.Default.MFC1Gas;
+            graphMfcs1.chart1.Series[1].Name = Properties.Settings.Default.MFC2Gas;
+            graphMfcs1.chart1.Series[2].Name = Properties.Settings.Default.MFC3Gas;
+            graphMfcs1.chart1.Series[3].Name = Properties.Settings.Default.MFC4Gas;
         }
 
         public void MfcPlotCheck_CheckedChanged(int MFCnumber, bool checkState)
@@ -512,19 +510,19 @@ namespace MFCcontrol
             switch (mfcNumber)
             {
                 case 1:
-                    if (Settings1.Default.MFC1enable == true)
+                    if (Properties.Settings.Default.MFC1enable == true)
                         daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
                     break;
                 case 2:
-                    if (Settings1.Default.MFC2enable == true)
+                    if (Properties.Settings.Default.MFC2enable == true)
                         daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
                     break;
                 case 3:
-                    if (Settings1.Default.MFC3enable == true)
+                    if (Properties.Settings.Default.MFC3enable == true)
                         daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
                     break;
                 case 4:
-                    if (Settings1.Default.MFC4enable == true)
+                    if (Properties.Settings.Default.MFC4enable == true)
                         daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
                     break;
             }
@@ -559,9 +557,9 @@ namespace MFCcontrol
             var result = MessageBox.Show(messageBoxText, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                Settings1.Default.mfcMainControlEnable = false;
-                Settings1.Default.sensorBiasEnable = false;
-                Settings1.Default.Save();
+                Properties.Settings.Default.mfcMainControlEnable = false;
+                Properties.Settings.Default.sensorBiasEnable = false;
+                Properties.Settings.Default.Save();
                 Environment.Exit(0);
             }
         }
@@ -598,14 +596,14 @@ namespace MFCcontrol
                 PicoammControl.InitSession();
                 PicoammControl.InitDevice();
 
-                Settings1.Default.PicoammeterControlEnable = controlPicoammBox.Checked;
+                Properties.Settings.Default.PicoammeterControlEnable = controlPicoammBox.Checked;
                 picoammSettingsButton.Enabled = true;
 
             }
             else
             {
                 PicoammControl.EndSession();
-                Settings1.Default.PicoammeterControlEnable = controlPicoammBox.Checked;
+                Properties.Settings.Default.PicoammeterControlEnable = controlPicoammBox.Checked;
                 picoammSettingsButton.Enabled = false;
 
                 //Hide Picoammeter window if Configuation window is open
@@ -641,7 +639,7 @@ namespace MFCcontrol
                 mfcRecipeControl1.loadFlowsButton.Enabled = false;
                 mfcRecipeControl1.startButton.Enabled = false;
             }
-            Settings1.Default.mfcMainControlEnable = mfcMainControlEnable.Checked;
+            Properties.Settings.Default.mfcMainControlEnable = mfcMainControlEnable.Checked;
             graphMfcs1.AinGraphUpdateBox_CheckedChanged(this, EventArgs.Empty);
         }
 
