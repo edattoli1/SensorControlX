@@ -11,6 +11,7 @@ using System.IO;
 using System.Threading;
 using System.Diagnostics;
 using System.Runtime;
+using MFCcontrol.Properties;
 
 namespace MFCcontrol
 {
@@ -39,23 +40,31 @@ namespace MFCcontrol
         private double[] presentMFCsetting;
         private static Ke648xGUI PicoammForm;
         static private Ke648xControl PicoammControl;
-        
+
+        // Array which contains all the individual MFC Controls on this form
+        internal MFCcontrolTemplate[] mfcControlArray;
+
         // state of the MFCs for the recipe to be used
         // 0th in array corresponds to MFC 1, .., etc
         internal bool[] stateMFCs;
 
+        internal bool[] mfcPlotEnableArray;
+
+        internal string[] mfcGasNames = new string[Settings.Default.MFCcontrol_numMFCs];
+
         // maximum flow rate of the MFCs for the recipe to be used
         // 0th in array corresponds to MFC 1, .., etc
         internal int[] maxFlowMFCs;
+        
+        
 
-        //Helper Classes
-
+        // TODO REMOVE
+        //internal string[] mfcMaxRanges = new string[Settings.Default.MFCcontrol_numMFCs];
 
         private ConfigureMFCs MFCconfigure1;
 
         //used for closing file properly when stop or exit button is hit
         internal bool IsADoutfileOpen = false;
-
 
         public Form1()
         {
@@ -75,6 +84,18 @@ namespace MFCcontrol
 
             currentADin = new double[Properties.Settings.Default.MFCcontrol_numMFCs];
             presentMFCsetting = new double[Properties.Settings.Default.MFCcontrol_numMFCs];
+
+            // Initialize mfcControlList
+
+            mfcControlArray = new MFCcontrolTemplate[] { mfcControl1, mfcControl2, mfcControl3, mfcControl4, mfcControl5, mfcControl6, mfcControl7, mfcControl8 };
+
+            stateMFCs = Util.StringToBoolArray(Settings.Default.MfcControlEnableList);
+
+            mfcGasNames = Util.StringToStringArray(Settings.Default.MfcGasNamesList);
+
+            maxFlowMFCs = Util.StringToIntArray(Settings.Default.MfcMaxRangeList);
+
+            mfcPlotEnableArray = Util.StringToBoolArray(Settings.Default.MfcPlotEnableList);
 
             // Initialize Members of Form1 Class
 
@@ -122,32 +143,21 @@ namespace MFCcontrol
             sensorBiasControl1.parentForm = this;
 
             // Let MFC Control Panels know that about parent form so they can interact with it
-            mfcControl1.parentForm = this;
-            mfcControl2.parentForm = this;
-            mfcControl3.parentForm = this;
-            mfcControl4.parentForm = this;
+            for (int i = 0; i < mfcControlArray.Length; i++)
+                mfcControlArray[i].parentForm = this;
 
 
             //Set MFC Main Control Check Box to saved Value
             mfcMainControlEnable.Checked = Properties.Settings.Default.mfcMainControlEnable;
 
             //Set MFC USer Controls to correct MFC
-            mfcControl1.SetMFCnumber(1);
-            mfcControl2.SetMFCnumber(2);
-            mfcControl3.SetMFCnumber(3);
-            mfcControl4.SetMFCnumber(4);
+            for (int j = 0; j < mfcControlArray.Length; j++)
+                mfcControlArray[j].SetMFCnumber(j+1);
 
             //Default MFC Control State is OFF
-            mfcControl1.DisableUserControl();
-            mfcControl2.DisableUserControl();
-            mfcControl3.DisableUserControl();
-            mfcControl4.DisableUserControl();
+            for (int i = 0; i < mfcControlArray.Length; i++)
+                mfcControlArray[i].DisableUserControl();
 
-            //Set whether recipe controls the following MFCs, stateMFC is logic control at runtime, Settings is permanent store
-            stateMFCs[0] = Properties.Settings.Default.MFC1enable;
-            stateMFCs[1] = Properties.Settings.Default.MFC2enable;
-            stateMFCs[2] = Properties.Settings.Default.MFC3enable;
-            stateMFCs[3] = Properties.Settings.Default.MFC4enable;
 
             // Picoammeter init stuff
             picoammSettingsButton.Enabled = false;
@@ -168,17 +178,15 @@ namespace MFCcontrol
             //start AD graph timer (when to graph data from A/D)
             timerADgraph.TimerElapsed += UpdateADgraphHandler;
 
-            if (Properties.Settings.Default.mfcMainControlEnable == true)
+            //if (Properties.Settings.Default.mfcMainControlEnable == true)
             {
                 timerADacquire.StartTimer();
                 timerADgraph.StartTimer();
                 timerUI.StartTimer();
                 //Zero all AD outputs
                 ZeroAllMFCOutputs();
-                mfcControl1.EnableUserControl();
-                mfcControl2.EnableUserControl();
-                mfcControl3.EnableUserControl();
-                mfcControl4.EnableUserControl();
+                for (int i = 0; i < mfcControlArray.Length; i++)
+                    mfcControlArray[i].EnableUserControl();
             }
 
            sensorBiasControl1.SensorBiasControlInit();
@@ -202,10 +210,9 @@ namespace MFCcontrol
             }
 
             graphMfcs1.timeElapsedBox.Text = text;
-            mfcControl1.UpdatePresFlowBox(DaqAction.GetMFCflowFromVolts(currentADin[0], 1));
-            mfcControl2.UpdatePresFlowBox(DaqAction.GetMFCflowFromVolts(currentADin[1], 2));
-            mfcControl3.UpdatePresFlowBox(DaqAction.GetMFCflowFromVolts(currentADin[2], 3));
-            mfcControl4.UpdatePresFlowBox(DaqAction.GetMFCflowFromVolts(currentADin[3], 4));
+
+            for (int i = 0; i < mfcControlArray.Length; i++)
+                mfcControlArray[i].UpdatePresFlowBox(DaqAction.GetMFCflowFromVolts(currentADin[i], i+1));
 
             if (recipeRunning == true)
             {
@@ -225,10 +232,8 @@ namespace MFCcontrol
 
                 //Update Present Set Flow in GUI on MFC Control Section
 
-                mfcControl1.UpdateSetFlowValue(presentMFCsetting[0]);
-                mfcControl2.UpdateSetFlowValue(presentMFCsetting[1]);
-                mfcControl3.UpdateSetFlowValue(presentMFCsetting[2]);
-                mfcControl4.UpdateSetFlowValue(presentMFCsetting[3]);
+                for (int i = 0; i < mfcControlArray.Length; i++)
+                    mfcControlArray[i].UpdateSetFlowValue(presentMFCsetting[i]);
 
             }
         }
@@ -282,29 +287,32 @@ namespace MFCcontrol
         {
             try
             {
-                if (mfcNumber == 1)
-                {
-                    daqOutputMFC.UpdateDaqOut(0, ADoutTable[curRow_ADoutTable][1]);
-                    presentMFCsetting[0] = (ADoutTableValues_d[curRow_ADoutTable][1]);
-                }
+                daqOutputMFC.UpdateDaqOut(mfcNumber - 1, ADoutTable[curRow_ADoutTable][mfcNumber]);
+                presentMFCsetting[mfcNumber - 1] = (ADoutTableValues_d[curRow_ADoutTable][mfcNumber]);
 
-                else if (mfcNumber == 2)
-                {
-                    daqOutputMFC.UpdateDaqOut(1, ADoutTable[curRow_ADoutTable][2]);
-                    presentMFCsetting[1] = (ADoutTableValues_d[curRow_ADoutTable][2]);
-                }
+                //if (mfcNumber == 1)
+                //{
+                //    daqOutputMFC.UpdateDaqOut(0, ADoutTable[curRow_ADoutTable][1]);
+                //    presentMFCsetting[0] = (ADoutTableValues_d[curRow_ADoutTable][1]);
+                //}
 
-                else if (mfcNumber == 3)
-                {
-                    daqOutputMFC.UpdateDaqOut(2, ADoutTable[curRow_ADoutTable][3]);
-                    presentMFCsetting[2] = (ADoutTableValues_d[curRow_ADoutTable][3]);
-                }
+                //else if (mfcNumber == 2)
+                //{
+                //    daqOutputMFC.UpdateDaqOut(1, ADoutTable[curRow_ADoutTable][2]);
+                //    presentMFCsetting[1] = (ADoutTableValues_d[curRow_ADoutTable][2]);
+                //}
 
-                else if (mfcNumber == 4)
-                {
-                    daqOutputMFC.UpdateDaqOut(3, ADoutTable[curRow_ADoutTable][4]);
-                    presentMFCsetting[3] = (ADoutTableValues_d[curRow_ADoutTable][4]);
-                }
+                //else if (mfcNumber == 3)
+                //{
+                //    daqOutputMFC.UpdateDaqOut(2, ADoutTable[curRow_ADoutTable][3]);
+                //    presentMFCsetting[2] = (ADoutTableValues_d[curRow_ADoutTable][3]);
+                //}
+
+                //else if (mfcNumber == 4)
+                //{
+                //    daqOutputMFC.UpdateDaqOut(3, ADoutTable[curRow_ADoutTable][4]);
+                //    presentMFCsetting[3] = (ADoutTableValues_d[curRow_ADoutTable][4]);
+                //}
             }
             catch
             {
@@ -424,10 +432,8 @@ namespace MFCcontrol
 
             double time = Math.Round(Convert.ToDouble(watch.GetMsElapsed()) / 1000.0 / 60.0, 2);
 
-            graphMfcs1.chart1.Series[0].Points.AddXY(time, DaqAction.GetMFCflowFromVolts(currentADin[0], 1));
-            graphMfcs1.chart1.Series[1].Points.AddXY(time, DaqAction.GetMFCflowFromVolts(currentADin[1], 2));
-            graphMfcs1.chart1.Series[2].Points.AddXY(time, DaqAction.GetMFCflowFromVolts(currentADin[2], 3));
-            graphMfcs1.chart1.Series[3].Points.AddXY(time, DaqAction.GetMFCflowFromVolts(currentADin[3], 4));
+            for (int i = 0; i < mfcControlArray.Length; i++)
+                graphMfcs1.chart1.Series[i].Points.AddXY(time, DaqAction.GetMFCflowFromVolts(currentADin[i], i+1));
 
             ADgraphUpdateCnt++;
 
@@ -435,6 +441,7 @@ namespace MFCcontrol
             {
                 resetGraphButton_Click(this, EventArgs.Empty);
                 ADgraphUpdateCnt = 0;
+                
             }
 
             UpdateADgraphBusy = false;
@@ -483,14 +490,14 @@ namespace MFCcontrol
 
             MFCconfigure1.ShowDialog();
 
-            mfcControl1.UpdateConfig();
-            mfcControl2.UpdateConfig();
-            mfcControl3.UpdateConfig();
-            mfcControl4.UpdateConfig();
-            graphMfcs1.chart1.Series[0].Name = Properties.Settings.Default.MFC1Gas;
-            graphMfcs1.chart1.Series[1].Name = Properties.Settings.Default.MFC2Gas;
-            graphMfcs1.chart1.Series[2].Name = Properties.Settings.Default.MFC3Gas;
-            graphMfcs1.chart1.Series[3].Name = Properties.Settings.Default.MFC4Gas;
+            
+
+            for (int i = 0; i < mfcControlArray.Length; i++)
+            {
+                mfcControlArray[i].UpdateConfig();
+                graphMfcs1.chart1.Series[i].Name = mfcGasNames[i];
+            }
+
         }
 
         public void MfcPlotCheck_CheckedChanged(int MFCnumber, bool checkState)
@@ -506,26 +513,29 @@ namespace MFCcontrol
         public void mfcTextBox_ValueChanged(int mfcNumber, decimal valueNew)
         {
             double inputValue = DaqAction.GetVoltsFromMFCflow(valueNew.ToString(), mfcNumber);
+          
+            if ( stateMFCs[mfcNumber-1] == true)
+                daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
 
-            switch (mfcNumber)
-            {
-                case 1:
-                    if (Properties.Settings.Default.MFC1enable == true)
-                        daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
-                    break;
-                case 2:
-                    if (Properties.Settings.Default.MFC2enable == true)
-                        daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
-                    break;
-                case 3:
-                    if (Properties.Settings.Default.MFC3enable == true)
-                        daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
-                    break;
-                case 4:
-                    if (Properties.Settings.Default.MFC4enable == true)
-                        daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
-                    break;
-            }
+            //switch (mfcNumber)
+            //{
+            //    case 1:
+            //        if (Properties.Settings.Default.MFC1enable == true)
+            //            daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
+            //        break;
+            //    case 2:
+            //        if (Properties.Settings.Default.MFC2enable == true)
+            //            daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
+            //        break;
+            //    case 3:
+            //        if (Properties.Settings.Default.MFC3enable == true)
+            //            daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
+            //        break;
+            //    case 4:
+            //        if (Properties.Settings.Default.MFC4enable == true)
+            //            daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
+            //        break;
+            //}
 
 
         }
@@ -549,6 +559,8 @@ namespace MFCcontrol
 
         //Helper Functions
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
         internal void DaqOutputProblem()
         {
@@ -576,10 +588,9 @@ namespace MFCcontrol
             try
             {
                 daqOutputMFC.ZeroDaqOuts();
-                mfcControl1.ZeroControl();
-                mfcControl2.ZeroControl();
-                mfcControl3.ZeroControl();
-                mfcControl4.ZeroControl();
+
+                for (int i = 0; i < mfcControlArray.Length; i++)
+                    mfcControlArray[i].ZeroControl();
             }
             catch
             {
@@ -616,10 +627,9 @@ namespace MFCcontrol
         {
             if (mfcMainControlEnable.Checked == true)
             {
-                mfcControl1.EnableUserControl();
-                mfcControl2.EnableUserControl();
-                mfcControl3.EnableUserControl();
-                mfcControl4.EnableUserControl();
+
+                for (int i = 0; i < mfcControlArray.Length; i++)
+                    mfcControlArray[i].EnableUserControl();
                 timerADacquire.StartTimer();
                 timerADgraph.StartTimer();
                 timerADoutUpdate.StartTimer();
@@ -628,10 +638,8 @@ namespace MFCcontrol
             }
             else
             {
-                mfcControl1.DisableUserControl();
-                mfcControl2.DisableUserControl();
-                mfcControl3.DisableUserControl();
-                mfcControl4.DisableUserControl();
+                for (int i = 0; i < mfcControlArray.Length; i++)
+                    mfcControlArray[i].DisableUserControl();
                 timerADacquire.StopTimer();
                 timerADgraph.StopTimer();
                 timerADoutUpdate.StopTimer();

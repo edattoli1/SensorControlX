@@ -49,7 +49,7 @@ namespace MFCcontrol.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
         public int MFCcontrol_numMFCs {
             get {
                 return ((int)(this["MFCcontrol_numMFCs"]));
@@ -61,7 +61,7 @@ namespace MFCcontrol.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Dev1/ai0,Dev1/ai1,Dev1/ai2,Dev1/ai3")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dev1/ai0,Dev1/ai1,Dev1/ai2,Dev1/ai3,Dev1/ai4,Dev1/ai5,Dev1/ai6,Dev1/ai7")]
         public string DAQ_CreateVoltageChannel_AI_chans {
             get {
                 return ((string)(this["DAQ_CreateVoltageChannel_AI_chans"]));
@@ -301,7 +301,7 @@ namespace MFCcontrol.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool mfcMainControlEnable {
             get {
                 return ((bool)(this["mfcMainControlEnable"]));
@@ -433,13 +433,49 @@ namespace MFCcontrol.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Test {
+        [global::System.Configuration.DefaultSettingValueAttribute("True,True,True,True,True,True,True,True")]
+        public string MfcControlEnableList {
             get {
-                return ((string)(this["Test"]));
+                return ((string)(this["MfcControlEnableList"]));
             }
             set {
-                this["Test"] = value;
+                this["MfcControlEnableList"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1,2,3,4,5,6,7,8")]
+        public string MfcGasNamesList {
+            get {
+                return ((string)(this["MfcGasNamesList"]));
+            }
+            set {
+                this["MfcGasNamesList"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000,100,100,100,1000,100,100,100")]
+        public string MfcMaxRangeList {
+            get {
+                return ((string)(this["MfcMaxRangeList"]));
+            }
+            set {
+                this["MfcMaxRangeList"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True,True,True,True,True,True,True,True")]
+        public string MfcPlotEnableList {
+            get {
+                return ((string)(this["MfcPlotEnableList"]));
+            }
+            set {
+                this["MfcPlotEnableList"] = value;
             }
         }
     }

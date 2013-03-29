@@ -20,10 +20,6 @@ namespace MFCcontrol
         private RecipeView RecipeView1;
 
 
-        //internal List<string[]> ADoutTableValues_s;
-        //internal List<double[]> ADoutTableValues_d;
-        //internal List<double[]> ADoutTableVolts;
-
 
         public MfcRecipeControl()
         {

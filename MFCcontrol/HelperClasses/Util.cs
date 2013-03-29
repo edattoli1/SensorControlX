@@ -6,8 +6,35 @@ using System.Threading.Tasks;
 
 namespace MFCcontrol
 {
-    class Util
+    static class Util
     {
+
+        static internal bool[] StringToBoolArray(string sIn)
+        {
+            return sIn.Split(',').Select(s => Boolean.Parse(s)).ToArray();
+        }
+
+        static internal string BoolArrayToString(bool[] boolArr)
+        {
+            return String.Join(",", boolArr.Select(i => i.ToString()).ToArray());
+        }
+
+        static internal string[] StringToStringArray(string sIn)
+        {
+            return sIn.Split(',');
+        }
+
+        static internal string StringArrayToString(string[] sArrIn)
+        {
+            return String.Join(",", sArrIn);
+        }
+
+        static internal int[] StringToIntArray(string sIn)
+        {
+            return sIn.Split(',').Select(s => Int32.Parse(s)).ToArray();
+        }
+        
+        
         public class ADstorage
         {
             // single instance of class which is created on declaration
@@ -35,20 +62,20 @@ namespace MFCcontrol
         }
         
         
-        public async Task LongDelay()
-        {
-            //simulate a long delay
+        //public async Task LongDelay()
+        //{
+        //    //simulate a long delay
 
-            int b = await Task.Run(() =>
-             {
-                 //Task.Delay(10000);
-                 for (int i = 0; i < 1000000000000000; i++)
-                 {
-                     i = i * 2;
-                 }
-                 return 1;
+        //    int b = await Task.Run(() =>
+        //     {
+        //         //Task.Delay(10000);
+        //         for (int i = 0; i < 1000000000000000; i++)
+        //         {
+        //             i = i * 2;
+        //         }
+        //         return 1;
 
-             });
-        }
+        //     });
+        //}
     }
 }

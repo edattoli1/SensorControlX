@@ -9,10 +9,10 @@
       <Value Profile="(Default)">200</Value>
     </Setting>
     <Setting Name="MFCcontrol_numMFCs" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">4</Value>
+      <Value Profile="(Default)">8</Value>
     </Setting>
     <Setting Name="DAQ_CreateVoltageChannel_AI_chans" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Dev1/ai0,Dev1/ai1,Dev1/ai2,Dev1/ai3</Value>
+      <Value Profile="(Default)">Dev1/ai0,Dev1/ai1,Dev1/ai2,Dev1/ai3,Dev1/ai4,Dev1/ai5,Dev1/ai6,Dev1/ai7</Value>
     </Setting>
     <Setting Name="ADoutRefreshTime_ms" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">200</Value>
@@ -72,7 +72,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="mfcMainControlEnable" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="sensorVdsDaqAO" Type="System.String" Scope="User">
       <Value Profile="(Default)">.1</Value>
@@ -104,8 +104,17 @@
     <Setting Name="SamplesToGraphRst" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2000</Value>
     </Setting>
-    <Setting Name="Test" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="MfcControlEnableList" Type="System.String" Scope="User">
+      <Value Profile="(Default)">True,True,True,True,True,True,True,True</Value>
+    </Setting>
+    <Setting Name="MfcGasNamesList" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1,2,3,4,5,6,7,8</Value>
+    </Setting>
+    <Setting Name="MfcMaxRangeList" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1000,100,100,100,1000,100,100,100</Value>
+    </Setting>
+    <Setting Name="MfcPlotEnableList" Type="System.String" Scope="User">
+      <Value Profile="(Default)">True,True,True,True,True,True,True,True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

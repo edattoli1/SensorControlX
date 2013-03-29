@@ -21,25 +21,32 @@ namespace MFCcontrol
 
         private void GraphMfcs_Load(object sender, EventArgs e)
         {
-            chart1.ChartAreas[0].Axes[0].Title = "Time (min)";
-            chart1.ChartAreas[0].Axes[1].Title = "MFC Flow (sccm)";
-            chart1.Series[0].Name = Properties.Settings.Default.MFC1Gas;
-            chart1.Series[1].Name = Properties.Settings.Default.MFC2Gas;
-            chart1.Series[2].Name = Properties.Settings.Default.MFC3Gas;
-            chart1.Series[3].Name = Properties.Settings.Default.MFC4Gas;
+           //chart1.ChartAreas[0].Axes[0].Title = "Time (min)";
+           //chart1.ChartAreas[0].Axes[1].Title = "MFC Flow (sccm)";
 
-            chart1.Series[0].Enabled = Properties.Settings.Default.MFC1PlotEnable;
-            chart1.Series[1].Enabled = Properties.Settings.Default.MFC2PlotEnable;
-            chart1.Series[2].Enabled = Properties.Settings.Default.MFC3PlotEnable;
-            chart1.Series[3].Enabled = Properties.Settings.Default.MFC4PlotEnable;
+            //for (int i = 0; i < parentForm.mfcControlArray.Length-1; i++)
+            //{
+            //    chart1.Series[i].Name = parentForm.mfcGasNames[i];
+            //    chart1.Series[i].Enabled = parentForm.stateMFCs[i];
+
+            //    }
+
+            //chart1.Series[0].Name = Properties.Settings.Default.MFC1Gas;
+            //chart1.Series[1].Name = Properties.Settings.Default.MFC2Gas;
+            //chart1.Series[2].Name = Properties.Settings.Default.MFC3Gas;
+            //chart1.Series[3].Name = Properties.Settings.Default.MFC4Gas;
+
+            //chart1.Series[0].Enabled = Properties.Settings.Default.MFC1PlotEnable;
+            //chart1.Series[1].Enabled = Properties.Settings.Default.MFC2PlotEnable;
+            //chart1.Series[2].Enabled = Properties.Settings.Default.MFC3PlotEnable;
+            //chart1.Series[3].Enabled = Properties.Settings.Default.MFC4PlotEnable;
         }
 
         internal void resetGraphButton_Click(object sender, EventArgs e)
         {
-            chart1.Series[0].Points.Clear();
-            chart1.Series[1].Points.Clear();
-            chart1.Series[2].Points.Clear();
-            chart1.Series[3].Points.Clear();
+            for (int i = 0; i < parentForm.mfcControlArray.Length; i++)
+                chart1.Series[i].Points.Clear();
+            
         }
 
         internal void samplesToResetUpDown_ValueChanged(object sender, EventArgs e)
