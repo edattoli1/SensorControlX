@@ -70,6 +70,23 @@ namespace MFCcontrol
         {
             InitializeComponent();
 
+            //Let graph user control  know about parent form
+            graphMfcs1.parentForm = this;
+
+            //Let recipe control panel know about parent form
+            mfcRecipeControl1.parentForm = this;
+
+            //Let sensor bias user control know about parent form
+            sensorBiasControl1.parentForm = this;
+
+            // Initialize mfcControlList
+
+            mfcControlArray = new MFCcontrolTemplate[] { mfcControl1, mfcControl2, mfcControl3, mfcControl4, mfcControl5, mfcControl6, mfcControl7, mfcControl8 };
+
+            // Let MFC Control Panels know that about parent form so they can interact with it
+            for (int i = 0; i < mfcControlArray.Length; i++)
+                mfcControlArray[i].parentForm = this;
+
             //Used for Drawing Rows in MFC table
             //tableLayoutPanel1.CellPaint += tableLayoutPanel_CellPaint;
             tableLayoutPanel2.CellPaint += tableLayoutPanel_CellPaint;
@@ -85,10 +102,7 @@ namespace MFCcontrol
             currentADin = new double[Properties.Settings.Default.MFCcontrol_numMFCs];
             presentMFCsetting = new double[Properties.Settings.Default.MFCcontrol_numMFCs];
 
-            // Initialize mfcControlList
-
-            mfcControlArray = new MFCcontrolTemplate[] { mfcControl1, mfcControl2, mfcControl3, mfcControl4, mfcControl5, mfcControl6, mfcControl7, mfcControl8 };
-
+     
             stateMFCs = Util.StringToBoolArray(Settings.Default.MfcControlEnableList);
 
             mfcGasNames = Util.StringToStringArray(Settings.Default.MfcGasNamesList);
@@ -132,20 +146,6 @@ namespace MFCcontrol
             ADgraphUpdateCnt = 0;
 
             graphMfcs1.timeElapsedBox.Text = (watch.GetMsElapsed() / 3600.0).ToString();
-
-            //Let graph user control  know about parent form
-            graphMfcs1.parentForm = this;
-
-            //Let recipe control panel know about parent form
-            mfcRecipeControl1.parentForm = this;
-
-            //Let sensor bias user control know about parent form
-            sensorBiasControl1.parentForm = this;
-
-            // Let MFC Control Panels know that about parent form so they can interact with it
-            for (int i = 0; i < mfcControlArray.Length; i++)
-                mfcControlArray[i].parentForm = this;
-
 
             //Set MFC Main Control Check Box to saved Value
             mfcMainControlEnable.Checked = Properties.Settings.Default.mfcMainControlEnable;
@@ -290,29 +290,6 @@ namespace MFCcontrol
                 daqOutputMFC.UpdateDaqOut(mfcNumber - 1, ADoutTable[curRow_ADoutTable][mfcNumber]);
                 presentMFCsetting[mfcNumber - 1] = (ADoutTableValues_d[curRow_ADoutTable][mfcNumber]);
 
-                //if (mfcNumber == 1)
-                //{
-                //    daqOutputMFC.UpdateDaqOut(0, ADoutTable[curRow_ADoutTable][1]);
-                //    presentMFCsetting[0] = (ADoutTableValues_d[curRow_ADoutTable][1]);
-                //}
-
-                //else if (mfcNumber == 2)
-                //{
-                //    daqOutputMFC.UpdateDaqOut(1, ADoutTable[curRow_ADoutTable][2]);
-                //    presentMFCsetting[1] = (ADoutTableValues_d[curRow_ADoutTable][2]);
-                //}
-
-                //else if (mfcNumber == 3)
-                //{
-                //    daqOutputMFC.UpdateDaqOut(2, ADoutTable[curRow_ADoutTable][3]);
-                //    presentMFCsetting[2] = (ADoutTableValues_d[curRow_ADoutTable][3]);
-                //}
-
-                //else if (mfcNumber == 4)
-                //{
-                //    daqOutputMFC.UpdateDaqOut(3, ADoutTable[curRow_ADoutTable][4]);
-                //    presentMFCsetting[3] = (ADoutTableValues_d[curRow_ADoutTable][4]);
-                //}
             }
             catch
             {
@@ -516,26 +493,6 @@ namespace MFCcontrol
           
             if ( stateMFCs[mfcNumber-1] == true)
                 daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
-
-            //switch (mfcNumber)
-            //{
-            //    case 1:
-            //        if (Properties.Settings.Default.MFC1enable == true)
-            //            daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
-            //        break;
-            //    case 2:
-            //        if (Properties.Settings.Default.MFC2enable == true)
-            //            daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
-            //        break;
-            //    case 3:
-            //        if (Properties.Settings.Default.MFC3enable == true)
-            //            daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
-            //        break;
-            //    case 4:
-            //        if (Properties.Settings.Default.MFC4enable == true)
-            //            daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
-            //        break;
-            //}
 
 
         }

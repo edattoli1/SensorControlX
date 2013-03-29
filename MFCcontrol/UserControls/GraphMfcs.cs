@@ -21,15 +21,14 @@ namespace MFCcontrol
 
         private void GraphMfcs_Load(object sender, EventArgs e)
         {
-           //chart1.ChartAreas[0].Axes[0].Title = "Time (min)";
-           //chart1.ChartAreas[0].Axes[1].Title = "MFC Flow (sccm)";
+           chart1.ChartAreas[0].Axes[0].Title = "Time (min)";
+           chart1.ChartAreas[0].Axes[1].Title = "MFC Flow (sccm)";
 
-            //for (int i = 0; i < parentForm.mfcControlArray.Length-1; i++)
-            //{
-            //    chart1.Series[i].Name = parentForm.mfcGasNames[i];
-            //    chart1.Series[i].Enabled = parentForm.stateMFCs[i];
-
-            //    }
+           for (int i = 0; i < parentForm.mfcControlArray.Length - 1; i++)
+            {
+                chart1.Series[i].Name = parentForm.mfcGasNames[i];
+                chart1.Series[i].Enabled = parentForm.stateMFCs[i];
+            }
 
             //chart1.Series[0].Name = Properties.Settings.Default.MFC1Gas;
             //chart1.Series[1].Name = Properties.Settings.Default.MFC2Gas;
