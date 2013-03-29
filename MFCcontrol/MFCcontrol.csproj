@@ -185,6 +185,7 @@
     <EmbeddedResource Include="UserControls\SensorBiasControl.resx">
       <DependentUpon>SensorBiasControl.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="App.config" />
     <None Include="GraphAsync1_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -199,9 +200,6 @@
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

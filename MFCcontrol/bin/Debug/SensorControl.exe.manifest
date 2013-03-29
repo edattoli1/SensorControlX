@@ -84,17 +84,17 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>g+hWCfCpyX1XfnP2aLzMT7Ma39OlUVyJzXdxlJH1tTw=</dsig:DigestValue>
+        <dsig:DigestValue>bokX2pKBxzt6omTIPUqPnPIPWOfNVGR6Y6MUTNhyFzM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="SensorControl.exe.config" size="8306">
+  <file name="SensorControl.exe.config" size="5128">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>H6jL38v5nQ6HnOO7dg9fGhjtzTSJt2VRXkiKm66jUck=</dsig:DigestValue>
+      <dsig:DigestValue>AouzhGvp0Vcl1eaIhokJz+GJ5D86oQcB+3UhbqWgc68=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
