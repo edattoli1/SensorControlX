@@ -33,7 +33,11 @@ namespace MFCcontrol
         {
             return sIn.Split(',').Select(s => Int32.Parse(s)).ToArray();
         }
-        
+
+        static internal string IntArrayToString(int[] intArr)
+        {
+            return String.Join(",", intArr.Select(i => i.ToString()).ToArray());
+        }
         
         public class ADstorage
         {

@@ -24,21 +24,15 @@ namespace MFCcontrol
            chart1.ChartAreas[0].Axes[0].Title = "Time (min)";
            chart1.ChartAreas[0].Axes[1].Title = "MFC Flow (sccm)";
 
-           for (int i = 0; i < parentForm.mfcControlArray.Length - 1; i++)
-            {
-                chart1.Series[i].Name = parentForm.mfcGasNames[i];
-                chart1.Series[i].Enabled = parentForm.stateMFCs[i];
-            }
-
-            //chart1.Series[0].Name = Properties.Settings.Default.MFC1Gas;
-            //chart1.Series[1].Name = Properties.Settings.Default.MFC2Gas;
-            //chart1.Series[2].Name = Properties.Settings.Default.MFC3Gas;
-            //chart1.Series[3].Name = Properties.Settings.Default.MFC4Gas;
-
-            //chart1.Series[0].Enabled = Properties.Settings.Default.MFC1PlotEnable;
-            //chart1.Series[1].Enabled = Properties.Settings.Default.MFC2PlotEnable;
-            //chart1.Series[2].Enabled = Properties.Settings.Default.MFC3PlotEnable;
-            //chart1.Series[3].Enabled = Properties.Settings.Default.MFC4PlotEnable;
+            // null check is required by Visual Studio Designer
+           if (parentForm != null)
+           {
+               for (int i = 0; i < parentForm.mfcControlArray.Length; i++)
+               {
+                   chart1.Series[i].Name = parentForm.mfcGasNames[i];
+                   chart1.Series[i].Enabled = parentForm.stateMFCs[i];
+               }
+           }
         }
 
         internal void resetGraphButton_Click(object sender, EventArgs e)

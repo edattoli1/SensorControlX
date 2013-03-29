@@ -56,11 +56,6 @@ namespace MFCcontrol
         // 0th in array corresponds to MFC 1, .., etc
         internal int[] maxFlowMFCs;
         
-        
-
-        // TODO REMOVE
-        //internal string[] mfcMaxRanges = new string[Settings.Default.MFCcontrol_numMFCs];
-
         private ConfigureMFCs MFCconfigure1;
 
         //used for closing file properly when stop or exit button is hit
@@ -439,6 +434,12 @@ namespace MFCcontrol
             if (Properties.Settings.Default.mfcMainControlEnable == true)
                 ZeroAllMFCOutputs();
 
+            // Write All Array Configuration Settings to Settings File
+            Settings.Default.MfcControlEnableList = Util.BoolArrayToString(stateMFCs);
+            Settings.Default.MfcGasNamesList = Util.StringArrayToString(mfcGasNames);
+            Settings.Default.MfcMaxRangeList = Util.IntArrayToString(maxFlowMFCs);
+            Settings.Default.MfcPlotEnableList = Util.BoolArrayToString(mfcPlotEnableArray);
+
             //Save all Settings
             Properties.Settings.Default.Save();
 
@@ -455,11 +456,6 @@ namespace MFCcontrol
         }
 
 
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Properties.Settings.Default.Save();
-        }
 
         private void configMFCbuttonClick(object sender, EventArgs e)
         {
