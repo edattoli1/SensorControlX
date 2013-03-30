@@ -38,9 +38,10 @@ namespace MFCcontrol
                     //Create a virtual channel
                     
                     //"Dev1/ai0,Dev1/ai1"
-                    myTask.AIChannels.CreateVoltageChannel(Properties.Settings.Default.DAQ_CreateVoltageChannel_AI_chans, "",
+                    myTask.AIChannels.CreateVoltageChannel(Properties.Settings.Default.MfcAinChannelsList, "",
                         (AITerminalConfiguration.Rse), 0.0,
                         5.0, AIVoltageUnits.Volts);
+
 
                     AnalogMultiChannelReader reader = new AnalogMultiChannelReader(myTask.Stream);
 

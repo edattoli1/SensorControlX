@@ -62,12 +62,12 @@ namespace MFCcontrol.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Dev1/ai0,Dev1/ai1,Dev1/ai2,Dev1/ai3,Dev1/ai4,Dev1/ai5,Dev1/ai6,Dev1/ai7")]
-        public string DAQ_CreateVoltageChannel_AI_chans {
+        public string MfcAinChannelsList {
             get {
-                return ((string)(this["DAQ_CreateVoltageChannel_AI_chans"]));
+                return ((string)(this["MfcAinChannelsList"]));
             }
             set {
-                this["DAQ_CreateVoltageChannel_AI_chans"] = value;
+                this["MfcAinChannelsList"] = value;
             }
         }
         

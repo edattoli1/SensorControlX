@@ -52,6 +52,8 @@ namespace MFCcontrol
 
         internal string[] mfcGasNames = new string[Settings.Default.MFCcontrol_numMFCs];
 
+        internal string[] mfcAinChannels = new string[Settings.Default.MFCcontrol_numMFCs];
+
         // maximum flow rate of the MFCs for the recipe to be used
         // 0th in array corresponds to MFC 1, .., etc
         internal int[] maxFlowMFCs;
@@ -105,6 +107,8 @@ namespace MFCcontrol
             maxFlowMFCs = Util.StringToIntArray(Settings.Default.MfcMaxRangeList);
 
             mfcPlotEnableArray = Util.StringToBoolArray(Settings.Default.MfcPlotEnableList);
+
+            mfcAinChannels = Util.StringToStringArray(Settings.Default.MfcAinChannelsList);
 
             // Initialize Members of Form1 Class
 
@@ -210,8 +214,16 @@ namespace MFCcontrol
 
             graphMfcs1.timeElapsedBox.Text = text;
 
+            int currentADinIterator = 0;
+
             for (int i = 0; i < mfcControlArray.Length; i++)
-                mfcControlArray[i].UpdatePresFlowBox(DaqAction.GetMFCflowFromVolts(currentADin[i], i, maxFlowMFCs));
+            {
+                if ( (mfcAinChannels[i] != "") && (i < currentADin.Length) )
+                {
+                    mfcControlArray[i].UpdatePresFlowBox(DaqAction.GetMFCflowFromVolts(currentADin[currentADinIterator], i, maxFlowMFCs));
+                    currentADinIterator++;
+                }
+            }
 
             if (recipeRunning == true)
             {
@@ -408,8 +420,16 @@ namespace MFCcontrol
 
             double time = Math.Round(Convert.ToDouble(watch.GetMsElapsed()) / 1000.0 / 60.0, 2);
 
+            int currentADinIterator = 0;
+
             for (int i = 0; i < mfcControlArray.Length; i++)
-                graphMfcs1.chart1.Series[i].Points.AddXY(time, DaqAction.GetMFCflowFromVolts(currentADin[i], i, maxFlowMFCs));
+            {
+                if ( (mfcAinChannels[i] != "") && (i < currentADin.Length) )
+                {
+                    graphMfcs1.chart1.Series[i].Points.AddXY(time, DaqAction.GetMFCflowFromVolts(currentADin[currentADinIterator], i, maxFlowMFCs));
+                    currentADinIterator++;
+                }
+            }
 
             ADgraphUpdateCnt++;
 

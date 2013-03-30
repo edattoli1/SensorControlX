@@ -11,7 +11,7 @@
     <Setting Name="MFCcontrol_numMFCs" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">8</Value>
     </Setting>
-    <Setting Name="DAQ_CreateVoltageChannel_AI_chans" Type="System.String" Scope="User">
+    <Setting Name="MfcAinChannelsList" Type="System.String" Scope="User">
       <Value Profile="(Default)">Dev1/ai0,Dev1/ai1,Dev1/ai2,Dev1/ai3,Dev1/ai4,Dev1/ai5,Dev1/ai6,Dev1/ai7</Value>
     </Setting>
     <Setting Name="ADoutRefreshTime_ms" Type="System.Int32" Scope="User">
