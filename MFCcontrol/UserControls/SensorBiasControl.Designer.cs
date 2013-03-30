@@ -167,7 +167,7 @@
             this.vdsLockCheckBox.Location = new System.Drawing.Point(274, 35);
             this.vdsLockCheckBox.Name = "vdsLockCheckBox";
             this.vdsLockCheckBox.Padding = new System.Windows.Forms.Padding(8);
-            this.vdsLockCheckBox.Size = new System.Drawing.Size(31, 26);
+            this.vdsLockCheckBox.Size = new System.Drawing.Size(34, 26);
             this.vdsLockCheckBox.TabIndex = 32;
             this.vdsLockCheckBox.UseVisualStyleBackColor = true;
             this.vdsLockCheckBox.CheckedChanged += new System.EventHandler(this.vdsLockCheckBox_CheckedChanged);
@@ -178,7 +178,7 @@
             this.vgsLockCheckBox.Location = new System.Drawing.Point(274, 67);
             this.vgsLockCheckBox.Name = "vgsLockCheckBox";
             this.vgsLockCheckBox.Padding = new System.Windows.Forms.Padding(8);
-            this.vgsLockCheckBox.Size = new System.Drawing.Size(31, 28);
+            this.vgsLockCheckBox.Size = new System.Drawing.Size(34, 28);
             this.vgsLockCheckBox.TabIndex = 33;
             this.vgsLockCheckBox.UseVisualStyleBackColor = true;
             this.vgsLockCheckBox.CheckedChanged += new System.EventHandler(this.vgsLockCheckBox_CheckedChanged);
@@ -216,7 +216,7 @@
             this.biasOutsBox.AutoSize = true;
             this.biasOutsBox.Location = new System.Drawing.Point(15, 56);
             this.biasOutsBox.Name = "biasOutsBox";
-            this.biasOutsBox.Size = new System.Drawing.Size(117, 21);
+            this.biasOutsBox.Size = new System.Drawing.Size(120, 21);
             this.biasOutsBox.TabIndex = 26;
             this.biasOutsBox.Text = "Enable Biases";
             this.biasOutsBox.UseVisualStyleBackColor = true;
@@ -229,7 +229,7 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.01739F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(12, 8);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(200, 20);
+            this.label8.Size = new System.Drawing.Size(211, 20);
             this.label8.TabIndex = 25;
             this.label8.Text = "ANALOG DAQ OUTPUT";
             // 

@@ -66,56 +66,18 @@ namespace MFCcontrol
         }
 
         //zeros all Daq Out Channels
-        public void ZeroDaqOuts()
+        public void ZeroDaqOuts(string [] daqOutChannels)
         {
             for (int i = 0; i < Properties.Settings.Default.MFCcontrol_numMFCs; i++)
             {
-                    UpdateDaqOut(i, 0);
+                if (daqOutChannels[i] != "")
+                    UpdateDaqOut(daqOutChannels[i], 0);
                 
             }
         }
 
 
-        public void UpdateDaqOut(int AOchannel, double voltOut)
-        {
-            string AOchannel_s = "Dev1/ao0";
-
-            switch (AOchannel)
-            {
-                case 0:
-                    AOchannel_s = "Dev1/ao0";
-                    break;
-                case 1:
-                    AOchannel_s = "Dev1/ao1";
-                    break;
-                case 2:
-                    //AOchannel_s = "Dev1/ao1";
-                    AOchannel_s = "Dev1/ao0";
-                    break;
-                case 3:
-                    //AOchannel_s = "Dev1/ao1";
-                    AOchannel_s = "Dev1/ao1";
-                    break;
-            }
-            
-            try
-            {
-                using (myTask = new NationalInstruments.DAQmx.Task())
-                {
-                    myTask.AOChannels.CreateVoltageChannel(AOchannel_s, "aoChannel",
-                        0.0, 5.0, AOVoltageUnits.Volts);
-                    AnalogSingleChannelWriter writer = new AnalogSingleChannelWriter(myTask.Stream);
-                    writer.WriteSingleSample(true, voltOut);
-                }
-            }
-            catch (DaqException ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-                throw;
-            }
-        }
-
-        //Overloaded function, accepts string as AOchannel input
+        //Updates DAQ Analog Output value to a single DAQ channel, accepts string as AOchannel input
         public void UpdateDaqOut(string AOchannel_s, double voltOut)
         {
             try

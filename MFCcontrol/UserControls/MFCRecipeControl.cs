@@ -62,11 +62,11 @@ namespace MFCcontrol
             //Output initial DAQ Output values
             for (int i = 1; i <= Properties.Settings.Default.MFCcontrol_numMFCs; i++)
             {
-                if (parentForm.stateMFCs[i - 1] == true)
+                if ( (parentForm.stateMFCs[i - 1] == true) && (parentForm.mfcAoutChannels[i-1] != "") )
                 {
                     try
                     {
-                        parentForm.daqOutputMFC.UpdateDaqOut(i - 1, parentForm.ADoutTableVolts[0][i]);
+                        parentForm.daqOutputMFC.UpdateDaqOut(parentForm.mfcAoutChannels[i - 1], parentForm.ADoutTableVolts[0][i]);
                     }
                     catch
                     {

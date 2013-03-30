@@ -42,7 +42,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="sensorBiasMaxRange" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="PicoammRange" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">5</Value>
@@ -67,6 +67,18 @@
     </Setting>
     <Setting Name="MfcPlotEnableList" Type="System.String" Scope="User">
       <Value Profile="(Default)">True,True,True,True,True,True,True,True</Value>
+    </Setting>
+    <Setting Name="MfcAoutChannelsList" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Dev1/ao0,Dev1/ao1,Dev1/ao0,Dev1/ao1,,,,</Value>
+    </Setting>
+    <Setting Name="sensorVdsDaqAOchan" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Dev1/ao0</Value>
+    </Setting>
+    <Setting Name="sensorVgsDaqAOchan" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Dev1/ao1</Value>
+    </Setting>
+    <Setting Name="sensorBiasMinRange" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

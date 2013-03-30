@@ -75,7 +75,7 @@ namespace MFCcontrol
         {
             try
             {
-                daqOutputBiases.UpdateDaqOut(Properties.Settings.Default.sensorVdsDaqAO, Convert.ToDouble(VdsUpDown.Value));
+                daqOutputBiases.UpdateDaqOut(Properties.Settings.Default.sensorVdsDaqAOchan, Convert.ToDouble(VdsUpDown.Value));
             }
             catch
             {
@@ -88,7 +88,7 @@ namespace MFCcontrol
         {
             try
             {
-                daqOutputBiases.UpdateDaqOut(Properties.Settings.Default.sensorVgsDaqAO, Convert.ToDouble(VgsUpDown.Value));
+                daqOutputBiases.UpdateDaqOut(Properties.Settings.Default.sensorVgsDaqAOchan, Convert.ToDouble(VgsUpDown.Value));
             }
             catch
             {
@@ -105,8 +105,8 @@ namespace MFCcontrol
             
             try
             {
-                daqOutputBiases.UpdateDaqOut(Properties.Settings.Default.sensorVgsDaqAO, Convert.ToDouble(0));
-                daqOutputBiases.UpdateDaqOut(Properties.Settings.Default.sensorVdsDaqAO, Convert.ToDouble(0));
+                daqOutputBiases.UpdateDaqOut(Properties.Settings.Default.sensorVgsDaqAOchan, Convert.ToDouble(0));
+                daqOutputBiases.UpdateDaqOut(Properties.Settings.Default.sensorVdsDaqAOchan, Convert.ToDouble(0));
             }
             catch
             {
@@ -122,7 +122,7 @@ namespace MFCcontrol
         {
             tableLayoutPanel3.CellPaint += parentForm.tableLayoutPanel_CellPaint;
             
-            daqOutputBiases = new DaqAction(-1 * Properties.Settings.Default.sensorBiasMaxRange, Properties.Settings.Default.sensorBiasMaxRange);
+            daqOutputBiases = new DaqAction(Properties.Settings.Default.sensorBiasMinRange, Properties.Settings.Default.sensorBiasMaxRange);
 
             //If DAQ Analog Out is Enabled in Settings file, Update Checkmark and Zero Bias Outputs
             if (Properties.Settings.Default.sensorBiasEnable == true)
@@ -135,8 +135,9 @@ namespace MFCcontrol
             // Ready fields for Daq Bias Output
             VdsUpDown.Maximum = Convert.ToDecimal(Properties.Settings.Default.sensorBiasMaxRange);
             VgsUpDown.Maximum = Convert.ToDecimal(Properties.Settings.Default.sensorBiasMaxRange);
-            VdsUpDown.Minimum = -1 * Convert.ToDecimal(Properties.Settings.Default.sensorBiasMaxRange);
-            VgsUpDown.Minimum = -1 * Convert.ToDecimal(Properties.Settings.Default.sensorBiasMaxRange);
+            VdsUpDown.Minimum = Convert.ToDecimal(Properties.Settings.Default.sensorBiasMinRange);
+            VgsUpDown.Minimum = Convert.ToDecimal(Properties.Settings.Default.sensorBiasMinRange);
+
 
 
         }

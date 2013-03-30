@@ -355,11 +355,6 @@
             0,
             0,
             0});
-            this.mfcMaxFlowUpDown1.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.mfcMaxFlowUpDown1.Name = "mfcMaxFlowUpDown1";
             this.mfcMaxFlowUpDown1.Size = new System.Drawing.Size(77, 22);
             this.mfcMaxFlowUpDown1.TabIndex = 36;
@@ -375,11 +370,6 @@
             this.mfcMaxFlowUpDown2.Margin = new System.Windows.Forms.Padding(8);
             this.mfcMaxFlowUpDown2.Maximum = new decimal(new int[] {
             50000,
-            0,
-            0,
-            0});
-            this.mfcMaxFlowUpDown2.Minimum = new decimal(new int[] {
-            1,
             0,
             0,
             0});
@@ -401,11 +391,6 @@
             0,
             0,
             0});
-            this.mfcMaxFlowUpDown3.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.mfcMaxFlowUpDown3.Name = "mfcMaxFlowUpDown3";
             this.mfcMaxFlowUpDown3.Size = new System.Drawing.Size(77, 22);
             this.mfcMaxFlowUpDown3.TabIndex = 38;
@@ -421,11 +406,6 @@
             this.mfcMaxFlowUpDown4.Margin = new System.Windows.Forms.Padding(8);
             this.mfcMaxFlowUpDown4.Maximum = new decimal(new int[] {
             50000,
-            0,
-            0,
-            0});
-            this.mfcMaxFlowUpDown4.Minimum = new decimal(new int[] {
-            1,
             0,
             0,
             0});
@@ -447,11 +427,6 @@
             0,
             0,
             0});
-            this.mfcMaxFlowUpDown5.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.mfcMaxFlowUpDown5.Name = "mfcMaxFlowUpDown5";
             this.mfcMaxFlowUpDown5.Size = new System.Drawing.Size(77, 22);
             this.mfcMaxFlowUpDown5.TabIndex = 40;
@@ -467,11 +442,6 @@
             this.mfcMaxFlowUpDown6.Margin = new System.Windows.Forms.Padding(8);
             this.mfcMaxFlowUpDown6.Maximum = new decimal(new int[] {
             50000,
-            0,
-            0,
-            0});
-            this.mfcMaxFlowUpDown6.Minimum = new decimal(new int[] {
-            1,
             0,
             0,
             0});
@@ -493,11 +463,6 @@
             0,
             0,
             0});
-            this.mfcMaxFlowUpDown7.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.mfcMaxFlowUpDown7.Name = "mfcMaxFlowUpDown7";
             this.mfcMaxFlowUpDown7.Size = new System.Drawing.Size(77, 22);
             this.mfcMaxFlowUpDown7.TabIndex = 42;
@@ -513,11 +478,6 @@
             this.mfcMaxFlowUpDown8.Margin = new System.Windows.Forms.Padding(8);
             this.mfcMaxFlowUpDown8.Maximum = new decimal(new int[] {
             50000,
-            0,
-            0,
-            0});
-            this.mfcMaxFlowUpDown8.Minimum = new decimal(new int[] {
-            1,
             0,
             0,
             0});

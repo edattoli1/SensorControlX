@@ -181,7 +181,7 @@ namespace MFCcontrol.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
         public double sensorBiasMaxRange {
             get {
                 return ((double)(this["sensorBiasMaxRange"]));
@@ -284,6 +284,54 @@ namespace MFCcontrol.Properties {
             }
             set {
                 this["MfcPlotEnableList"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dev1/ao0,Dev1/ao1,Dev1/ao0,Dev1/ao1,,,,")]
+        public string MfcAoutChannelsList {
+            get {
+                return ((string)(this["MfcAoutChannelsList"]));
+            }
+            set {
+                this["MfcAoutChannelsList"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dev1/ao0")]
+        public string sensorVdsDaqAOchan {
+            get {
+                return ((string)(this["sensorVdsDaqAOchan"]));
+            }
+            set {
+                this["sensorVdsDaqAOchan"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dev1/ao1")]
+        public string sensorVgsDaqAOchan {
+            get {
+                return ((string)(this["sensorVgsDaqAOchan"]));
+            }
+            set {
+                this["sensorVgsDaqAOchan"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double sensorBiasMinRange {
+            get {
+                return ((double)(this["sensorBiasMinRange"]));
+            }
+            set {
+                this["sensorBiasMinRange"] = value;
             }
         }
     }

@@ -54,6 +54,8 @@ namespace MFCcontrol
 
         internal string[] mfcAinChannels = new string[Settings.Default.MFCcontrol_numMFCs];
 
+        internal string[] mfcAoutChannels = new string[Settings.Default.MFCcontrol_numMFCs];
+
         // maximum flow rate of the MFCs for the recipe to be used
         // 0th in array corresponds to MFC 1, .., etc
         internal int[] maxFlowMFCs;
@@ -109,6 +111,8 @@ namespace MFCcontrol
             mfcPlotEnableArray = Util.StringToBoolArray(Settings.Default.MfcPlotEnableList);
 
             mfcAinChannels = Util.StringToStringArray(Settings.Default.MfcAinChannelsList);
+
+            mfcAoutChannels = Util.StringToStringArray(Settings.Default.MfcAoutChannelsList);
 
             // Initialize Members of Form1 Class
 
@@ -298,7 +302,7 @@ namespace MFCcontrol
         {
             try
             {
-                daqOutputMFC.UpdateDaqOut(mfcNumber - 1, ADoutTable[curRow_ADoutTable][mfcNumber]);
+                daqOutputMFC.UpdateDaqOut( mfcAoutChannels[mfcNumber-1], ADoutTable[curRow_ADoutTable][mfcNumber] );
                 presentMFCsetting[mfcNumber - 1] = (ADoutTableValues_d[curRow_ADoutTable][mfcNumber]);
 
             }
@@ -511,8 +515,8 @@ namespace MFCcontrol
         {
             double inputValue = DaqAction.GetVoltsFromMFCflow(valueNew.ToString(), mfcNumber-1,maxFlowMFCs);
           
-            if ( stateMFCs[mfcNumber-1] == true)
-                daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);
+            if ( ( stateMFCs[mfcNumber-1] == true) && (mfcAoutChannels[mfcNumber - 1] != ""))
+                daqOutputMFC.UpdateDaqOut(mfcAoutChannels[mfcNumber - 1], inputValue);
 
 
         }
@@ -564,7 +568,7 @@ namespace MFCcontrol
         {
             try
             {
-                daqOutputMFC.ZeroDaqOuts();
+                daqOutputMFC.ZeroDaqOuts(mfcAoutChannels);
 
                 for (int i = 0; i < mfcControlArray.Length; i++)
                     mfcControlArray[i].ZeroControl();

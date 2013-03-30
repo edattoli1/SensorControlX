@@ -42,11 +42,12 @@ namespace MFCcontrol
                     parentForm.mfcAinChannels[i] = curMfcAinComboBox.Text;
 
                 curMfcAoutComboBox = (ComboBox)tableLayoutPanel1.Controls["mfcAoutComboBox" + (i + 1).ToString()];
-                //if (curMfcAoutComboBox.Text != null)
-                //    parentForm.mfcAinChannels[i] = curMfcAinComboBox.Text;
+                if (curMfcAoutComboBox.Text != null)
+                    parentForm.mfcAoutChannels[i] = curMfcAoutComboBox.Text;
             }
 
             Properties.Settings.Default.MfcAinChannelsList = Util.StringArrayToString(parentForm.mfcAinChannels);
+            Properties.Settings.Default.MfcAoutChannelsList = Util.StringArrayToString(parentForm.mfcAoutChannels);
 
             this.Close();
         }
@@ -77,16 +78,16 @@ namespace MFCcontrol
                     curMfcAinComboBox = (ComboBox)tableLayoutPanel1.Controls["mfcAinComboBox" + (i + 1).ToString()];
                     curMfcAinComboBox.Items.AddRange(aiChannels);
                     curMfcAinComboBox.Items.Add("");
-                    //if (parentForm.mfcAinChannels[i] == "")
-                        //curMfcAinComboBox.SelectedIndex = curMfcAinComboBox.Items.Last
                     curMfcAinComboBox.SelectedIndex = curMfcAinComboBox.FindStringExact(parentForm.mfcAinChannels[i]);
                     //if (i < aiChannels.Length)
                     //    curMfcAinComboBox.SelectedIndex = i;
                    // curMfcAinComboBox.SelectedText
                     curMfcAoutComboBox = (ComboBox)tableLayoutPanel1.Controls["mfcAoutComboBox" + (i + 1).ToString()];
                     curMfcAoutComboBox.Items.AddRange(aoChannels);
-                    if (i < aoChannels.Length)
-                        curMfcAoutComboBox.SelectedIndex = i;
+                    //if (i < aoChannels.Length)
+                    //    curMfcAoutComboBox.SelectedIndex = i;
+                    curMfcAoutComboBox.Items.Add("");
+                    curMfcAoutComboBox.SelectedIndex = curMfcAoutComboBox.FindStringExact(parentForm.mfcAoutChannels[i]);
                 }
                 
 
