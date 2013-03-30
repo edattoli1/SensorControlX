@@ -211,7 +211,7 @@ namespace MFCcontrol
             graphMfcs1.timeElapsedBox.Text = text;
 
             for (int i = 0; i < mfcControlArray.Length; i++)
-                mfcControlArray[i].UpdatePresFlowBox(DaqAction.GetMFCflowFromVolts(currentADin[i], i+1));
+                mfcControlArray[i].UpdatePresFlowBox(DaqAction.GetMFCflowFromVolts(currentADin[i], i, maxFlowMFCs));
 
             if (recipeRunning == true)
             {
@@ -382,7 +382,7 @@ namespace MFCcontrol
                 if (stateMFCs[i] == true)
                 {
                     //numActiveMFCs++;
-                    await swriter.WriteAsync(string.Format("\t{0:F6}", DaqAction.GetMFCflowFromVolts(currentADin[i], i + 1)));
+                    await swriter.WriteAsync(string.Format("\t{0:F6}", DaqAction.GetMFCflowFromVolts(currentADin[i], i, maxFlowMFCs)));
                 }
             }
 
@@ -409,7 +409,7 @@ namespace MFCcontrol
             double time = Math.Round(Convert.ToDouble(watch.GetMsElapsed()) / 1000.0 / 60.0, 2);
 
             for (int i = 0; i < mfcControlArray.Length; i++)
-                graphMfcs1.chart1.Series[i].Points.AddXY(time, DaqAction.GetMFCflowFromVolts(currentADin[i], i+1));
+                graphMfcs1.chart1.Series[i].Points.AddXY(time, DaqAction.GetMFCflowFromVolts(currentADin[i], i, maxFlowMFCs));
 
             ADgraphUpdateCnt++;
 
@@ -489,7 +489,7 @@ namespace MFCcontrol
 
         public void mfcTextBox_ValueChanged(int mfcNumber, decimal valueNew)
         {
-            double inputValue = DaqAction.GetVoltsFromMFCflow(valueNew.ToString(), mfcNumber);
+            double inputValue = DaqAction.GetVoltsFromMFCflow(valueNew.ToString(), mfcNumber-1,maxFlowMFCs);
           
             if ( stateMFCs[mfcNumber-1] == true)
                 daqOutputMFC.UpdateDaqOut(mfcNumber - 1, inputValue);

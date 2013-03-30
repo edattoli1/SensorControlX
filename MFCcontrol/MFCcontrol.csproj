@@ -111,7 +111,7 @@
     <Compile Include="HelperClasses\GenStopwatch.cs" />
     <Compile Include="HelperClasses\GenTimer.cs" />
     <Compile Include="HelperClasses\Ke648xControl.cs" />
-    <Compile Include="Settings.cs" />
+    <Compile Include="Properties\Settings.cs" />
     <Compile Include="UserControls\GraphMfcs.cs">
       <SubType>UserControl</SubType>
     </Compile>

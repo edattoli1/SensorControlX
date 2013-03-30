@@ -124,7 +124,7 @@ namespace MFCcontrol
                 mfc1TextBox.Enabled = true;
                 try
                 {
-                    parentForm.daqOutputMFC.UpdateDaqOut(mfcNumber - 1, DaqAction.GetVoltsFromMFCflow(mfc1TextBox.Value.ToString(), 1));
+                    parentForm.daqOutputMFC.UpdateDaqOut(mfcNumber - 1, DaqAction.GetVoltsFromMFCflow(mfc1TextBox.Value.ToString(), mfcNumber-1,parentForm.maxFlowMFCs));
                 }
                 catch
                 {

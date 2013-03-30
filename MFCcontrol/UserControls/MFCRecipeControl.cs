@@ -127,19 +127,8 @@ namespace MFCcontrol
                 SShtLoad sshtLoad1 = new SShtLoad();
 
                 parentForm.stateMFCs = sshtLoad1.LoadMFCstate(this.openFileDialog1.FileName);
-                Properties.Settings.Default.MFC1enable = parentForm.stateMFCs[0];
-                Properties.Settings.Default.MFC2enable = parentForm.stateMFCs[1];
-                Properties.Settings.Default.MFC3enable = parentForm.stateMFCs[2];
-                Properties.Settings.Default.MFC4enable = parentForm.stateMFCs[3];
 
                 parentForm.maxFlowMFCs = sshtLoad1.LoadMFCmaxFlows(this.openFileDialog1.FileName);
-
-                //Update Size of MFCs in Program Wide Value Storage
-                Properties.Settings.Default.MFC1maxRange = parentForm.maxFlowMFCs[0].ToString();
-                Properties.Settings.Default.MFC2maxRange = parentForm.maxFlowMFCs[1].ToString();
-                Properties.Settings.Default.MFC3maxRange = parentForm.maxFlowMFCs[2].ToString();
-                Properties.Settings.Default.MFC4maxRange = parentForm.maxFlowMFCs[3].ToString();
-                Properties.Settings.Default.Save();
 
                 parentForm.mfcControl1.SetMFCnumber(1);
                 parentForm.mfcControl2.SetMFCnumber(2);
@@ -184,7 +173,7 @@ namespace MFCcontrol
                         if (rowArray[i] == "")
                             currentRow_d[i] = -1.0;
                         else
-                            currentRow_d[i] = DaqAction.GetVoltsFromMFCflow(rowArray[i], i);
+                            currentRow_d[i] = DaqAction.GetVoltsFromMFCflow(rowArray[i], i-1, parentForm.maxFlowMFCs);
                     }
                     parentForm.ADoutTableVolts.Add(currentRow_d);
                 }

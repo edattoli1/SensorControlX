@@ -135,40 +135,19 @@ namespace MFCcontrol
         }
 
 
-        static public double GetVoltsFromMFCflow(string inputFlow, int mfcNumber)
+        static public double GetVoltsFromMFCflow(string inputFlow, int mfcNumber, int[] maxFlows)
         {
             double inputFlow_d = Convert.ToDouble(inputFlow);
 
-            switch (mfcNumber)
-            {
-                case 1:
-                    return (inputFlow_d / Convert.ToDouble(Properties.Settings.Default.MFC1maxRange)) * 5;
-                case 2:
-                    return (inputFlow_d / Convert.ToDouble(Properties.Settings.Default.MFC2maxRange)) * 5;
-                case 3:
-                    return (inputFlow_d / Convert.ToDouble(Properties.Settings.Default.MFC3maxRange)) * 5;
-                case 4:
-                    return (inputFlow_d / Convert.ToDouble(Properties.Settings.Default.MFC4maxRange)) * 5;
-                default:
-                    return 0;
-            }
+            return (inputFlow_d / Convert.ToDouble(maxFlows[mfcNumber])) * 5;
+
         }
 
-        static public double GetMFCflowFromVolts(double inputVolts, int mfcNumber)
+        static public double GetMFCflowFromVolts(double inputVolts, int mfcNumber, int[] maxFlows)
         {
-            switch (mfcNumber)
-            {
-                case 1:
-                    return (inputVolts / 5) * Convert.ToDouble(Properties.Settings.Default.MFC1maxRange);
-                case 2:
-                    return (inputVolts / 5) * Convert.ToDouble(Properties.Settings.Default.MFC2maxRange);
-                case 3:
-                    return (inputVolts / 5) * Convert.ToDouble(Properties.Settings.Default.MFC3maxRange);
-                case 4:
-                    return (inputVolts / 5) * Convert.ToDouble(Properties.Settings.Default.MFC4maxRange);
-                default:
-                    return 0;
-            }
+
+            return (inputVolts / 5) * Convert.ToDouble(maxFlows[mfcNumber]);
+
         }
 
 
