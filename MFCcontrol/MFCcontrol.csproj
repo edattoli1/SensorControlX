@@ -122,6 +122,12 @@
     <Compile Include="HelperClasses\GenTimer.cs" />
     <Compile Include="HelperClasses\Ke648xControl.cs" />
     <Compile Include="Properties\Settings.cs" />
+    <Compile Include="SwitchStateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SwitchStateForm.Designer.cs">
+      <DependentUpon>SwitchStateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SwitchMatrixControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -177,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ke648xGUI.resx">
       <DependentUpon>Ke648xGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchStateForm.resx">
+      <DependentUpon>SwitchStateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SwitchMatrixControl.resx">
       <DependentUpon>SwitchMatrixControl.cs</DependentUpon>

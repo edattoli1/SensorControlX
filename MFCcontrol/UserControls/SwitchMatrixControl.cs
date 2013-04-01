@@ -18,6 +18,7 @@ namespace MFCcontrol
         internal Form1 parentForm;
         internal NISwitch switchSession;
         static private ConfigureSwitchMatrix configSwitchMatrixForm1;
+        static private SwitchStateForm switchStateForm1;
 
         public SwitchMatrixControl()
         {
@@ -71,12 +72,36 @@ namespace MFCcontrol
             if (enableSwitchCheckBox.Checked == true)
             {
                 InitializeSwitchSession();
+                viewSwitchStateButton.Enabled = true;
+                Settings.Default.SwitchMatrixEnable = true;
             }
             else
             {
                 CloseSession();
+                Settings.Default.SwitchMatrixEnable = false;
             }
 
+        }
+
+        private void viewSwitchStateButton_Click(object sender, EventArgs e)
+        {
+            //if (switchStateForm1 == null)
+            //{
+                switchStateForm1 = new SwitchStateForm();
+                switchStateForm1.parentControl = this;
+                switchStateForm1.switchSession = switchSession;
+            //}
+
+            viewSwitchStateButton.Enabled = false;
+            configureSwitchButton.Enabled = false;
+
+            switchStateForm1.Show();
+        }
+
+        private void SwitchMatrixControl_Load(object sender, EventArgs e)
+        {
+            if (Settings.Default.SwitchMatrixEnable == true)
+                enableSwitchCheckBox.Checked = true;
         }
     }
 }

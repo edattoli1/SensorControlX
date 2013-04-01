@@ -358,5 +358,41 @@ namespace MFCcontrol.Properties {
                 this["SwitchTopologyName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SwitchMatrixEnable {
+            get {
+                return ((bool)(this["SwitchMatrixEnable"]));
+            }
+            set {
+                this["SwitchMatrixEnable"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        public double SwitchRefreshMs {
+            get {
+                return ((double)(this["SwitchRefreshMs"]));
+            }
+            set {
+                this["SwitchRefreshMs"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SwitchRefreshEnable {
+            get {
+                return ((bool)(this["SwitchRefreshEnable"]));
+            }
+            set {
+                this["SwitchRefreshEnable"] = value;
+            }
+        }
     }
 }

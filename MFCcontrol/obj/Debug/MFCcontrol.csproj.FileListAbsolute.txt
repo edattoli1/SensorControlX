@@ -83,3 +83,5 @@ C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\ob
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\SensorControl.application
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\SensorControl.exe
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\SensorControl.pdb
+C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.csprojResolveAssemblyReference.cache
+C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.SwitchStateForm.resources

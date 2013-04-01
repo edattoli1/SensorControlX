@@ -71,12 +71,14 @@
             // 
             // viewSwitchStateButton
             // 
+            this.viewSwitchStateButton.Enabled = false;
             this.viewSwitchStateButton.Location = new System.Drawing.Point(148, 91);
             this.viewSwitchStateButton.Name = "viewSwitchStateButton";
             this.viewSwitchStateButton.Size = new System.Drawing.Size(99, 45);
             this.viewSwitchStateButton.TabIndex = 15;
-            this.viewSwitchStateButton.Text = "View Switch State";
+            this.viewSwitchStateButton.Text = "View, Edit Switch State";
             this.viewSwitchStateButton.UseVisualStyleBackColor = true;
+            this.viewSwitchStateButton.Click += new System.EventHandler(this.viewSwitchStateButton_Click);
             // 
             // label2
             // 
@@ -96,6 +98,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "SwitchMatrixControl";
             this.Size = new System.Drawing.Size(280, 155);
+            this.Load += new System.EventHandler(this.SwitchMatrixControl_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -106,8 +109,8 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button viewSwitchStateButton;
-        private System.Windows.Forms.Button configureSwitchButton;
-        private System.Windows.Forms.CheckBox enableSwitchCheckBox;
+        internal System.Windows.Forms.CheckBox enableSwitchCheckBox;
+        internal System.Windows.Forms.Button viewSwitchStateButton;
+        internal System.Windows.Forms.Button configureSwitchButton;
     }
 }

@@ -79,6 +79,8 @@ namespace MFCcontrol
             //Let sensor bias user control know about parent form
             sensorBiasControl1.parentForm = this;
 
+            switchMatrixControl1.parentForm = this;
+
             // Initialize mfcControlList
 
             mfcControlArray = new MFCcontrolTemplate[] { mfcControl1, mfcControl2, mfcControl3, mfcControl4, mfcControl5, mfcControl6, mfcControl7, mfcControl8 };
