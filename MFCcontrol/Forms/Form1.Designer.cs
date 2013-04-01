@@ -46,6 +46,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.controlPicoammBox = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.switchMatrixControl1 = new MFCcontrol.SwitchMatrixControl();
             this.graphMfcs1 = new MFCcontrol.GraphMfcs();
             this.mfcControl8 = new MFCcontrol.MFCcontrolTemplate();
             this.mfcControl7 = new MFCcontrol.MFCcontrolTemplate();
@@ -261,7 +262,7 @@
             this.panel5.Controls.Add(this.controlPicoammBox);
             this.panel5.Controls.Add(this.label7);
             this.panel5.Controls.Add(this.picoammSettingsButton);
-            this.panel5.Location = new System.Drawing.Point(43, 719);
+            this.panel5.Location = new System.Drawing.Point(611, 624);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(305, 100);
             this.panel5.TabIndex = 23;
@@ -289,6 +290,13 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(565, 341);
             this.panel2.TabIndex = 38;
+            // 
+            // switchMatrixControl1
+            // 
+            this.switchMatrixControl1.Location = new System.Drawing.Point(21, 713);
+            this.switchMatrixControl1.Name = "switchMatrixControl1";
+            this.switchMatrixControl1.Size = new System.Drawing.Size(276, 158);
+            this.switchMatrixControl1.TabIndex = 40;
             // 
             // graphMfcs1
             // 
@@ -355,7 +363,7 @@
             // 
             // sensorBiasControl1
             // 
-            this.sensorBiasControl1.Location = new System.Drawing.Point(384, 694);
+            this.sensorBiasControl1.Location = new System.Drawing.Point(326, 730);
             this.sensorBiasControl1.Name = "sensorBiasControl1";
             this.sensorBiasControl1.Size = new System.Drawing.Size(485, 161);
             this.sensorBiasControl1.TabIndex = 27;
@@ -371,7 +379,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(953, 867);
+            this.ClientSize = new System.Drawing.Size(961, 898);
+            this.Controls.Add(this.switchMatrixControl1);
             this.Controls.Add(this.graphMfcs1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.sensorBiasControl1);
@@ -426,6 +435,7 @@
         private System.Windows.Forms.Panel panel2;
         internal MFCcontrolTemplate mfcControl8;
         internal GraphMfcs graphMfcs1;
+        private SwitchMatrixControl switchMatrixControl1;
         
     }
 }

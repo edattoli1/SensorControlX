@@ -80,5 +80,11 @@
     <Setting Name="sensorBiasMinRange" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="PxiResourceName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PXI1Slot2</Value>
+    </Setting>
+    <Setting Name="SwitchTopologyName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2535/1-Wire 4x136 Matrix</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

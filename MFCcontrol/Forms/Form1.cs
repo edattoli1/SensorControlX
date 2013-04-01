@@ -65,6 +65,7 @@ namespace MFCcontrol
         //used for closing file properly when stop or exit button is hit
         internal bool IsADoutfileOpen = false;
 
+
         public Form1()
         {
             InitializeComponent();
