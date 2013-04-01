@@ -47,7 +47,8 @@ namespace MFCcontrol
                 if (parentForm.stateMFCs[i] == true)
                 {
                     numActiveMFCs++;
-                    headerString += "\tMFC " + (i + 1).ToString() + " Flow (sccm)";
+                    //headerString += "\tMFC " + (i + 1).ToString() + " Flow (sccm)";
+                    headerString += "\t"+ parentForm.mfcGasNames[i] + " Flow (sccm)";
                 }
             }
 
