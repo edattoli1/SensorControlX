@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.enableSwitchCheckBox = new System.Windows.Forms.CheckBox();
             this.configureSwitchButton = new System.Windows.Forms.Button();
             this.viewSwitchStateButton = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -39,14 +39,25 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.enableSwitchCheckBox);
             this.panel1.Controls.Add(this.configureSwitchButton);
             this.panel1.Controls.Add(this.viewSwitchStateButton);
-            this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(273, 148);
             this.panel1.TabIndex = 0;
+            // 
+            // enableSwitchCheckBox
+            // 
+            this.enableSwitchCheckBox.AutoSize = true;
+            this.enableSwitchCheckBox.Location = new System.Drawing.Point(26, 50);
+            this.enableSwitchCheckBox.Name = "enableSwitchCheckBox";
+            this.enableSwitchCheckBox.Size = new System.Drawing.Size(157, 21);
+            this.enableSwitchCheckBox.TabIndex = 1;
+            this.enableSwitchCheckBox.Text = "Control Switch Matrix";
+            this.enableSwitchCheckBox.UseVisualStyleBackColor = true;
+            this.enableSwitchCheckBox.CheckedChanged += new System.EventHandler(this.enableSwitchCheckBox_CheckedChanged);
             // 
             // configureSwitchButton
             // 
@@ -66,17 +77,6 @@
             this.viewSwitchStateButton.TabIndex = 15;
             this.viewSwitchStateButton.Text = "View Switch State";
             this.viewSwitchStateButton.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(32, 56);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(134, 21);
-            this.checkBox1.TabIndex = 14;
-            this.checkBox1.Text = "Control PXI-2535";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // label2
             // 
@@ -106,8 +106,8 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button viewSwitchStateButton;
         private System.Windows.Forms.Button configureSwitchButton;
+        private System.Windows.Forms.CheckBox enableSwitchCheckBox;
     }
 }
