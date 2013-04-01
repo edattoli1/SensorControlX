@@ -24,7 +24,6 @@ namespace MFCcontrol
         private NationalInstruments.PrecisionTimeSpan maximumTime = new NationalInstruments.PrecisionTimeSpan(5);
         private GenTimer refreshTimer;
         private CheckBox[] cb;
-        private static bool refreshActive;
         
         public SwitchStateForm()
         {
@@ -77,8 +76,6 @@ namespace MFCcontrol
             string relayName = "";
             int switchIterator = 0;
 
-            refreshActive = true;
-
             for (int j = 0; j < 136; j++)
             {
                 for (int i = 0; i < 4; i++)
@@ -88,16 +85,6 @@ namespace MFCcontrol
                     cb[switchIterator].CheckedChanged -= SwitchStateForm_CheckedChanged;
                     try
                     {
-                        //if ((switchSession.RelayOperations.GetRelayPosition(relayName) == SwitchRelayPosition.Close) )
-                        //{
-                        //    cb[switchIterator].Checked = true;
-                        //    Debug.WriteLine("yes");
-                        //}
-                        //else
-                        //{
-                        //    cb[switchIterator].Checked = false;
-                        //    Debug.WriteLine("no");
-                        //}
 
                         // if switch is actually closed and gui says it is open, change state
                         if ((switchSession.RelayOperations.GetRelayPosition(relayName) == SwitchRelayPosition.Close) && (cb[switchIterator].Checked == false))
@@ -121,7 +108,6 @@ namespace MFCcontrol
                     switchIterator++;
                 }
             }
-            refreshActive = false;
         }
 
 
@@ -281,8 +267,7 @@ namespace MFCcontrol
 
         private void refreshListCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            //if (refreshActive)
-            //    return;
+
             
             if (refreshListCheckBox.Checked == true)
             {
@@ -303,5 +288,54 @@ namespace MFCcontrol
             Settings.Default.SwitchRefreshMs = Convert.ToDouble(refreshRateUpDown.Value);
         }
 
+        private void row2CloseAllButton_click(object sender, EventArgs e)
+        {
+            int switchIterator = 0;
+            string relayName = "";
+
+            for (int j = 0; j < 136; j++)
+            {
+
+                    relayName = "kr" + 1.ToString() + "c" + j.ToString();
+                    cb[switchIterator].CheckedChanged -= SwitchStateForm_CheckedChanged;
+                    try
+                    {
+                        ChangeRelayPosition(relayName, SwitchRelayAction.CloseRelay);
+
+                    }
+                    catch (System.Exception ex)
+                    {
+                        ShowError(ex.Message);
+                    }
+                    switchIterator++;
+                
+            }
+        }
+
+        private void openAllButton_Click(object sender, EventArgs e)
+        {
+            int switchIterator = 0;
+            string relayName = "";
+            
+            for (int j = 0; j < 136; j++)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    relayName = "kr" + i.ToString() + "c" + j.ToString();
+                    cb[switchIterator].CheckedChanged -= SwitchStateForm_CheckedChanged;
+                    try
+                    {
+                        ChangeRelayPosition(relayName, SwitchRelayAction.OpenRelay);
+
+                    }
+                    catch (System.Exception ex)
+                    {
+                        ShowError(ex.Message);
+                    }
+                    switchIterator++;
+                }
+            
+        }
+        }
     }
 }
