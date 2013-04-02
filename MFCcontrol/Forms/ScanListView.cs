@@ -41,14 +41,20 @@ namespace MFCcontrol
 
             // Set the column header names.
             for (int i = 0; i <  Properties.Settings.Default.SwitchMatrixColsNum; i++)
-                dataGridView1.Columns[i].Name = (i+1).ToString();
-
-            // Load read values from spreadsheet for device state
-            foreach (string[] rowArray in parentControl.deviceListState)
             {
-                dataGridView1.Rows.Add(rowArray);
+                dataGridView1.Columns[i].Name = (i+1).ToString();
+                dataGridView1.Columns[i].Width = 55;
             }
 
+            // Load read values from spreadsheet for device state
+            dataGridView1.Rows.Add();
+            string[] rowArraysTotal = new string[0]; //= new string[Properties.Settings.Default.SwitchMatrixColsNum];
+            foreach (string[] rowArray in parentControl.deviceListState)
+            {
+                rowArraysTotal = rowArraysTotal.Concat(rowArray).ToArray();
+
+            }
+            dataGridView1.Rows.Add(rowArraysTotal);
         }
     }
 }

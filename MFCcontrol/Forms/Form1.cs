@@ -39,7 +39,7 @@ namespace MFCcontrol
         private int ADgraphUpdateCnt;
         private double[] presentMFCsetting;
         private static Ke648xGUI PicoammForm;
-        static private Ke648xControl PicoammControl;
+        internal Ke648xControl PicoammControl;
 
         // Array which contains all the individual MFC Controls on this form
         internal MFCcontrolTemplate[] mfcControlArray;

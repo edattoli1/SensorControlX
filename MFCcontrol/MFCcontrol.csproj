@@ -134,13 +134,13 @@
     <Compile Include="Forms\SwitchStateForm.Designer.cs">
       <DependentUpon>SwitchStateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScanListView.cs">
+    <Compile Include="Forms\ScanListView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ScanListView.Designer.cs">
+    <Compile Include="Forms\ScanListView.Designer.cs">
       <DependentUpon>ScanListView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SwitchOperations.cs" />
+    <Compile Include="HelperClasses\SwitchOperations.cs" />
     <Compile Include="UserControls\SwitchMatrixControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -203,7 +203,7 @@
     <EmbeddedResource Include="Forms\SwitchStateForm.resx">
       <DependentUpon>SwitchStateForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ScanListView.resx">
+    <EmbeddedResource Include="Forms\ScanListView.resx">
       <DependentUpon>ScanListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SwitchMatrixControl.resx">

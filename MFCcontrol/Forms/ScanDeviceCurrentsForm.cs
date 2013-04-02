@@ -36,15 +36,15 @@ namespace MFCcontrol
             tb = new TextBox[Settings.Default.SwitchMatrixRowsNum * Settings.Default.SwitchMatrixColsNum];
             Label[] lbl = new Label[Settings.Default.SwitchMatrixColsNum];
 
-            int switchIterator = 0;
+            int deviceIterator = 0;
 
-            DisplayPartSwitchMatrix( lbl, ref switchIterator, 0, 10, 10);
-            DisplayPartSwitchMatrix( lbl, ref switchIterator, 34, 10, 160);
-            DisplayPartSwitchMatrix( lbl, ref switchIterator, 68, 10, 310);
-            DisplayPartSwitchMatrix( lbl, ref switchIterator, 102, 10, 460);
+            DisplayPartSwitchMatrix(lbl, ref deviceIterator, 0, 10, 10);
+            DisplayPartSwitchMatrix(lbl, ref deviceIterator, 34, 10, 80);
+            DisplayPartSwitchMatrix(lbl, ref deviceIterator, 68, 10, 180);
+            DisplayPartSwitchMatrix(lbl, ref deviceIterator, 102, 10, 280);
         }
 
-        private void DisplayPartSwitchMatrix(Label[] lbl, ref int switchIterator, int startSwitch, int originX, int originY)
+        private void DisplayPartSwitchMatrix(Label[] lbl, ref int deviceIterator, int startSwitch, int originX, int originY)
         {
             int xcoord = originX;
             int ycoord = originY;
@@ -64,39 +64,26 @@ namespace MFCcontrol
                 this.Controls.Add(lbl[j]);
 
 
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < 1; i++)
                 {
-                    tb[switchIterator] = new TextBox();
+                    tb[deviceIterator] = new TextBox();
                     relayName = "r" + i.ToString() + "c" + j.ToString();
-                    tb[switchIterator].Name = "textBox" + relayName;
-                    tb[switchIterator].Width = 35;
-                    tb[switchIterator].Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    tb[deviceIterator].Name = "textBox" + relayName;
+                    tb[deviceIterator].Width = 35;
+                    tb[deviceIterator].Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
-                    tb[switchIterator].Height = 10;
-                    tb[switchIterator].Margin = new Padding(3);
-                    tb[switchIterator].Padding = new Padding(3);
-                    tb[switchIterator].Enabled = false;
+                    tb[deviceIterator].Height = 10;
+                    tb[deviceIterator].Margin = new Padding(3);
+                    tb[deviceIterator].Padding = new Padding(3);
+                    tb[deviceIterator].Enabled = false;
 
-                    ycoord += tb[switchIterator].Height + 2;
-                    tb[switchIterator].Visible = true;
-                    tb[switchIterator].Location = new Point(xcoord, ycoord);
+                    ycoord += tb[deviceIterator].Height + 2;
+                    tb[deviceIterator].Visible = true;
+                    tb[deviceIterator].Location = new Point(xcoord, ycoord);
 
-                    //try
-                    //{
-                    //    if (switchSession.RelayOperations.GetRelayPosition("k" + relayName) == SwitchRelayPosition.Close)
-                    //        cb[switchIterator].Checked = true;
-                    //    else
-                    //        cb[switchIterator].Checked = false;
+                    this.Controls.Add(tb[deviceIterator]);
 
-                    //}
-                    //catch (System.Exception ex)
-                    //{
-                    //    ShowError(ex.Message);
-                    //}
-
-                    this.Controls.Add(tb[switchIterator]);
-
-                    switchIterator++;
+                    deviceIterator++;
                 }
                 xcoord += 40;
             }
@@ -110,10 +97,9 @@ namespace MFCcontrol
             
             string relayNameClose = "";
             string relayNameOpen = "";
-            
+
             for (int j = 0; j < Settings.Default.SwitchMatrixColsNum; j++)
             {
-
                 
                 if (parentControl.parentForm.devicesToScan[j] == true)
                 {
@@ -126,6 +112,8 @@ namespace MFCcontrol
                         parentControl.switchSession.RelayOperations.RelayControl(relayNameRow1, SwitchRelayAction.OpenRelay);
 
                         //Read Current
+                        tb[j].Text = parentControl.parentForm.PicoammControl.GetReading().ToString("0.000");
+
                         Thread.Sleep(50);
 
                         parentControl.switchSession.RelayOperations.RelayControl(relayNameRow1, SwitchRelayAction.CloseRelay);
