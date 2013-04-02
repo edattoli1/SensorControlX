@@ -65,10 +65,14 @@ namespace MFCcontrol
         //used for closing file properly when stop or exit button is hit
         internal bool IsADoutfileOpen = false;
 
+        // nxn matrix containing whether switch matrix should connect this device during scan
+        internal bool[,] devicesToScan;
 
         public Form1()
         {
             InitializeComponent();
+
+            devicesToScan = new bool[Settings.Default.SwitchMatrixRowsNum, Settings.Default.SwitchMatrixColsNum];
 
             //Let graph user control  know about parent form
             graphMfcs1.parentForm = this;

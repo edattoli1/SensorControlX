@@ -95,5 +95,11 @@
     <Setting Name="SwitchRefreshEnable" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="SwitchMatrixRowsNum" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="SwitchMatrixColsNum" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">136</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

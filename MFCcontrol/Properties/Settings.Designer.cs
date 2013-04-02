@@ -394,5 +394,29 @@ namespace MFCcontrol.Properties {
                 this["SwitchRefreshEnable"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        public int SwitchMatrixRowsNum {
+            get {
+                return ((int)(this["SwitchMatrixRowsNum"]));
+            }
+            set {
+                this["SwitchMatrixRowsNum"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("136")]
+        public int SwitchMatrixColsNum {
+            get {
+                return ((int)(this["SwitchMatrixColsNum"]));
+            }
+            set {
+                this["SwitchMatrixColsNum"] = value;
+            }
+        }
     }
 }

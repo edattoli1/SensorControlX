@@ -36,8 +36,8 @@ namespace MFCcontrol
             parentControl.enableSwitchCheckBox.Enabled = false;
             
             
-            cb = new CheckBox[136 * 4];
-            Label[] lbl = new Label[136];
+            cb = new CheckBox[Settings.Default.SwitchMatrixRowsNum * Settings.Default.SwitchMatrixColsNum];
+            Label[] lbl = new Label[Settings.Default.SwitchMatrixColsNum];
 
             int switchIterator = 0;
 
@@ -76,9 +76,9 @@ namespace MFCcontrol
             string relayName = "";
             int switchIterator = 0;
 
-            for (int j = 0; j < 136; j++)
+            for (int j = 0; j < Settings.Default.SwitchMatrixColsNum; j++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < Settings.Default.SwitchMatrixRowsNum; i++)
                 {
                     relayName = "kr" + i.ToString() + "c" + j.ToString();
                     
@@ -292,7 +292,7 @@ namespace MFCcontrol
             int switchIterator = 0;
             string relayName = "";
 
-            for (int j = 0; j < 136; j++)
+            for (int j = 0; j < Settings.Default.SwitchMatrixColsNum; j++)
             {
 
                     relayName = "kr" + 1.ToString() + "c" + j.ToString();
@@ -314,10 +314,10 @@ namespace MFCcontrol
         {
             int switchIterator = 0;
             string relayName = "";
-            
-            for (int j = 0; j < 136; j++)
+
+            for (int j = 0; j < Settings.Default.SwitchMatrixColsNum; j++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < Settings.Default.SwitchMatrixRowsNum; i++)
                 {
                     relayName = "kr" + i.ToString() + "c" + j.ToString();
                     cb[switchIterator].CheckedChanged -= SwitchStateForm_CheckedChanged;

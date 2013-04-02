@@ -20,6 +20,10 @@ namespace MFCcontrol
         internal NISwitch switchSession;
         static private ConfigureSwitchMatrix configSwitchMatrixForm1;
         static private SwitchStateForm switchStateForm1;
+        private static ScanDeviceCurrentsForm scanDeviceCurrentsForm1;
+        private static ScanListView scanListView1;
+        internal bool isDeviceListLoaded = false;
+        internal List<string[]> deviceListState;
 
         public SwitchMatrixControl()
         {
@@ -73,13 +77,23 @@ namespace MFCcontrol
             if (enableSwitchCheckBox.Checked == true)
             {
                 InitializeSwitchSession();
-                viewSwitchStateButton.Enabled = true;
+                
                 Settings.Default.SwitchMatrixEnable = true;
+
+                viewSwitchStateButton.Enabled = true;
+
+                if (isDeviceListLoaded)
+                {
+                    viewSwitchStateButton.Enabled = true;
+                    ScanDeviceCurrentsButton.Enabled = true;
+                }
             }
             else
             {
                 CloseSession();
                 Settings.Default.SwitchMatrixEnable = false;
+                ScanDeviceCurrentsButton.Enabled = false;
+                viewSwitchStateButton.Enabled = false;
             }
 
         }
@@ -120,11 +134,30 @@ namespace MFCcontrol
 
                 SShtLoad sshtLoad1 = new SShtLoad();
 
-                sshtLoad1.LoadDeviceList(this.openFileDialog1.FileName);
+                deviceListState = sshtLoad1.LoadDeviceList(this.openFileDialog1.FileName);
 
+                // Load enabled devices into parent Form's bool array for device states
+                int rowIterator = 0;
+                foreach (string[] rowArray in deviceListState)
+                {
+                    for (int i = 0; i < rowArray.Length; i++)
+                    {
+                        if ( rowArray[i] != null)
+                            parentForm.devicesToScan[rowIterator, i] = true;
+                        else
+                            parentForm.devicesToScan[rowIterator, i] = false;
 
+                    }
+                        rowIterator++;
+                }
 
+                isDeviceListLoaded = true;
                 viewDeviceListButton.Enabled = true;
+
+                if (enableSwitchCheckBox.Checked == true)
+                {
+                    ScanDeviceCurrentsButton.Enabled = true;
+                }
             }
 
         }
@@ -145,6 +178,24 @@ namespace MFCcontrol
                 System.Windows.Forms.MessageBox.Show("File Access Exception " + ex.Message);
                 return true;
             }
+        }
+
+        private void ScanDeviceCurrentsButton_Click(object sender, EventArgs e)
+        {
+            ScanDeviceCurrentsButton.Enabled = false;
+            loadDeviceListButton.Enabled = false;
+
+            scanDeviceCurrentsForm1 = new ScanDeviceCurrentsForm();
+            scanDeviceCurrentsForm1.parentControl = this;
+            scanDeviceCurrentsForm1.Show();
+        }
+
+        private void viewDeviceListButton_Click(object sender, EventArgs e)
+        {
+            scanListView1 = new ScanListView();
+            scanListView1.parentControl = this;
+            viewDeviceListButton.Enabled = false;
+            scanListView1.Show();
         }
 
     }

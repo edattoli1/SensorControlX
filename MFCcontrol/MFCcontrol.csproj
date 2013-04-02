@@ -87,10 +87,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigureSwitchMatrix.cs">
+    <Compile Include="Forms\ConfigureSwitchMatrix.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConfigureSwitchMatrix.Designer.cs">
+    <Compile Include="Forms\ConfigureSwitchMatrix.Designer.cs">
       <DependentUpon>ConfigureSwitchMatrix.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ConfigBiasOutForm.cs">
@@ -111,6 +111,12 @@
     <Compile Include="Forms\Ke648xGUI.Designer.cs">
       <DependentUpon>Ke648xGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ScanDeviceCurrentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ScanDeviceCurrentsForm.Designer.cs">
+      <DependentUpon>ScanDeviceCurrentsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HelperClasses\DaqAction.cs" />
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
@@ -122,11 +128,17 @@
     <Compile Include="HelperClasses\GenTimer.cs" />
     <Compile Include="HelperClasses\Ke648xControl.cs" />
     <Compile Include="Properties\Settings.cs" />
-    <Compile Include="SwitchStateForm.cs">
+    <Compile Include="Forms\SwitchStateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SwitchStateForm.Designer.cs">
+    <Compile Include="Forms\SwitchStateForm.Designer.cs">
       <DependentUpon>SwitchStateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScanListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScanListView.Designer.cs">
+      <DependentUpon>ScanListView.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SwitchMatrixControl.cs">
       <SubType>UserControl</SubType>
@@ -169,7 +181,7 @@
     </Compile>
     <Compile Include="HelperClasses\SShtLoad.cs" />
     <Compile Include="HelperClasses\Util.cs" />
-    <EmbeddedResource Include="ConfigureSwitchMatrix.resx">
+    <EmbeddedResource Include="Forms\ConfigureSwitchMatrix.resx">
       <DependentUpon>ConfigureSwitchMatrix.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ConfigBiasOutForm.resx">
@@ -184,8 +196,14 @@
     <EmbeddedResource Include="Forms\Ke648xGUI.resx">
       <DependentUpon>Ke648xGUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SwitchStateForm.resx">
+    <EmbeddedResource Include="Forms\ScanDeviceCurrentsForm.resx">
+      <DependentUpon>ScanDeviceCurrentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SwitchStateForm.resx">
       <DependentUpon>SwitchStateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScanListView.resx">
+      <DependentUpon>ScanListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SwitchMatrixControl.resx">
       <DependentUpon>SwitchMatrixControl.cs</DependentUpon>

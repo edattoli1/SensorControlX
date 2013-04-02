@@ -92,6 +92,7 @@ namespace MFCcontrol
 
         }
 
+        // returns numSwitchMatrixRows x numSwitchMatrix sized List containing states in device scan spreadsheet
         public List<string[]> LoadDeviceList(string fileName)
         {
             using (SpreadsheetDocument document = SpreadsheetDocument.Open(fileName, false))

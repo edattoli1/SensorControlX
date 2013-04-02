@@ -293,9 +293,9 @@
             // 
             // switchMatrixControl1
             // 
-            this.switchMatrixControl1.Location = new System.Drawing.Point(21, 692);
+            this.switchMatrixControl1.Location = new System.Drawing.Point(934, 354);
             this.switchMatrixControl1.Name = "switchMatrixControl1";
-            this.switchMatrixControl1.Size = new System.Drawing.Size(276, 220);
+            this.switchMatrixControl1.Size = new System.Drawing.Size(276, 286);
             this.switchMatrixControl1.TabIndex = 40;
             // 
             // graphMfcs1
@@ -363,7 +363,7 @@
             // 
             // sensorBiasControl1
             // 
-            this.sensorBiasControl1.Location = new System.Drawing.Point(326, 730);
+            this.sensorBiasControl1.Location = new System.Drawing.Point(46, 713);
             this.sensorBiasControl1.Name = "sensorBiasControl1";
             this.sensorBiasControl1.Size = new System.Drawing.Size(485, 161);
             this.sensorBiasControl1.TabIndex = 27;
@@ -379,7 +379,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 902);
+            this.ClientSize = new System.Drawing.Size(1283, 902);
             this.Controls.Add(this.switchMatrixControl1);
             this.Controls.Add(this.graphMfcs1);
             this.Controls.Add(this.panel2);

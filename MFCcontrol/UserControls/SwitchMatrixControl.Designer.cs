@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ScanDeviceCurrentsButton = new System.Windows.Forms.Button();
+            this.viewDeviceListButton = new System.Windows.Forms.Button();
+            this.loadDeviceListButton = new System.Windows.Forms.Button();
             this.enableSwitchCheckBox = new System.Windows.Forms.CheckBox();
             this.configureSwitchButton = new System.Windows.Forms.Button();
             this.viewSwitchStateButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.loadDeviceListButton = new System.Windows.Forms.Button();
-            this.viewDeviceListButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -42,6 +43,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.ScanDeviceCurrentsButton);
             this.panel1.Controls.Add(this.viewDeviceListButton);
             this.panel1.Controls.Add(this.loadDeviceListButton);
             this.panel1.Controls.Add(this.enableSwitchCheckBox);
@@ -50,8 +52,40 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(261, 203);
+            this.panel1.Size = new System.Drawing.Size(261, 275);
             this.panel1.TabIndex = 0;
+            // 
+            // ScanDeviceCurrentsButton
+            // 
+            this.ScanDeviceCurrentsButton.Enabled = false;
+            this.ScanDeviceCurrentsButton.Location = new System.Drawing.Point(64, 209);
+            this.ScanDeviceCurrentsButton.Name = "ScanDeviceCurrentsButton";
+            this.ScanDeviceCurrentsButton.Size = new System.Drawing.Size(119, 45);
+            this.ScanDeviceCurrentsButton.TabIndex = 19;
+            this.ScanDeviceCurrentsButton.Text = "Scan Device Current Levels";
+            this.ScanDeviceCurrentsButton.UseVisualStyleBackColor = true;
+            this.ScanDeviceCurrentsButton.Click += new System.EventHandler(this.ScanDeviceCurrentsButton_Click);
+            // 
+            // viewDeviceListButton
+            // 
+            this.viewDeviceListButton.Enabled = false;
+            this.viewDeviceListButton.Location = new System.Drawing.Point(135, 140);
+            this.viewDeviceListButton.Name = "viewDeviceListButton";
+            this.viewDeviceListButton.Size = new System.Drawing.Size(90, 50);
+            this.viewDeviceListButton.TabIndex = 18;
+            this.viewDeviceListButton.Text = "View Device List";
+            this.viewDeviceListButton.UseVisualStyleBackColor = true;
+            this.viewDeviceListButton.Click += new System.EventHandler(this.viewDeviceListButton_Click);
+            // 
+            // loadDeviceListButton
+            // 
+            this.loadDeviceListButton.Location = new System.Drawing.Point(26, 140);
+            this.loadDeviceListButton.Name = "loadDeviceListButton";
+            this.loadDeviceListButton.Size = new System.Drawing.Size(89, 50);
+            this.loadDeviceListButton.TabIndex = 17;
+            this.loadDeviceListButton.Text = "Load Device List";
+            this.loadDeviceListButton.UseVisualStyleBackColor = true;
+            this.loadDeviceListButton.Click += new System.EventHandler(this.loadDeviceListButton_Click);
             // 
             // enableSwitchCheckBox
             // 
@@ -96,26 +130,6 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "SWITCH MATRIX CONTROL";
             // 
-            // loadDeviceListButton
-            // 
-            this.loadDeviceListButton.Location = new System.Drawing.Point(26, 140);
-            this.loadDeviceListButton.Name = "loadDeviceListButton";
-            this.loadDeviceListButton.Size = new System.Drawing.Size(89, 50);
-            this.loadDeviceListButton.TabIndex = 17;
-            this.loadDeviceListButton.Text = "Load Device List";
-            this.loadDeviceListButton.UseVisualStyleBackColor = true;
-            this.loadDeviceListButton.Click += new System.EventHandler(this.loadDeviceListButton_Click);
-            // 
-            // viewDeviceListButton
-            // 
-            this.viewDeviceListButton.Enabled = false;
-            this.viewDeviceListButton.Location = new System.Drawing.Point(135, 140);
-            this.viewDeviceListButton.Name = "viewDeviceListButton";
-            this.viewDeviceListButton.Size = new System.Drawing.Size(90, 50);
-            this.viewDeviceListButton.TabIndex = 18;
-            this.viewDeviceListButton.Text = "View Device List";
-            this.viewDeviceListButton.UseVisualStyleBackColor = true;
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -126,7 +140,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Name = "SwitchMatrixControl";
-            this.Size = new System.Drawing.Size(268, 209);
+            this.Size = new System.Drawing.Size(269, 281);
             this.Load += new System.EventHandler(this.SwitchMatrixControl_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -141,8 +155,9 @@
         internal System.Windows.Forms.CheckBox enableSwitchCheckBox;
         internal System.Windows.Forms.Button viewSwitchStateButton;
         internal System.Windows.Forms.Button configureSwitchButton;
-        private System.Windows.Forms.Button loadDeviceListButton;
-        private System.Windows.Forms.Button viewDeviceListButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        internal System.Windows.Forms.Button ScanDeviceCurrentsButton;
+        internal System.Windows.Forms.Button loadDeviceListButton;
+        internal System.Windows.Forms.Button viewDeviceListButton;
     }
 }
