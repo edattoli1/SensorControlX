@@ -80,9 +80,11 @@ namespace MFCcontrol
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    //relayName = "kr" + i.ToString() + "c" + j.ToString();
                     relayName = "kr" + i.ToString() + "c" + j.ToString();
+                    
+                    // Remove check box's check changed event handler so that refresh of check box state doesn't force a switch / relay state change
                     cb[switchIterator].CheckedChanged -= SwitchStateForm_CheckedChanged;
+                    
                     try
                     {
 
@@ -104,19 +106,16 @@ namespace MFCcontrol
                     {
                         ShowError(ex.Message);
                     }
+                    // Restore normal check box event handler
                     cb[switchIterator].CheckedChanged += SwitchStateForm_CheckedChanged;
+                    
                     switchIterator++;
                 }
             }
         }
 
-
-
-
         private void DisplayPartSwitchMatrix(CheckBox[] cb, Label[] lbl, ref int switchIterator, int startSwitch, int originX, int originY)
         {
-
-
             int xcoord = originX;
             int ycoord = originY;
             string relayName = "";
@@ -188,13 +187,13 @@ namespace MFCcontrol
             {
                 ShowError(ex.Message);
             }
-            finally
-            {
-                //Close session to switch module.
-                //CloseSession();
-                //ChangeControlState(true);
+            //finally
+            //{
+            //    //Close session to switch module.
+            //    //CloseSession();
+            //    //ChangeControlState(true);
 
-            }
+            //}
 
 
             //throw new NotImplementedException();
@@ -211,18 +210,18 @@ namespace MFCcontrol
             // Open the relay.
             switchSession.RelayOperations.RelayControl(relayName, position);
             // Wait for the relay to activate and debounce.
-            switchSession.Path.WaitForDebounce(maximumTime);
+            //switchSession.Path.WaitForDebounce(maximumTime);
         }
 
 
-        private void ChangeControlState(bool isEnabled)
-        {
-            //this.openRelayButton.Enabled = isEnabled;
-            //this.closeRelayButton.Enabled = isEnabled;
-            //this.resourceNameComboBox.Enabled = isEnabled;
-            //this.topologyNameComboBox.Enabled = isEnabled;
-            //this.relayNameTextBox.Enabled = isEnabled;
-        }
+        //private void ChangeControlState(bool isEnabled)
+        //{
+        //    //this.openRelayButton.Enabled = isEnabled;
+        //    //this.closeRelayButton.Enabled = isEnabled;
+        //    //this.resourceNameComboBox.Enabled = isEnabled;
+        //    //this.topologyNameComboBox.Enabled = isEnabled;
+        //    //this.relayNameTextBox.Enabled = isEnabled;
+        //}
 
         private static void ShowError(string message)
         {
@@ -301,7 +300,6 @@ namespace MFCcontrol
                     try
                     {
                         ChangeRelayPosition(relayName, SwitchRelayAction.CloseRelay);
-
                     }
                     catch (System.Exception ex)
                     {
@@ -334,7 +332,6 @@ namespace MFCcontrol
                     }
                     switchIterator++;
                 }
-            
         }
         }
     }

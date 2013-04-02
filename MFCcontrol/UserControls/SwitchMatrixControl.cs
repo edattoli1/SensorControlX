@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using NationalInstruments.ModularInstruments.NISwitch;
 using NationalInstruments.ModularInstruments.SystemServices.DeviceServices;
 using MFCcontrol.Properties;
+using System.IO;
 
 namespace MFCcontrol
 {
@@ -102,6 +103,49 @@ namespace MFCcontrol
         {
             if (Settings.Default.SwitchMatrixEnable == true)
                 enableSwitchCheckBox.Checked = true;
+
+            openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
         }
+
+        private void loadDeviceListButton_Click(object sender, EventArgs e)
+        {
+            DialogResult diagResult = this.openFileDialog1.ShowDialog();
+
+            if (diagResult == DialogResult.OK) // Test result.
+            {
+                if (FileInUse(this.openFileDialog1.FileName) == true)
+                    return;
+
+                SShtLoad sshtLoad1 = new SShtLoad();
+
+                sshtLoad1.LoadDeviceList(this.openFileDialog1.FileName);
+
+
+
+                viewDeviceListButton.Enabled = true;
+            }
+
+        }
+
+
+        static bool FileInUse(string path)
+        {
+            try
+            {
+                using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+                {
+                    var test = fs.CanWrite;
+                }
+                return false;
+            }
+            catch (IOException ex)
+            {
+                System.Windows.Forms.MessageBox.Show("File Access Exception " + ex.Message);
+                return true;
+            }
+        }
+
     }
 }

@@ -293,9 +293,9 @@
             // 
             // switchMatrixControl1
             // 
-            this.switchMatrixControl1.Location = new System.Drawing.Point(21, 713);
+            this.switchMatrixControl1.Location = new System.Drawing.Point(21, 692);
             this.switchMatrixControl1.Name = "switchMatrixControl1";
-            this.switchMatrixControl1.Size = new System.Drawing.Size(276, 158);
+            this.switchMatrixControl1.Size = new System.Drawing.Size(276, 220);
             this.switchMatrixControl1.TabIndex = 40;
             // 
             // graphMfcs1
@@ -379,7 +379,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(961, 898);
+            this.ClientSize = new System.Drawing.Size(968, 902);
             this.Controls.Add(this.switchMatrixControl1);
             this.Controls.Add(this.graphMfcs1);
             this.Controls.Add(this.panel2);

@@ -91,6 +91,48 @@ namespace MFCcontrol
             return returnArray;
 
         }
+
+        public List<string[]> LoadDeviceList(string fileName)
+        {
+            using (SpreadsheetDocument document = SpreadsheetDocument.Open(fileName, false))
+            {
+                WorkbookPart wbPart = document.WorkbookPart;
+
+                // Find the sheet with the supplied name, and then use that Sheet object
+                // to retrieve a reference to the appropriate worksheet.
+                Sheet theSheet = wbPart.Workbook.Descendants<Sheet>().
+                  Where(s => s.Name == sheetName).FirstOrDefault();
+
+                if (theSheet == null)
+                {
+                    throw new ArgumentException("sheetName");
+                }
+
+                // Retrieve a reference to the worksheet part, and then use its Worksheet property to get 
+                // a reference to the cell whose address matches the address you've supplied:
+                WorksheetPart wsPart = (WorksheetPart)(wbPart.GetPartById(theSheet.Id));
+
+                int numCols = 34;
+                
+                //start at this row in the spreadsheet file
+                int rowIterator = 2;
+
+                string[] currentRow = new string[numCols];
+
+                for (int i = 1; i <= 4; i++)
+                {
+                    currentRow = XLGetDeviceRow(numCols, rowIterator.ToString(), wsPart);
+
+                    tableLoad.Add(currentRow);
+                    rowIterator += 3;
+                }
+            }
+
+            return tableLoad;
+
+            }
+        
+        
         
         public List<string[]> Load(string fileName)
         {
@@ -152,6 +194,22 @@ namespace MFCcontrol
             return returnList;
         }
 
+        public static string[] XLGetDeviceRow(int numCols, string sSheetRowNum, WorksheetPart wsPart)
+        {
+            string[] returnList = new string[numCols];
+            int returnListIterator = 0;
+
+            for (char c = 'B'; c <= 'Z'; c++)
+            {
+                returnList[returnListIterator] = XLGetCellValue(wsPart, c + sSheetRowNum);
+                returnListIterator++;
+            }
+
+            return returnList;
+        }
+
+
+
         // XLGetCellValue returns a string containing the cell value at certain cell (addressName)
         // This function does not work on cells that contain strings
 
@@ -164,7 +222,7 @@ namespace MFCcontrol
               Where(c => c.CellReference == addressName).FirstOrDefault();
 
             // If the cell doesn't exist, return an empty string:
-            if (theCell != null)
+            if ((theCell != null) && (theCell.CellValue != null) )
             {
                 //value = theCell.InnerText;
 

@@ -33,19 +33,24 @@
             this.configureSwitchButton = new System.Windows.Forms.Button();
             this.viewSwitchStateButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.loadDeviceListButton = new System.Windows.Forms.Button();
+            this.viewDeviceListButton = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.viewDeviceListButton);
+            this.panel1.Controls.Add(this.loadDeviceListButton);
             this.panel1.Controls.Add(this.enableSwitchCheckBox);
             this.panel1.Controls.Add(this.configureSwitchButton);
             this.panel1.Controls.Add(this.viewSwitchStateButton);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(273, 148);
+            this.panel1.Size = new System.Drawing.Size(261, 203);
             this.panel1.TabIndex = 0;
             // 
             // enableSwitchCheckBox
@@ -61,7 +66,7 @@
             // 
             // configureSwitchButton
             // 
-            this.configureSwitchButton.Location = new System.Drawing.Point(32, 96);
+            this.configureSwitchButton.Location = new System.Drawing.Point(25, 85);
             this.configureSwitchButton.Name = "configureSwitchButton";
             this.configureSwitchButton.Size = new System.Drawing.Size(89, 34);
             this.configureSwitchButton.TabIndex = 16;
@@ -72,7 +77,7 @@
             // viewSwitchStateButton
             // 
             this.viewSwitchStateButton.Enabled = false;
-            this.viewSwitchStateButton.Location = new System.Drawing.Point(148, 91);
+            this.viewSwitchStateButton.Location = new System.Drawing.Point(135, 80);
             this.viewSwitchStateButton.Name = "viewSwitchStateButton";
             this.viewSwitchStateButton.Size = new System.Drawing.Size(99, 45);
             this.viewSwitchStateButton.TabIndex = 15;
@@ -91,13 +96,37 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "SWITCH MATRIX CONTROL";
             // 
+            // loadDeviceListButton
+            // 
+            this.loadDeviceListButton.Location = new System.Drawing.Point(26, 140);
+            this.loadDeviceListButton.Name = "loadDeviceListButton";
+            this.loadDeviceListButton.Size = new System.Drawing.Size(89, 50);
+            this.loadDeviceListButton.TabIndex = 17;
+            this.loadDeviceListButton.Text = "Load Device List";
+            this.loadDeviceListButton.UseVisualStyleBackColor = true;
+            this.loadDeviceListButton.Click += new System.EventHandler(this.loadDeviceListButton_Click);
+            // 
+            // viewDeviceListButton
+            // 
+            this.viewDeviceListButton.Enabled = false;
+            this.viewDeviceListButton.Location = new System.Drawing.Point(135, 140);
+            this.viewDeviceListButton.Name = "viewDeviceListButton";
+            this.viewDeviceListButton.Size = new System.Drawing.Size(90, 50);
+            this.viewDeviceListButton.TabIndex = 18;
+            this.viewDeviceListButton.Text = "View Device List";
+            this.viewDeviceListButton.UseVisualStyleBackColor = true;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // SwitchMatrixControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Name = "SwitchMatrixControl";
-            this.Size = new System.Drawing.Size(280, 155);
+            this.Size = new System.Drawing.Size(268, 209);
             this.Load += new System.EventHandler(this.SwitchMatrixControl_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -112,5 +141,8 @@
         internal System.Windows.Forms.CheckBox enableSwitchCheckBox;
         internal System.Windows.Forms.Button viewSwitchStateButton;
         internal System.Windows.Forms.Button configureSwitchButton;
+        private System.Windows.Forms.Button loadDeviceListButton;
+        private System.Windows.Forms.Button viewDeviceListButton;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
