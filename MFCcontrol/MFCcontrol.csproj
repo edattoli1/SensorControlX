@@ -140,6 +140,7 @@
     <Compile Include="ScanListView.Designer.cs">
       <DependentUpon>ScanListView.cs</DependentUpon>
     </Compile>
+    <Compile Include="SwitchOperations.cs" />
     <Compile Include="UserControls\SwitchMatrixControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

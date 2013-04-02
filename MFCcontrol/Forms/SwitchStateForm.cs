@@ -142,7 +142,7 @@ namespace MFCcontrol
                     cb[switchIterator].Width = 15;
                     cb[switchIterator].Height = 15;
 
-                    ycoord += cb[switchIterator].Width + 2;
+                    ycoord += cb[switchIterator].Height + 2;
                     cb[switchIterator].Visible = true;
                     cb[switchIterator].Location = new Point(xcoord, ycoord);
                     cb[switchIterator].CheckedChanged += SwitchStateForm_CheckedChanged;

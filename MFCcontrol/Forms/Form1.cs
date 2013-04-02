@@ -66,13 +66,13 @@ namespace MFCcontrol
         internal bool IsADoutfileOpen = false;
 
         // nxn matrix containing whether switch matrix should connect this device during scan
-        internal bool[,] devicesToScan;
+        internal bool[] devicesToScan;
 
         public Form1()
         {
             InitializeComponent();
 
-            devicesToScan = new bool[Settings.Default.SwitchMatrixRowsNum, Settings.Default.SwitchMatrixColsNum];
+            devicesToScan = new bool[Settings.Default.SwitchMatrixColsNum];
 
             //Let graph user control  know about parent form
             graphMfcs1.parentForm = this;
@@ -598,12 +598,17 @@ namespace MFCcontrol
                 Properties.Settings.Default.PicoammeterControlEnable = controlPicoammBox.Checked;
                 picoammSettingsButton.Enabled = true;
 
+                if (switchMatrixControl1.enableSwitchCheckBox.Checked && switchMatrixControl1.isDeviceListLoaded)
+                    switchMatrixControl1.ScanDeviceCurrentsButton.Enabled = true;
+
             }
             else
             {
                 PicoammControl.EndSession();
                 Properties.Settings.Default.PicoammeterControlEnable = controlPicoammBox.Checked;
                 picoammSettingsButton.Enabled = false;
+
+                switchMatrixControl1.ScanDeviceCurrentsButton.Enabled = false;
 
                 //Hide Picoammeter window if Configuation window is open
                 if (PicoammForm != null)

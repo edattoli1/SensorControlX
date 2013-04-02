@@ -28,20 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.scanCurrentsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // scanCurrentsButton
+            // 
+            this.scanCurrentsButton.Location = new System.Drawing.Point(23, 581);
+            this.scanCurrentsButton.Name = "scanCurrentsButton";
+            this.scanCurrentsButton.Size = new System.Drawing.Size(85, 48);
+            this.scanCurrentsButton.TabIndex = 0;
+            this.scanCurrentsButton.Text = "Scan Currents";
+            this.scanCurrentsButton.UseVisualStyleBackColor = true;
+            this.scanCurrentsButton.Click += new System.EventHandler(this.scanCurrentsButton_Click);
             // 
             // ScanDeviceCurrentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(282, 256);
+            this.ClientSize = new System.Drawing.Size(1413, 641);
+            this.Controls.Add(this.scanCurrentsButton);
             this.Name = "ScanDeviceCurrentsForm";
             this.Text = "ScanDeviceCurrentsForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScanDeviceCurrentsForm_FormClosing);
+            this.Load += new System.EventHandler(this.ScanDeviceCurrentsForm_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button scanCurrentsButton;
     }
 }

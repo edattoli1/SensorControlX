@@ -86,3 +86,4 @@ C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\ob
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.SwitchStateForm.resources
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.ScanDeviceCurrentsForm.resources
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.ScanListView.resources
+C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.csprojResolveAssemblyReference.cache

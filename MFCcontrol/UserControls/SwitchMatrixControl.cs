@@ -137,27 +137,30 @@ namespace MFCcontrol
                 deviceListState = sshtLoad1.LoadDeviceList(this.openFileDialog1.FileName);
 
                 // Load enabled devices into parent Form's bool array for device states
-                int rowIterator = 0;
+                int deviceIterator = 0;
                 foreach (string[] rowArray in deviceListState)
                 {
                     for (int i = 0; i < rowArray.Length; i++)
                     {
                         if ( rowArray[i] != null)
-                            parentForm.devicesToScan[rowIterator, i] = true;
+                            parentForm.devicesToScan[deviceIterator] = true;
                         else
-                            parentForm.devicesToScan[rowIterator, i] = false;
+                            parentForm.devicesToScan[deviceIterator] = false;
 
+                        deviceIterator++;
                     }
-                        rowIterator++;
                 }
 
                 isDeviceListLoaded = true;
                 viewDeviceListButton.Enabled = true;
 
-                if (enableSwitchCheckBox.Checked == true)
+                if ( (enableSwitchCheckBox.Checked == true) && (parentForm.controlPicoammBox.Checked == true) )
                 {
                     ScanDeviceCurrentsButton.Enabled = true;
                 }
+
+
+
             }
 
         }
