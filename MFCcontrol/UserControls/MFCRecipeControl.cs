@@ -19,7 +19,7 @@ namespace MFCcontrol
         public Form1 parentForm;
         private RecipeView RecipeView1;
         private CancellationTokenSource tokenSource;
-
+        private StreamWriter swriterCurrents = null;
 
         public MfcRecipeControl()
         {
@@ -58,12 +58,18 @@ namespace MFCcontrol
             
 
             // ///////////////////////  DO Prep Work if Sensor Matrix Sweeping is Enabled
-
-            FileStream sourceStream2 = new FileStream("currentMeasurements.txt",
-                   FileMode.Create, FileAccess.Write, FileShare.Read,
-                   bufferSize: 4096, useAsync: false);
-
-                StreamWriter swriterCurrents = null;
+            FileStream sourceStream2 = null;
+            try
+            {
+                sourceStream2 = new FileStream("currentMeasurements.txt",
+                       FileMode.Create, FileAccess.Write, FileShare.Read,
+                       bufferSize: 4096, useAsync: false);
+            }
+            catch
+            {
+                Util.ShowError("Current store File Creation Error");
+            }
+            
 
             if (parentForm.switchMatrixControl1.sweepMatrixCheckBox.Checked == true)
             {
@@ -126,12 +132,14 @@ namespace MFCcontrol
                 CancellationToken ct = tokenSource.Token;
                 parentForm.presCurrentArr = new double[Properties.Settings.Default.SwitchMatrixColsNum];
 
-                Task.Run( () => SwitchOperations.SweepAndMeasureDevices(parentForm.switchMatrixControl1.switchSession, parentForm.PicoammControl, swriterCurrents, parentForm.devicesToScan, parentForm.watch, ref parentForm.presCurrentArr, ct), ct );
+                // Task.Run( () => SwitchOperations.SweepAndMeasureDevices(parentForm.switchMatrixControl1.switchSession, parentForm.PicoammControl, swriterCurrents, parentForm.devicesToScan, parentForm.watch, ref parentForm.presCurrentArr, ct), ct );
+                Task.Run(() => SwitchOperations.SweepAndMeasureDevices(parentForm, swriterCurrents, parentForm.devicesToScan, parentForm.watch, ref parentForm.presCurrentArr, ct), ct);
 
                 parentForm.switchMatrixControl1.configureSwitchButton.Enabled = false;
                 parentForm.switchMatrixControl1.sweepMatrixCheckBox.Enabled = false;
                 parentForm.switchMatrixControl1.enableSwitchCheckBox.Enabled = false;
                 parentForm.switchMatrixControl1.ScanDeviceCurrentsButton.Enabled = false;
+                parentForm.switchMatrixControl1.loadDeviceListButton.Enabled = false;
             }
 
 
@@ -142,11 +150,9 @@ namespace MFCcontrol
             parentForm.configMFCsButton.Enabled = false;
             recipePauseCheckbox.Enabled = true;
 
+            for (int i = 0; i < parentForm.mfcControlArray.Length; i++)
+                parentForm.mfcControlArray[i].DisableUserControl();
 
-            parentForm.mfcControl1.DisableUserControl();
-            parentForm.mfcControl2.DisableUserControl();
-            parentForm.mfcControl3.DisableUserControl();
-            parentForm.mfcControl4.DisableUserControl();
 
             startButton.Enabled = false;
             loadFlowsButton.Enabled = false;
@@ -299,11 +305,8 @@ namespace MFCcontrol
             startButton.Enabled = true;
             parentForm.configMFCsButton.Enabled = true;
 
-
-            parentForm.mfcControl1.EnableUserControl();
-            parentForm.mfcControl2.EnableUserControl();
-            parentForm.mfcControl3.EnableUserControl();
-            parentForm.mfcControl4.EnableUserControl();
+            for (int i = 0; i < parentForm.mfcControlArray.Length; i++)
+                parentForm.mfcControlArray[i].EnableUserControl();
 
             //Zero all AD outputs
             parentForm.ZeroAllMFCOutputs();
@@ -322,12 +325,22 @@ namespace MFCcontrol
             // If Switch Sweeping is enabled, Stop it, renable user control of the switch matrix control
             if (parentForm.switchMatrixControl1.sweepMatrixCheckBox.Checked == true)
             {
+                //while (! SwitchOperations.currentTask.IsCompleted)
+                //    Thread.Sleep(500);
+                SwitchOperations.currentTask.Wait();
+
+                swriterCurrents.Close();
+
+                // Shut down GPIB interface
+                //parentForm.controlPicoammBox.Checked = false;
+                //parentForm.controlPicoammBox.Checked = true;
 
 
                 parentForm.switchMatrixControl1.configureSwitchButton.Enabled = true;
                 parentForm.switchMatrixControl1.sweepMatrixCheckBox.Enabled = true;
                 parentForm.switchMatrixControl1.enableSwitchCheckBox.Enabled = true;
                 parentForm.switchMatrixControl1.ScanDeviceCurrentsButton.Enabled = true;
+                parentForm.switchMatrixControl1.loadDeviceListButton.Enabled = true;
             }
 
 
@@ -371,6 +384,15 @@ namespace MFCcontrol
         public void EnableViewFlowBtn()
         {
             this.viewFlowRecipe.Enabled = true;
+        }
+
+        private void viewPresentCurrentsButton_Click(object sender, EventArgs e)
+        {
+            ViewPresentCurrentsForm viewPresCurrForm1 = new ViewPresentCurrentsForm();
+            viewPresCurrForm1.parentControl = this;
+            viewPresCurrForm1.Show();
+            viewPresentCurrentsButton.Enabled = false;
+
         }
 
 

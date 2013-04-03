@@ -8,30 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MFCcontrol.Properties;
-using NationalInstruments.ModularInstruments.NISwitch;
-using System.Threading;
-
 
 namespace MFCcontrol
 {
-    public partial class ScanDeviceCurrentsForm : Form
+    public partial class ViewPresentCurrentsForm : Form
     {
-        internal SwitchMatrixControl parentControl;
+        internal MfcRecipeControl parentControl;
         internal TextBox[] tb;
         
-        public ScanDeviceCurrentsForm()
+        
+        public ViewPresentCurrentsForm()
         {
             InitializeComponent();
         }
 
-        private void ScanDeviceCurrentsForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            parentControl.ScanDeviceCurrentsButton.Enabled = true;
-            parentControl.loadDeviceListButton.Enabled = true;
-            
-        }
-
-        private void ScanDeviceCurrentsForm_Load(object sender, EventArgs e)
+        private void ViewPresentCurrentsForm_Load(object sender, EventArgs e)
         {
             tb = new TextBox[Settings.Default.SwitchMatrixRowsNum * Settings.Default.SwitchMatrixColsNum];
             Label[] lbl = new Label[Settings.Default.SwitchMatrixColsNum];
@@ -56,7 +47,7 @@ namespace MFCcontrol
 
                 lbl[j] = new Label();
                 lbl[j].Text = j.ToString();
-                lbl[j].Location = new Point(xcoord +7, ycoord);
+                lbl[j].Location = new Point(xcoord + 7, ycoord);
                 lbl[j].Visible = true;
                 lbl[j].Width = 40;
                 lbl[j].Height = 20;
@@ -90,30 +81,9 @@ namespace MFCcontrol
 
         }
 
-        private void scanCurrentsButton_Click(object sender, EventArgs e)
+        private void ViewPresentCurrentsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SwitchOperations.OpenAllRelays(parentControl.switchSession);
-            SwitchOperations.CloseRow2Relays(parentControl.switchSession);
-            
-
-            for (int j = 0; j < Settings.Default.SwitchMatrixColsNum; j++)
-            {
-                if (parentControl.parentForm.devicesToScan[j] == true)
-                {
-                    string relayNameRow0 = "kr" + 0.ToString() + "c" + j.ToString();
-                    string relayNameRow1 = "kr" + 1.ToString() + "c" + j.ToString();
-
-                    //tb[j].Text = SwitchOperations.SwitchToDeviceMeasureCurrent(parentControl.switchSession,parentControl.parentForm.PicoammControl,relayNameRow0,relayNameRow1).ToString("0.0e0");
-                    tb[j].Text = SwitchOperations.SwitchToDeviceMeasureCurrent(parentControl, relayNameRow0, relayNameRow1).ToString("0.0e0");
-                }
-            }
-        }
-
-        private static void ShowError(string message)
-        {
-            if (string.IsNullOrEmpty(message))
-                message = "Unexpected Error";
-            MessageBox.Show(message, "Error"); ;
+            parentControl.viewPresentCurrentsButton.Enabled = true;
         }
 
     }

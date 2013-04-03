@@ -174,7 +174,7 @@ namespace MFCcontrol
         void SwitchStateForm_CheckedChanged(object sender, EventArgs e)
         {
             string relayName = "k" + ((CheckBox)sender).Name.Substring(8);
-             Debug.WriteLine(relayName);
+             //Debug.WriteLine(relayName);
             try
             {
                 if ( ((CheckBox) sender).Checked == true)
@@ -232,7 +232,7 @@ namespace MFCcontrol
 
         private void CloseSession()
         {
-            Debug.WriteLine("Closing Session");
+            //Debug.WriteLine("Closing Session");
             if (switchSession != null)
             {
                 try

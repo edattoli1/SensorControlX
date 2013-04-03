@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.sweepMatrixCheckBox = new System.Windows.Forms.CheckBox();
             this.ScanDeviceCurrentsButton = new System.Windows.Forms.Button();
             this.viewDeviceListButton = new System.Windows.Forms.Button();
             this.loadDeviceListButton = new System.Windows.Forms.Button();
@@ -37,7 +38,6 @@
             this.viewSwitchStateButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.sweepMatrixCheckBox = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +56,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(261, 275);
             this.panel1.TabIndex = 0;
+            // 
+            // sweepMatrixCheckBox
+            // 
+            this.sweepMatrixCheckBox.AutoSize = true;
+            this.sweepMatrixCheckBox.Enabled = false;
+            this.sweepMatrixCheckBox.Location = new System.Drawing.Point(132, 215);
+            this.sweepMatrixCheckBox.Name = "sweepMatrixCheckBox";
+            this.sweepMatrixCheckBox.Size = new System.Drawing.Size(117, 38);
+            this.sweepMatrixCheckBox.TabIndex = 20;
+            this.sweepMatrixCheckBox.Text = "Sweep Matrix\r\nDuring Recipe";
+            this.sweepMatrixCheckBox.UseVisualStyleBackColor = true;
+            this.sweepMatrixCheckBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.sweepMatrixCheckBox_MouseClick);
             // 
             // ScanDeviceCurrentsButton
             // 
@@ -135,19 +147,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // sweepMatrixCheckBox
-            // 
-            this.sweepMatrixCheckBox.AutoSize = true;
-            this.sweepMatrixCheckBox.Enabled = false;
-            this.sweepMatrixCheckBox.Location = new System.Drawing.Point(132, 215);
-            this.sweepMatrixCheckBox.Name = "sweepMatrixCheckBox";
-            this.sweepMatrixCheckBox.Size = new System.Drawing.Size(117, 38);
-            this.sweepMatrixCheckBox.TabIndex = 20;
-            this.sweepMatrixCheckBox.Text = "Sweep Matrix\r\nDuring Recipe";
-            this.sweepMatrixCheckBox.UseVisualStyleBackColor = true;
-            //this.sweepMatrixCheckBox.CheckedChanged += new System.EventHandler(this.sweepMatrixCheckBox_CheckedChanged);
-            this.sweepMatrixCheckBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.sweepMatrixCheckBox_MouseClick);
+            this.openFileDialog1.Filter = "Excel2007+|*.xlsx";
             // 
             // SwitchMatrixControl
             // 
@@ -170,10 +170,10 @@
         internal System.Windows.Forms.CheckBox enableSwitchCheckBox;
         internal System.Windows.Forms.Button viewSwitchStateButton;
         internal System.Windows.Forms.Button configureSwitchButton;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         internal System.Windows.Forms.Button ScanDeviceCurrentsButton;
         internal System.Windows.Forms.Button loadDeviceListButton;
         internal System.Windows.Forms.Button viewDeviceListButton;
         internal System.Windows.Forms.CheckBox sweepMatrixCheckBox;
+        internal System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MFCcontrol
 {
     static class Util
     {
+
+        public static void ShowError(string message)
+        {
+            if (string.IsNullOrEmpty(message))
+                message = "Unexpected Error";
+            MessageBox.Show(message, "Error"); ;
+        }
 
         static internal bool[] StringToBoolArray(string sIn)
         {

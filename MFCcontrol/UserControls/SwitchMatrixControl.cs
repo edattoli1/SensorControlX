@@ -125,6 +125,7 @@ namespace MFCcontrol
             openFileDialog1 = new OpenFileDialog();
 
             openFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            openFileDialog1.Filter = "Excel2007+|*.xls*";
         }
 
         private void loadDeviceListButton_Click(object sender, EventArgs e)

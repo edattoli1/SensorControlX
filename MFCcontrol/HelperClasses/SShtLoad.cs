@@ -205,6 +205,11 @@ namespace MFCcontrol
                 returnList[returnListIterator] = XLGetCellValue(wsPart, c + sSheetRowNum);
                 returnListIterator++;
             }
+            for (char c = 'A'; c <= 'I'; c++)
+            {
+                returnList[returnListIterator] = XLGetCellValue(wsPart, "A" + c + sSheetRowNum);
+                returnListIterator++;
+            }
 
             return returnList;
         }
