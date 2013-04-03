@@ -86,6 +86,8 @@ namespace MFCcontrol
                 {
                     viewSwitchStateButton.Enabled = true;
                     ScanDeviceCurrentsButton.Enabled = true;
+                    sweepMatrixCheckBox.Enabled = true;
+                    sweepMatrixCheckBox.Checked = Settings.Default.SweepMatrixDuringRecipe;
                 }
             }
             else
@@ -93,7 +95,9 @@ namespace MFCcontrol
                 CloseSession();
                 Settings.Default.SwitchMatrixEnable = false;
                 ScanDeviceCurrentsButton.Enabled = false;
+                sweepMatrixCheckBox.Enabled = false;
                 viewSwitchStateButton.Enabled = false;
+                sweepMatrixCheckBox.Checked = false;
             }
 
         }
@@ -157,6 +161,8 @@ namespace MFCcontrol
                 if ( (enableSwitchCheckBox.Checked == true) && (parentForm.controlPicoammBox.Checked == true) )
                 {
                     ScanDeviceCurrentsButton.Enabled = true;
+                    sweepMatrixCheckBox.Enabled = true;
+                    sweepMatrixCheckBox.Checked = Settings.Default.SweepMatrixDuringRecipe;
                 }
 
 
@@ -199,6 +205,18 @@ namespace MFCcontrol
             scanListView1.parentControl = this;
             viewDeviceListButton.Enabled = false;
             scanListView1.Show();
+        }
+
+        //private void sweepMatrixCheckBox_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    Settings.Default.SweepMatrixDuringRecipe = sweepMatrixCheckBox.Checked;
+        //    Settings.Default.Save();
+        //}
+
+        private void sweepMatrixCheckBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            Settings.Default.SweepMatrixDuringRecipe = sweepMatrixCheckBox.Checked;
+            Settings.Default.Save();
         }
 
     }

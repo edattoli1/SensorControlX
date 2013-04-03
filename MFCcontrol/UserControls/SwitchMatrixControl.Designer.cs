@@ -37,12 +37,14 @@
             this.viewSwitchStateButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.sweepMatrixCheckBox = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.sweepMatrixCheckBox);
             this.panel1.Controls.Add(this.ScanDeviceCurrentsButton);
             this.panel1.Controls.Add(this.viewDeviceListButton);
             this.panel1.Controls.Add(this.loadDeviceListButton);
@@ -58,18 +60,18 @@
             // ScanDeviceCurrentsButton
             // 
             this.ScanDeviceCurrentsButton.Enabled = false;
-            this.ScanDeviceCurrentsButton.Location = new System.Drawing.Point(64, 209);
+            this.ScanDeviceCurrentsButton.Location = new System.Drawing.Point(13, 211);
             this.ScanDeviceCurrentsButton.Name = "ScanDeviceCurrentsButton";
-            this.ScanDeviceCurrentsButton.Size = new System.Drawing.Size(119, 45);
+            this.ScanDeviceCurrentsButton.Size = new System.Drawing.Size(102, 45);
             this.ScanDeviceCurrentsButton.TabIndex = 19;
-            this.ScanDeviceCurrentsButton.Text = "Scan Device Current Levels";
+            this.ScanDeviceCurrentsButton.Text = "Scan Device Currents";
             this.ScanDeviceCurrentsButton.UseVisualStyleBackColor = true;
             this.ScanDeviceCurrentsButton.Click += new System.EventHandler(this.ScanDeviceCurrentsButton_Click);
             // 
             // viewDeviceListButton
             // 
             this.viewDeviceListButton.Enabled = false;
-            this.viewDeviceListButton.Location = new System.Drawing.Point(135, 140);
+            this.viewDeviceListButton.Location = new System.Drawing.Point(138, 140);
             this.viewDeviceListButton.Name = "viewDeviceListButton";
             this.viewDeviceListButton.Size = new System.Drawing.Size(90, 50);
             this.viewDeviceListButton.TabIndex = 18;
@@ -79,7 +81,7 @@
             // 
             // loadDeviceListButton
             // 
-            this.loadDeviceListButton.Location = new System.Drawing.Point(26, 140);
+            this.loadDeviceListButton.Location = new System.Drawing.Point(22, 140);
             this.loadDeviceListButton.Name = "loadDeviceListButton";
             this.loadDeviceListButton.Size = new System.Drawing.Size(89, 50);
             this.loadDeviceListButton.TabIndex = 17;
@@ -100,7 +102,7 @@
             // 
             // configureSwitchButton
             // 
-            this.configureSwitchButton.Location = new System.Drawing.Point(25, 85);
+            this.configureSwitchButton.Location = new System.Drawing.Point(23, 85);
             this.configureSwitchButton.Name = "configureSwitchButton";
             this.configureSwitchButton.Size = new System.Drawing.Size(89, 34);
             this.configureSwitchButton.TabIndex = 16;
@@ -134,6 +136,19 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // sweepMatrixCheckBox
+            // 
+            this.sweepMatrixCheckBox.AutoSize = true;
+            this.sweepMatrixCheckBox.Enabled = false;
+            this.sweepMatrixCheckBox.Location = new System.Drawing.Point(132, 215);
+            this.sweepMatrixCheckBox.Name = "sweepMatrixCheckBox";
+            this.sweepMatrixCheckBox.Size = new System.Drawing.Size(117, 38);
+            this.sweepMatrixCheckBox.TabIndex = 20;
+            this.sweepMatrixCheckBox.Text = "Sweep Matrix\r\nDuring Recipe";
+            this.sweepMatrixCheckBox.UseVisualStyleBackColor = true;
+            //this.sweepMatrixCheckBox.CheckedChanged += new System.EventHandler(this.sweepMatrixCheckBox_CheckedChanged);
+            this.sweepMatrixCheckBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.sweepMatrixCheckBox_MouseClick);
+            // 
             // SwitchMatrixControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -159,5 +174,6 @@
         internal System.Windows.Forms.Button ScanDeviceCurrentsButton;
         internal System.Windows.Forms.Button loadDeviceListButton;
         internal System.Windows.Forms.Button viewDeviceListButton;
+        internal System.Windows.Forms.CheckBox sweepMatrixCheckBox;
     }
 }

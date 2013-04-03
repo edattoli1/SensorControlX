@@ -101,5 +101,8 @@
     <Setting Name="SwitchMatrixColsNum" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">136</Value>
     </Setting>
+    <Setting Name="SweepMatrixDuringRecipe" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

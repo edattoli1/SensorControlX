@@ -418,5 +418,17 @@ namespace MFCcontrol.Properties {
                 this["SwitchMatrixColsNum"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SweepMatrixDuringRecipe {
+            get {
+                return ((bool)(this["SweepMatrixDuringRecipe"]));
+            }
+            set {
+                this["SweepMatrixDuringRecipe"] = value;
+            }
+        }
     }
 }

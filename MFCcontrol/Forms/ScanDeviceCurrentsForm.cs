@@ -112,11 +112,11 @@ namespace MFCcontrol
                         parentControl.switchSession.RelayOperations.RelayControl(relayNameRow1, SwitchRelayAction.OpenRelay);
 
                         // TODO Need to wait for switch to stabilize? may need to add wait here
-
+                        // await Task.Delay(50);
                         //Read Current
                         tb[j].Text = parentControl.parentForm.PicoammControl.GetReading().ToString("0.0e0");
 
-                        Thread.Sleep(50);
+                        
 
                         parentControl.switchSession.RelayOperations.RelayControl(relayNameRow1, SwitchRelayAction.CloseRelay);
                         parentControl.switchSession.RelayOperations.RelayControl(relayNameRow0, SwitchRelayAction.OpenRelay);

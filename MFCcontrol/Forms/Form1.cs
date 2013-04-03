@@ -599,7 +599,11 @@ namespace MFCcontrol
                 picoammSettingsButton.Enabled = true;
 
                 if (switchMatrixControl1.enableSwitchCheckBox.Checked && switchMatrixControl1.isDeviceListLoaded)
+                {
                     switchMatrixControl1.ScanDeviceCurrentsButton.Enabled = true;
+                    switchMatrixControl1.sweepMatrixCheckBox.Enabled = true;
+                    switchMatrixControl1.sweepMatrixCheckBox.Checked = Settings.Default.SweepMatrixDuringRecipe;
+                }
 
             }
             else
@@ -609,6 +613,9 @@ namespace MFCcontrol
                 picoammSettingsButton.Enabled = false;
 
                 switchMatrixControl1.ScanDeviceCurrentsButton.Enabled = false;
+
+                switchMatrixControl1.sweepMatrixCheckBox.Enabled = false;
+                switchMatrixControl1.sweepMatrixCheckBox.Checked = false;
 
                 //Hide Picoammeter window if Configuation window is open
                 if (PicoammForm != null)
