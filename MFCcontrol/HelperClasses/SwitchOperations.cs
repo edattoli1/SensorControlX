@@ -66,31 +66,6 @@ namespace MFCcontrol
         }
 
 
-        public static double SwitchToDeviceMeasureCurrent(SwitchMatrixControl switchControl, string relayNameRow0, string relayNameRow1)
-        {
-            double returnValue = 0;
-
-            try
-            {
-                switchControl.switchSession.RelayOperations.RelayControl(relayNameRow0, SwitchRelayAction.CloseRelay);
-                switchControl.switchSession.RelayOperations.RelayControl(relayNameRow1, SwitchRelayAction.OpenRelay);
-
-                // TODO Need to wait for switch to stabilize? may need to add wait here
-                // await Task.Delay(50);
-                //Read Current
-                returnValue = switchControl.parentForm.PicoammControl.GetReading();
-
-                switchControl.switchSession.RelayOperations.RelayControl(relayNameRow1, SwitchRelayAction.CloseRelay);
-                switchControl.switchSession.RelayOperations.RelayControl(relayNameRow0, SwitchRelayAction.OpenRelay);
-            }
-            catch (System.Exception ex)
-            {
-                ShowError(ex.Message);
-            }
-
-            return returnValue;
-        }
-
 
         public static double SwitchToDeviceMeasureCurrent(NISwitch switchSession, Ke648xControl PicoammControl, string relayNameRow0, string relayNameRow1)
         {
@@ -117,8 +92,7 @@ namespace MFCcontrol
             return returnValue;
         }
 
-        //public static void  SweepAndMeasureDevices(NISwitch switchSession, Ke648xControl PicoammControl, StreamWriter sw, bool [] deviceList, GenStopwatch watch, ref double[] presCurrentArray, CancellationToken ct)
-    public static void  SweepAndMeasureDevices(Form1 parentForm, StreamWriter sw, bool [] deviceList, GenStopwatch watch, ref double[] presCurrentArray, CancellationToken ct)
+      public static void  SweepAndMeasureDevices(NISwitch switchSession, Ke648xControl PicoammControl, StreamWriter sw, bool [] deviceList, GenStopwatch watch, ref double[] presCurrentArray, CancellationToken ct)
         {    
             double presCurrent;
             string outLine;
@@ -136,7 +110,7 @@ namespace MFCcontrol
                         string relayNameRow0 = "kr" + 0.ToString() + "c" + i.ToString();
                         string relayNameRow1 = "kr" + 1.ToString() + "c" + i.ToString();
 
-                        presCurrent = SwitchToDeviceMeasureCurrent(parentForm.switchMatrixControl1.switchSession, parentForm.PicoammControl, relayNameRow0, relayNameRow1);
+                        presCurrent = SwitchToDeviceMeasureCurrent(switchSession, PicoammControl, relayNameRow0, relayNameRow1);
                         presCurrentArray[i] = presCurrent;
                         outLine += "\t" + presCurrent.ToString("0.000000e0");
 

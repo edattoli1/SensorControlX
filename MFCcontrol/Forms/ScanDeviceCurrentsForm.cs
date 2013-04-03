@@ -103,8 +103,7 @@ namespace MFCcontrol
                     string relayNameRow0 = "kr" + 0.ToString() + "c" + j.ToString();
                     string relayNameRow1 = "kr" + 1.ToString() + "c" + j.ToString();
 
-                    //tb[j].Text = SwitchOperations.SwitchToDeviceMeasureCurrent(parentControl.switchSession,parentControl.parentForm.PicoammControl,relayNameRow0,relayNameRow1).ToString("0.0e0");
-                    tb[j].Text = SwitchOperations.SwitchToDeviceMeasureCurrent(parentControl, relayNameRow0, relayNameRow1).ToString("0.0e0");
+                    tb[j].Text = SwitchOperations.SwitchToDeviceMeasureCurrent(parentControl.switchSession,parentControl.parentForm.PicoammControl,relayNameRow0,relayNameRow1).ToString("0.0e0");
                 }
             }
         }

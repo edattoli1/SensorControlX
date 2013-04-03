@@ -86,6 +86,9 @@ namespace MFCcontrol
 
             switchMatrixControl1.parentForm = this;
 
+            // Init Picoammeter
+            PicoammControl = new Ke648xControl();
+
             // Initialize mfcControlList
 
             mfcControlArray = new MFCcontrolTemplate[] { mfcControl1, mfcControl2, mfcControl3, mfcControl4, mfcControl5, mfcControl6, mfcControl7, mfcControl8 };
@@ -167,8 +170,7 @@ namespace MFCcontrol
                 mfcControlArray[j].SetMFCnumber(j+1);
 
             // Picoammeter init stuff
-            picoammSettingsButton.Enabled = false;
-            PicoammControl = new Ke648xControl();
+            //picoammSettingsButton.Enabled = false;
             controlPicoammBox.Checked = Properties.Settings.Default.PicoammeterControlEnable;
 
             //start StopWatch

@@ -59,20 +59,23 @@ namespace MFCcontrol
 
             // ///////////////////////  DO Prep Work if Sensor Matrix Sweeping is Enabled
             FileStream sourceStream2 = null;
-            try
-            {
-                sourceStream2 = new FileStream("currentMeasurements.txt",
-                       FileMode.Create, FileAccess.Write, FileShare.Read,
-                       bufferSize: 4096, useAsync: false);
-            }
-            catch
-            {
-                Util.ShowError("Current store File Creation Error");
-            }
-            
+           
 
             if (parentForm.switchMatrixControl1.sweepMatrixCheckBox.Checked == true)
             {
+                
+                try
+                {
+                    sourceStream2 = new FileStream("currentMeasurements.txt",
+                           FileMode.Create, FileAccess.Write, FileShare.Read,
+                           bufferSize: 4096, useAsync: false);
+                }
+                catch
+                {
+                    Util.ShowError("Current store File Creation Error");
+                }
+            
+                
                 swriterCurrents = new StreamWriter(sourceStream2);
                 swriterCurrents.AutoFlush = true;
 
@@ -132,8 +135,10 @@ namespace MFCcontrol
                 CancellationToken ct = tokenSource.Token;
                 parentForm.presCurrentArr = new double[Properties.Settings.Default.SwitchMatrixColsNum];
 
-                // Task.Run( () => SwitchOperations.SweepAndMeasureDevices(parentForm.switchMatrixControl1.switchSession, parentForm.PicoammControl, swriterCurrents, parentForm.devicesToScan, parentForm.watch, ref parentForm.presCurrentArr, ct), ct );
-                Task.Run(() => SwitchOperations.SweepAndMeasureDevices(parentForm, swriterCurrents, parentForm.devicesToScan, parentForm.watch, ref parentForm.presCurrentArr, ct), ct);
+                SwitchOperations.OpenAllRelays(parentForm.switchMatrixControl1.switchSession);
+                SwitchOperations.CloseRow2Relays(parentForm.switchMatrixControl1.switchSession);
+
+                Task.Run( () => SwitchOperations.SweepAndMeasureDevices(parentForm.switchMatrixControl1.switchSession, parentForm.PicoammControl, swriterCurrents, parentForm.devicesToScan, parentForm.watch, ref parentForm.presCurrentArr, ct), ct );
 
                 parentForm.switchMatrixControl1.configureSwitchButton.Enabled = false;
                 parentForm.switchMatrixControl1.sweepMatrixCheckBox.Enabled = false;
@@ -287,7 +292,7 @@ namespace MFCcontrol
                 tokenSource.Cancel();
 
             parentForm.recipeRunning = false;
-            GCSettings.LatencyMode = GCLatencyMode.Interactive;
+             GCSettings.LatencyMode = GCLatencyMode.Interactive;
             //disable writing to disk for last AD acquire events due to last callbacks from HiResTimer class
             //UpdateADacquireBusy = true;
 
