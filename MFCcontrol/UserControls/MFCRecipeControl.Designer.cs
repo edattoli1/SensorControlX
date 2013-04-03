@@ -35,7 +35,6 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.recipePauseCheckbox = new System.Windows.Forms.CheckBox();
-            this.label21 = new System.Windows.Forms.Label();
             this.exitRecipeButton = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.startButton = new System.Windows.Forms.Button();
@@ -54,7 +53,6 @@
             this.panel2.Controls.Add(this.label23);
             this.panel2.Controls.Add(this.label22);
             this.panel2.Controls.Add(this.recipePauseCheckbox);
-            this.panel2.Controls.Add(this.label21);
             this.panel2.Controls.Add(this.exitRecipeButton);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.startButton);
@@ -117,21 +115,14 @@
             // recipePauseCheckbox
             // 
             this.recipePauseCheckbox.AutoSize = true;
-            this.recipePauseCheckbox.Location = new System.Drawing.Point(67, 170);
+            this.recipePauseCheckbox.Enabled = false;
+            this.recipePauseCheckbox.Location = new System.Drawing.Point(16, 154);
             this.recipePauseCheckbox.Name = "recipePauseCheckbox";
-            this.recipePauseCheckbox.Size = new System.Drawing.Size(15, 14);
+            this.recipePauseCheckbox.Size = new System.Drawing.Size(103, 38);
             this.recipePauseCheckbox.TabIndex = 19;
+            this.recipePauseCheckbox.Text = "Pause Flow \r\nChanges";
             this.recipePauseCheckbox.UseVisualStyleBackColor = true;
             this.recipePauseCheckbox.Click += new System.EventHandler(this.recipePauseCheckbox_CheckedChanged);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(5, 168);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(56, 17);
-            this.label21.TabIndex = 18;
-            this.label21.Text = "Pause?";
             // 
             // exitRecipeButton
             // 
@@ -158,7 +149,7 @@
             // startButton
             // 
             this.startButton.Enabled = false;
-            this.startButton.Location = new System.Drawing.Point(16, 128);
+            this.startButton.Location = new System.Drawing.Point(16, 115);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(75, 23);
             this.startButton.TabIndex = 3;
@@ -188,7 +179,6 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "Excel2007+|*.xlsx";
             // 
             // MfcRecipeControl
@@ -210,7 +200,6 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.CheckBox recipePauseCheckbox;
-        private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         internal System.Windows.Forms.TextBox nextRecipeTimeEventBox;

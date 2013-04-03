@@ -107,14 +107,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SensorControl.exe" size="116224">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SensorControl.exe" size="116736">
       <assemblyIdentity name="SensorControl" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>c2J4UYWaJ95xdzyuopFfGx7XsU9sBQQnfpj6rrq3Cfs=</dsig:DigestValue>
+        <dsig:DigestValue>k2uEerlwgWAr8McOIPSOtxWtx6AAHQXuRPGgxMnAdas=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

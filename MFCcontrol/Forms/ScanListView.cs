@@ -42,7 +42,7 @@ namespace MFCcontrol
             // Set the column header names.
             for (int i = 0; i <  Properties.Settings.Default.SwitchMatrixColsNum; i++)
             {
-                dataGridView1.Columns[i].Name = (i+1).ToString();
+                dataGridView1.Columns[i].Name = (i).ToString();
                 dataGridView1.Columns[i].Width = 55;
             }
 

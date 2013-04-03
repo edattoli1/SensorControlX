@@ -15,11 +15,13 @@ namespace MFCcontrol
     {
         internal MfcRecipeControl parentControl;
         internal TextBox[] tb;
+        private GenTimer updateTimer;
         
         
         public ViewPresentCurrentsForm()
         {
             InitializeComponent();
+            updateTimer = new GenTimer();
         }
 
         private void ViewPresentCurrentsForm_Load(object sender, EventArgs e)
@@ -33,6 +35,38 @@ namespace MFCcontrol
             DisplayPartSwitchMatrix(lbl, ref deviceIterator, 34, 10, 80);
             DisplayPartSwitchMatrix(lbl, ref deviceIterator, 68, 10, 180);
             DisplayPartSwitchMatrix(lbl, ref deviceIterator, 102, 10, 280);
+
+            updateTimer.SetInterval(Convert.ToDouble(refreshTimeUpDown.Value));
+            updateTimer.TimerElapsed += UpdateHandler;
+            updateTimer.StartTimer();
+
+
+        }
+
+        private void UpdateHandler(object obj, EventArgs e)
+        {
+            UpdateCurrents();
+        }
+
+        private void UpdateCurrents()
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke((Action)UpdateCurrents);
+                return;
+            }
+
+            for (int j = 0; j < Settings.Default.SwitchMatrixColsNum; j++)
+            {
+                if (parentControl.parentForm.devicesToScan[j] == true)
+                {
+                    string relayNameRow0 = "kr" + 0.ToString() + "c" + j.ToString();
+                    string relayNameRow1 = "kr" + 1.ToString() + "c" + j.ToString();
+
+                    tb[j].Text = parentControl.parentForm.presCurrentArr[j].ToString("0.0e0");
+                }
+            }
+
         }
 
         private void DisplayPartSwitchMatrix(Label[] lbl, ref int deviceIterator, int startSwitch, int originX, int originY)
@@ -84,6 +118,11 @@ namespace MFCcontrol
         private void ViewPresentCurrentsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             parentControl.viewPresentCurrentsButton.Enabled = true;
+        }
+
+        private void refreshTimeUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            updateTimer.SetInterval(Convert.ToDouble(refreshTimeUpDown.Value));
         }
 
     }

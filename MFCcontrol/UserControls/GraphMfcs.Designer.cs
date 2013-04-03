@@ -44,7 +44,6 @@
             this.samplesToResetUpDown = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
             this.AinGraphUpdateBox = new System.Windows.Forms.CheckBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.graphUpdateUDbox = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.resetGraphButton = new System.Windows.Forms.Button();
@@ -64,7 +63,6 @@
             this.panel3.Controls.Add(this.samplesToResetUpDown);
             this.panel3.Controls.Add(this.label14);
             this.panel3.Controls.Add(this.AinGraphUpdateBox);
-            this.panel3.Controls.Add(this.label13);
             this.panel3.Controls.Add(this.graphUpdateUDbox);
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.resetGraphButton);
@@ -142,7 +140,7 @@
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.01739F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(676, 7);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(169, 20);
+            this.label18.Size = new System.Drawing.Size(160, 20);
             this.label18.TabIndex = 25;
             this.label18.Text = "GRAPH CONTROL";
             // 
@@ -183,21 +181,13 @@
             this.AinGraphUpdateBox.AutoSize = true;
             this.AinGraphUpdateBox.Checked = true;
             this.AinGraphUpdateBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.AinGraphUpdateBox.Location = new System.Drawing.Point(808, 160);
+            this.AinGraphUpdateBox.Location = new System.Drawing.Point(685, 152);
             this.AinGraphUpdateBox.Name = "AinGraphUpdateBox";
-            this.AinGraphUpdateBox.Size = new System.Drawing.Size(18, 17);
+            this.AinGraphUpdateBox.Size = new System.Drawing.Size(117, 21);
             this.AinGraphUpdateBox.TabIndex = 22;
+            this.AinGraphUpdateBox.Text = "Update Graph";
             this.AinGraphUpdateBox.UseVisualStyleBackColor = true;
             this.AinGraphUpdateBox.CheckedChanged += new System.EventHandler(this.AinGraphUpdateBox_CheckedChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(686, 157);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(106, 17);
-            this.label13.TabIndex = 21;
-            this.label13.Text = "Graph Update?";
             // 
             // graphUpdateUDbox
             // 
@@ -289,7 +279,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckBox AinGraphUpdateBox;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button resetGraphButton;
         private System.Windows.Forms.Label label1;
