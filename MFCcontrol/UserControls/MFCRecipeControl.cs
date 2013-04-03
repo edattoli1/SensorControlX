@@ -59,14 +59,16 @@ namespace MFCcontrol
 
             // ///////////////////////  DO Prep Work if Sensor Matrix Sweeping is Enabled
 
+            FileStream sourceStream2 = new FileStream("currentMeasurements.txt",
+                   FileMode.Create, FileAccess.Write, FileShare.Read,
+                   bufferSize: 4096, useAsync: false);
+
+                StreamWriter swriterCurrents = null;
+
             if (parentForm.switchMatrixControl1.sweepMatrixCheckBox.Checked == true)
             {
-                FileStream sourceStream2 = new FileStream("currentMeasurements.txt",
-                   FileMode.Create, FileAccess.Write, FileShare.Read,
-                   bufferSize: 4096, useAsync: true);
-
-                parentForm.swriter = new StreamWriter(sourceStream);
-                parentForm.swriter.AutoFlush = true;
+                swriterCurrents = new StreamWriter(sourceStream2);
+                swriterCurrents.AutoFlush = true;
 
                 string headerString2 = "Time (s)";
 
@@ -77,7 +79,7 @@ namespace MFCcontrol
                         headerString2 += "\t" + i.ToString();
                     }
                 }
-                parentForm.swriter.Write(headerString + Environment.NewLine);
+                swriterCurrents.Write(headerString2 + Environment.NewLine);
 
             }
 
@@ -120,7 +122,10 @@ namespace MFCcontrol
             // If Switch Sweeping is enabled, Start it, disable user from messing with the switch matrix control
             if (parentForm.switchMatrixControl1.sweepMatrixCheckBox.Checked == true)
             {
+                var tokenSource = new CancellationTokenSource();
+                CancellationToken ct = tokenSource.Token;
 
+                Task.Run( () => SwitchOperations.SweepAndMeasureDevices(parentForm.switchMatrixControl1.switchSession, parentForm.PicoammControl, swriterCurrents, parentForm.devicesToScan, parentForm.watch, ct), ct );
 
                 parentForm.switchMatrixControl1.configureSwitchButton.Enabled = false;
                 parentForm.switchMatrixControl1.sweepMatrixCheckBox.Enabled = false;

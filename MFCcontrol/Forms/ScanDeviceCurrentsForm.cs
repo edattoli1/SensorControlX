@@ -95,42 +95,16 @@ namespace MFCcontrol
             SwitchOperations.OpenAllRelays(parentControl.switchSession);
             SwitchOperations.CloseRow2Relays(parentControl.switchSession);
             
-            string relayNameClose = "";
-            string relayNameOpen = "";
 
             for (int j = 0; j < Settings.Default.SwitchMatrixColsNum; j++)
             {
-                
                 if (parentControl.parentForm.devicesToScan[j] == true)
                 {
                     string relayNameRow0 = "kr" + 0.ToString() + "c" + j.ToString();
                     string relayNameRow1 = "kr" + 1.ToString() + "c" + j.ToString();
-                        
-                    try
-                    {
-                        parentControl.switchSession.RelayOperations.RelayControl(relayNameRow0, SwitchRelayAction.CloseRelay);
-                        parentControl.switchSession.RelayOperations.RelayControl(relayNameRow1, SwitchRelayAction.OpenRelay);
 
-                        // TODO Need to wait for switch to stabilize? may need to add wait here
-                        // await Task.Delay(50);
-                        //Read Current
-                        tb[j].Text = parentControl.parentForm.PicoammControl.GetReading().ToString("0.0e0");
-
-                        
-
-                        parentControl.switchSession.RelayOperations.RelayControl(relayNameRow1, SwitchRelayAction.CloseRelay);
-                        parentControl.switchSession.RelayOperations.RelayControl(relayNameRow0, SwitchRelayAction.OpenRelay);
-                        
-
-                    }
-                    catch (System.Exception ex)
-                    {
-                        ShowError(ex.Message);
-                    }
-
-                    //switchIterator++;
+                    tb[j].Text = SwitchOperations.SwitchToDeviceMeasureCurrent(parentControl.switchSession,parentControl.parentForm.PicoammControl,relayNameRow0,relayNameRow1).ToString("0.0e0");
                 }
-                
             }
         }
 
