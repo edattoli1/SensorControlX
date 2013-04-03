@@ -159,6 +159,7 @@
             // 
             // viewFlowRecipe
             // 
+            this.viewFlowRecipe.Enabled = false;
             this.viewFlowRecipe.Location = new System.Drawing.Point(137, 165);
             this.viewFlowRecipe.Name = "viewFlowRecipe";
             this.viewFlowRecipe.Size = new System.Drawing.Size(143, 23);

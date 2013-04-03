@@ -82,7 +82,7 @@ namespace MFCcontrol
 
                 viewSwitchStateButton.Enabled = true;
 
-                if (isDeviceListLoaded)
+                if (isDeviceListLoaded && parentForm.controlPicoammBox.Checked)
                 {
                     viewSwitchStateButton.Enabled = true;
                     ScanDeviceCurrentsButton.Enabled = true;
@@ -122,14 +122,16 @@ namespace MFCcontrol
             if (Settings.Default.SwitchMatrixEnable == true)
                 enableSwitchCheckBox.Checked = true;
 
-            openFileDialog1 = new OpenFileDialog();
+            // openFileDialog1 = new OpenFileDialog();
 
-            openFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-            openFileDialog1.Filter = "Excel2007+|*.xls*";
+            
         }
 
         private void loadDeviceListButton_Click(object sender, EventArgs e)
         {
+            openFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            openFileDialog1.Filter = "Excel2007+|*.xls*";
+            
             DialogResult diagResult = this.openFileDialog1.ShowDialog();
 
             if (diagResult == DialogResult.OK) // Test result.

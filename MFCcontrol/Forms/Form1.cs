@@ -463,7 +463,7 @@ namespace MFCcontrol
         {
             //timerSaveADdata.StopTimer();
 
-            GCSettings.LatencyMode = GCLatencyMode.Interactive;
+            // GCSettings.LatencyMode = GCLatencyMode.Interactive;
             timerADgraph.StopTimer();
             timerADacquire.StopTimer();
             timerUI.StopTimer();

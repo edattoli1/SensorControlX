@@ -96,7 +96,7 @@ namespace MFCcontrol
 
 
             //Go Into Low Latency Mode for Garbage Collector
-            GCSettings.LatencyMode = GCLatencyMode.SustainedLowLatency;
+            // GCSettings.LatencyMode = GCLatencyMode.SustainedLowLatency;
 
             //Output initial DAQ Output values
             for (int i = 1; i <= Properties.Settings.Default.MFCcontrol_numMFCs; i++)
@@ -174,7 +174,7 @@ namespace MFCcontrol
 
         private void loadFlowsButton_Click(object sender, EventArgs e)
         {
-
+            openFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             DialogResult diagResult = this.openFileDialog1.ShowDialog();
 
             if (diagResult == DialogResult.OK) // Test result.
@@ -292,7 +292,7 @@ namespace MFCcontrol
                 tokenSource.Cancel();
 
             parentForm.recipeRunning = false;
-             GCSettings.LatencyMode = GCLatencyMode.Interactive;
+            // GCSettings.LatencyMode = GCLatencyMode.Interactive;
             //disable writing to disk for last AD acquire events due to last callbacks from HiResTimer class
             //UpdateADacquireBusy = true;
 
@@ -375,7 +375,7 @@ namespace MFCcontrol
             recipePauseCheckbox.Enabled = false;
             exitRecipeButton.Enabled = false;
 
-            openFileDialog1 = new OpenFileDialog();
+            //openFileDialog1 = new OpenFileDialog();
 
             openFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
 
