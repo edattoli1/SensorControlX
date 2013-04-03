@@ -237,7 +237,7 @@
             // 
             // picoammSettingsButton
             // 
-            this.picoammSettingsButton.Location = new System.Drawing.Point(193, 55);
+            this.picoammSettingsButton.Location = new System.Drawing.Point(16, 88);
             this.picoammSettingsButton.Name = "picoammSettingsButton";
             this.picoammSettingsButton.Size = new System.Drawing.Size(88, 31);
             this.picoammSettingsButton.TabIndex = 20;
@@ -262,15 +262,15 @@
             this.panel5.Controls.Add(this.controlPicoammBox);
             this.panel5.Controls.Add(this.label7);
             this.panel5.Controls.Add(this.picoammSettingsButton);
-            this.panel5.Location = new System.Drawing.Point(611, 624);
+            this.panel5.Location = new System.Drawing.Point(420, 728);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(305, 100);
+            this.panel5.Size = new System.Drawing.Size(176, 135);
             this.panel5.TabIndex = 23;
             // 
             // controlPicoammBox
             // 
             this.controlPicoammBox.AutoSize = true;
-            this.controlPicoammBox.Location = new System.Drawing.Point(22, 61);
+            this.controlPicoammBox.Location = new System.Drawing.Point(16, 48);
             this.controlPicoammBox.Name = "controlPicoammBox";
             this.controlPicoammBox.Size = new System.Drawing.Size(158, 21);
             this.controlPicoammBox.TabIndex = 22;
@@ -293,7 +293,7 @@
             // 
             // switchMatrixControl1
             // 
-            this.switchMatrixControl1.Location = new System.Drawing.Point(934, 354);
+            this.switchMatrixControl1.Location = new System.Drawing.Point(621, 612);
             this.switchMatrixControl1.Name = "switchMatrixControl1";
             this.switchMatrixControl1.Size = new System.Drawing.Size(276, 286);
             this.switchMatrixControl1.TabIndex = 40;
@@ -363,14 +363,14 @@
             // 
             // sensorBiasControl1
             // 
-            this.sensorBiasControl1.Location = new System.Drawing.Point(46, 713);
+            this.sensorBiasControl1.Location = new System.Drawing.Point(21, 713);
             this.sensorBiasControl1.Name = "sensorBiasControl1";
-            this.sensorBiasControl1.Size = new System.Drawing.Size(485, 161);
+            this.sensorBiasControl1.Size = new System.Drawing.Size(383, 161);
             this.sensorBiasControl1.TabIndex = 27;
             // 
             // mfcRecipeControl1
             // 
-            this.mfcRecipeControl1.Location = new System.Drawing.Point(611, 347);
+            this.mfcRecipeControl1.Location = new System.Drawing.Point(607, 339);
             this.mfcRecipeControl1.Name = "mfcRecipeControl1";
             this.mfcRecipeControl1.Size = new System.Drawing.Size(302, 273);
             this.mfcRecipeControl1.TabIndex = 25;
@@ -379,7 +379,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1283, 902);
+            this.ClientSize = new System.Drawing.Size(938, 902);
             this.Controls.Add(this.switchMatrixControl1);
             this.Controls.Add(this.graphMfcs1);
             this.Controls.Add(this.panel2);
@@ -437,7 +437,7 @@
         private System.Windows.Forms.Panel panel2;
         internal MFCcontrolTemplate mfcControl8;
         internal GraphMfcs graphMfcs1;
-        private SwitchMatrixControl switchMatrixControl1;
+        internal SwitchMatrixControl switchMatrixControl1;
         
     }
 }

@@ -55,6 +55,33 @@ namespace MFCcontrol
             parentForm.swriter.Write(headerString + Environment.NewLine);
 
             parentForm.IsADoutfileOpen = true;
+            
+
+            // ///////////////////////  DO Prep Work if Sensor Matrix Sweeping is Enabled
+
+            if (parentForm.switchMatrixControl1.sweepMatrixCheckBox.Checked == true)
+            {
+                FileStream sourceStream2 = new FileStream("currentMeasurements.txt",
+                   FileMode.Create, FileAccess.Write, FileShare.Read,
+                   bufferSize: 4096, useAsync: true);
+
+                parentForm.swriter = new StreamWriter(sourceStream);
+                parentForm.swriter.AutoFlush = true;
+
+                string headerString2 = "Time (s)";
+
+                for (int i = 0; i < parentForm.devicesToScan.Length; i++)
+                {
+                    if (parentForm.devicesToScan[i] == true)
+                    {
+                        headerString2 += "\t" + i.ToString();
+                    }
+                }
+                parentForm.swriter.Write(headerString + Environment.NewLine);
+
+            }
+
+            // //////////////////////////////////////////////////////////////////////////
 
 
             //Go Into Low Latency Mode for Garbage Collector
@@ -89,6 +116,18 @@ namespace MFCcontrol
             nextRecipeTimeEventBox.Text = parentForm.ADoutTableVolts[1][0].ToString();
             parentForm.timerADoutUpdate.StartTimer();
             parentForm.timerADoutUpdate.TimerElapsed += parentForm.UpdateADoutputHandler;
+
+            // If Switch Sweeping is enabled, Start it, disable user from messing with the switch matrix control
+            if (parentForm.switchMatrixControl1.sweepMatrixCheckBox.Checked == true)
+            {
+
+
+                parentForm.switchMatrixControl1.configureSwitchButton.Enabled = false;
+                parentForm.switchMatrixControl1.sweepMatrixCheckBox.Enabled = false;
+                parentForm.switchMatrixControl1.enableSwitchCheckBox.Enabled = false;
+                parentForm.switchMatrixControl1.ScanDeviceCurrentsButton.Enabled = false;
+            }
+
 
             //Clear Output Graph
             parentForm.resetGraphButton_Click(this, EventArgs.Empty);
@@ -251,6 +290,20 @@ namespace MFCcontrol
             startButton.Enabled = true;
             loadFlowsButton.Enabled = true;
             viewFlowRecipe.Enabled = true;
+
+
+            // If Switch Sweeping is enabled, Stop it, renable user control of the switch matrix control
+            if (parentForm.switchMatrixControl1.sweepMatrixCheckBox.Checked == true)
+            {
+
+
+                parentForm.switchMatrixControl1.configureSwitchButton.Enabled = true;
+                parentForm.switchMatrixControl1.sweepMatrixCheckBox.Enabled = true;
+                parentForm.switchMatrixControl1.enableSwitchCheckBox.Enabled = true;
+                parentForm.switchMatrixControl1.ScanDeviceCurrentsButton.Enabled = true;
+            }
+
+
         }
 
 

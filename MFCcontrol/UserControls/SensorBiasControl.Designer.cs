@@ -59,12 +59,12 @@
             this.panel4.Controls.Add(this.label8);
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(480, 159);
+            this.panel4.Size = new System.Drawing.Size(379, 159);
             this.panel4.TabIndex = 25;
             // 
             // configBiasOutputButton
             // 
-            this.configBiasOutputButton.Location = new System.Drawing.Point(16, 100);
+            this.configBiasOutputButton.Location = new System.Drawing.Point(26, 105);
             this.configBiasOutputButton.Name = "configBiasOutputButton";
             this.configBiasOutputButton.Size = new System.Drawing.Size(93, 30);
             this.configBiasOutputButton.TabIndex = 28;
@@ -75,10 +75,10 @@
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 4;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.07969F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.04244F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.56937F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.30849F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.09346F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.97196F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.64486F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.76829F));
             this.tableLayoutPanel3.Controls.Add(this.label17, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.label15, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.label19, 1, 0);
@@ -96,7 +96,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(322, 98);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(214, 98);
             this.tableLayoutPanel3.TabIndex = 27;
             // 
             // label17
@@ -122,7 +122,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(76, 5);
+            this.label19.Location = new System.Drawing.Point(48, 5);
             this.label19.Margin = new System.Windows.Forms.Padding(5);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(42, 17);
@@ -133,10 +133,10 @@
             // 
             this.VdsUpDown.DecimalPlaces = 2;
             this.VdsUpDown.Enabled = false;
-            this.VdsUpDown.Location = new System.Drawing.Point(76, 37);
+            this.VdsUpDown.Location = new System.Drawing.Point(48, 37);
             this.VdsUpDown.Margin = new System.Windows.Forms.Padding(5);
             this.VdsUpDown.Name = "VdsUpDown";
-            this.VdsUpDown.Size = new System.Drawing.Size(58, 22);
+            this.VdsUpDown.Size = new System.Drawing.Size(52, 22);
             this.VdsUpDown.TabIndex = 34;
             this.VdsUpDown.ValueChanged += new System.EventHandler(this.VdsUpDown_ValueChanged);
             // 
@@ -144,30 +144,30 @@
             // 
             this.VgsUpDown.DecimalPlaces = 2;
             this.VgsUpDown.Enabled = false;
-            this.VgsUpDown.Location = new System.Drawing.Point(76, 69);
+            this.VgsUpDown.Location = new System.Drawing.Point(48, 69);
             this.VgsUpDown.Margin = new System.Windows.Forms.Padding(5);
             this.VgsUpDown.Name = "VgsUpDown";
-            this.VgsUpDown.Size = new System.Drawing.Size(58, 22);
+            this.VgsUpDown.Size = new System.Drawing.Size(52, 22);
             this.VgsUpDown.TabIndex = 35;
             this.VgsUpDown.ValueChanged += new System.EventHandler(this.VgsUpDown_ValueChanged);
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(276, 5);
+            this.label20.Location = new System.Drawing.Point(182, 5);
             this.label20.Margin = new System.Windows.Forms.Padding(5);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(38, 22);
+            this.label20.Size = new System.Drawing.Size(24, 22);
             this.label20.TabIndex = 31;
             this.label20.Text = "Lock?";
             // 
             // vdsLockCheckBox
             // 
             this.vdsLockCheckBox.AutoSize = true;
-            this.vdsLockCheckBox.Location = new System.Drawing.Point(274, 35);
+            this.vdsLockCheckBox.Location = new System.Drawing.Point(180, 35);
             this.vdsLockCheckBox.Name = "vdsLockCheckBox";
             this.vdsLockCheckBox.Padding = new System.Windows.Forms.Padding(8);
-            this.vdsLockCheckBox.Size = new System.Drawing.Size(34, 26);
+            this.vdsLockCheckBox.Size = new System.Drawing.Size(31, 26);
             this.vdsLockCheckBox.TabIndex = 32;
             this.vdsLockCheckBox.UseVisualStyleBackColor = true;
             this.vdsLockCheckBox.CheckedChanged += new System.EventHandler(this.vdsLockCheckBox_CheckedChanged);
@@ -175,10 +175,10 @@
             // vgsLockCheckBox
             // 
             this.vgsLockCheckBox.AutoSize = true;
-            this.vgsLockCheckBox.Location = new System.Drawing.Point(274, 67);
+            this.vgsLockCheckBox.Location = new System.Drawing.Point(180, 67);
             this.vgsLockCheckBox.Name = "vgsLockCheckBox";
             this.vgsLockCheckBox.Padding = new System.Windows.Forms.Padding(8);
-            this.vgsLockCheckBox.Size = new System.Drawing.Size(34, 28);
+            this.vgsLockCheckBox.Size = new System.Drawing.Size(31, 28);
             this.vgsLockCheckBox.TabIndex = 33;
             this.vgsLockCheckBox.UseVisualStyleBackColor = true;
             this.vgsLockCheckBox.CheckedChanged += new System.EventHandler(this.vgsLockCheckBox_CheckedChanged);
@@ -186,7 +186,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(172, 5);
+            this.label24.Location = new System.Drawing.Point(110, 5);
             this.label24.Margin = new System.Windows.Forms.Padding(5);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(54, 17);
@@ -196,19 +196,19 @@
             // vdsPresValTextBox
             // 
             this.vdsPresValTextBox.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.vdsPresValTextBox.Location = new System.Drawing.Point(173, 38);
+            this.vdsPresValTextBox.Location = new System.Drawing.Point(111, 38);
             this.vdsPresValTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.vdsPresValTextBox.Name = "vdsPresValTextBox";
-            this.vdsPresValTextBox.Size = new System.Drawing.Size(61, 22);
+            this.vdsPresValTextBox.Size = new System.Drawing.Size(60, 22);
             this.vdsPresValTextBox.TabIndex = 37;
             // 
             // vgsPresValTextBox
             // 
             this.vgsPresValTextBox.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.vgsPresValTextBox.Location = new System.Drawing.Point(173, 70);
+            this.vgsPresValTextBox.Location = new System.Drawing.Point(111, 70);
             this.vgsPresValTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.vgsPresValTextBox.Name = "vgsPresValTextBox";
-            this.vgsPresValTextBox.Size = new System.Drawing.Size(61, 22);
+            this.vgsPresValTextBox.Size = new System.Drawing.Size(60, 22);
             this.vgsPresValTextBox.TabIndex = 38;
             // 
             // biasOutsBox
@@ -216,7 +216,7 @@
             this.biasOutsBox.AutoSize = true;
             this.biasOutsBox.Location = new System.Drawing.Point(15, 56);
             this.biasOutsBox.Name = "biasOutsBox";
-            this.biasOutsBox.Size = new System.Drawing.Size(120, 21);
+            this.biasOutsBox.Size = new System.Drawing.Size(117, 21);
             this.biasOutsBox.TabIndex = 26;
             this.biasOutsBox.Text = "Enable Biases";
             this.biasOutsBox.UseVisualStyleBackColor = true;
@@ -229,7 +229,7 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.01739F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(12, 8);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(211, 20);
+            this.label8.Size = new System.Drawing.Size(200, 20);
             this.label8.TabIndex = 25;
             this.label8.Text = "ANALOG DAQ OUTPUT";
             // 
@@ -239,7 +239,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel4);
             this.Name = "SensorBiasControl";
-            this.Size = new System.Drawing.Size(485, 161);
+            this.Size = new System.Drawing.Size(382, 161);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
