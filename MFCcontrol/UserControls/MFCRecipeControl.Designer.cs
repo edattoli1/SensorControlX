@@ -41,12 +41,14 @@
             this.viewFlowRecipe = new System.Windows.Forms.Button();
             this.loadFlowsButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.viewPresentCurrentsButton = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.viewPresentCurrentsButton);
             this.panel2.Controls.Add(this.nextRecipeTimeEventBox);
             this.panel2.Controls.Add(this.lastRecipeTimeEventBox);
             this.panel2.Controls.Add(this.label23);
@@ -178,6 +180,16 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "Excel2007+|*.xlsx";
             // 
+            // viewPresentCurrentsButton
+            // 
+            this.viewPresentCurrentsButton.Enabled = false;
+            this.viewPresentCurrentsButton.Location = new System.Drawing.Point(156, 202);
+            this.viewPresentCurrentsButton.Name = "viewPresentCurrentsButton";
+            this.viewPresentCurrentsButton.Size = new System.Drawing.Size(96, 49);
+            this.viewPresentCurrentsButton.TabIndex = 24;
+            this.viewPresentCurrentsButton.Text = "View Currents";
+            this.viewPresentCurrentsButton.UseVisualStyleBackColor = true;
+            // 
             // MfcRecipeControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -206,5 +218,6 @@
         internal System.Windows.Forms.Button startButton;
         internal System.Windows.Forms.Button viewFlowRecipe;
         internal System.Windows.Forms.Button loadFlowsButton;
+        private System.Windows.Forms.Button viewPresentCurrentsButton;
     }
 }

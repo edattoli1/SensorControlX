@@ -18,7 +18,7 @@ namespace MFCcontrol
     {
         public Form1 parentForm;
         private RecipeView RecipeView1;
-
+        private CancellationTokenSource tokenSource;
 
 
         public MfcRecipeControl()
@@ -122,10 +122,11 @@ namespace MFCcontrol
             // If Switch Sweeping is enabled, Start it, disable user from messing with the switch matrix control
             if (parentForm.switchMatrixControl1.sweepMatrixCheckBox.Checked == true)
             {
-                var tokenSource = new CancellationTokenSource();
+                tokenSource = new CancellationTokenSource();
                 CancellationToken ct = tokenSource.Token;
+                parentForm.presCurrentArr = new double[Properties.Settings.Default.SwitchMatrixColsNum];
 
-                Task.Run( () => SwitchOperations.SweepAndMeasureDevices(parentForm.switchMatrixControl1.switchSession, parentForm.PicoammControl, swriterCurrents, parentForm.devicesToScan, parentForm.watch, ct), ct );
+                Task.Run( () => SwitchOperations.SweepAndMeasureDevices(parentForm.switchMatrixControl1.switchSession, parentForm.PicoammControl, swriterCurrents, parentForm.devicesToScan, parentForm.watch, ref parentForm.presCurrentArr, ct), ct );
 
                 parentForm.switchMatrixControl1.configureSwitchButton.Enabled = false;
                 parentForm.switchMatrixControl1.sweepMatrixCheckBox.Enabled = false;
@@ -155,6 +156,7 @@ namespace MFCcontrol
 
             lastRecipeTimeEventBox.Text = "0";
 
+            viewPresentCurrentsButton.Enabled = true;
         }
 
         private delegate DialogResult loadFlowBoxDel(string file);
@@ -253,12 +255,30 @@ namespace MFCcontrol
             }
         }
 
-        private void exitRecipe_Click(object sender, EventArgs e)
+        internal void exitRecipe_Click(object sender, EventArgs e)
         {
+
+            ExitRecipe();
+
+        }
+
+        private void ExitRecipe()
+        {
+
+            if (InvokeRequired)
+            {
+                //BeginInvoke(new UpdateADgraphDelegate(UpdateADgraph));
+                BeginInvoke((Action)ExitRecipe);
+                return;
+            }
+
             parentForm.watch.StopStopwatch();
             parentForm.watch.ResetStopwatch();
 
             parentForm.timerADoutUpdate.StopTimer();
+
+            if (parentForm.switchMatrixControl1.sweepMatrixCheckBox.Checked == true)
+                tokenSource.Cancel();
 
             parentForm.recipeRunning = false;
             GCSettings.LatencyMode = GCLatencyMode.Interactive;
@@ -295,6 +315,8 @@ namespace MFCcontrol
             startButton.Enabled = true;
             loadFlowsButton.Enabled = true;
             viewFlowRecipe.Enabled = true;
+            viewPresentCurrentsButton.Enabled = false;
+            exitRecipeButton.Enabled = false;
 
 
             // If Switch Sweeping is enabled, Stop it, renable user control of the switch matrix control
@@ -310,7 +332,6 @@ namespace MFCcontrol
 
 
         }
-
 
         static bool FileInUse(string path)
         {

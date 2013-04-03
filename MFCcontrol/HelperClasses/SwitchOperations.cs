@@ -88,7 +88,7 @@ namespace MFCcontrol
             return returnValue;
         }
 
-        public static void  SweepAndMeasureDevices(NISwitch switchSession, Ke648xControl PicoammControl, StreamWriter sw, bool [] deviceList, GenStopwatch watch, CancellationToken ct)
+        public static void  SweepAndMeasureDevices(NISwitch switchSession, Ke648xControl PicoammControl, StreamWriter sw, bool [] deviceList, GenStopwatch watch, ref double[] presCurrentArray, CancellationToken ct)
         {
             double presCurrent;
             string outLine;
@@ -106,12 +106,16 @@ namespace MFCcontrol
                         string relayNameRow1 = "kr" + 1.ToString() + "c" + i.ToString();
 
                         presCurrent = SwitchToDeviceMeasureCurrent(switchSession, PicoammControl, relayNameRow0, relayNameRow1);
+                        presCurrentArray[i] = presCurrent;
                         outLine += "\t" + presCurrent.ToString("0.000000e0");
 
                     }
                 }
-                //Task.Run(() => sw.Write(outLine + Environment.NewLine));
-                sw.Write(outLine + Environment.NewLine);
+                string stringBuffer = outLine;
+
+                // Offload writing to disk onto new task to avoid slowing down the reading of device in case of disk access
+                Task.Run(() => sw.Write(stringBuffer + Environment.NewLine));
+
             }
             //ct.ThrowIfCancellationRequested();
         }

@@ -67,6 +67,7 @@ namespace MFCcontrol
 
         // nxn matrix containing whether switch matrix should connect this device during scan
         internal bool[] devicesToScan;
+        internal double[] presCurrentArr;
 
         public Form1()
         {
@@ -289,11 +290,12 @@ namespace MFCcontrol
                 curRow_ADoutTable++;
                 timerADoutUpdate.StopTimer();
 
-                //Check if at end of AO output recipe, if so, keep AO update timer off and just exit
+                //Check if at end of AO output recipe, if so, keep AO update timer off and initiate Exit Recipe Button Event
                 //if ((ADoutTableValues_d[curRow_ADoutTable][0]) < 0)
                 if (curRow_ADoutTable >= ADoutTableVolts.Count)
                 {
                     updateADoutputBusy = false;
+                    mfcRecipeControl1.exitRecipe_Click(this, EventArgs.Empty);
                     return;
                 }
 
