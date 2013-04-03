@@ -45,7 +45,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1413, 641);
+            this.ClientSize = new System.Drawing.Size(1765, 641);
             this.Controls.Add(this.scanCurrentsButton);
             this.Name = "ScanDeviceCurrentsForm";
             this.Text = "ScanDeviceCurrentsForm";

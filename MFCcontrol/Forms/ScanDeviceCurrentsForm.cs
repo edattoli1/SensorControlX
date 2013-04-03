@@ -56,7 +56,7 @@ namespace MFCcontrol
 
                 lbl[j] = new Label();
                 lbl[j].Text = j.ToString();
-                lbl[j].Location = new Point(xcoord +3, ycoord);
+                lbl[j].Location = new Point(xcoord +7, ycoord);
                 lbl[j].Visible = true;
                 lbl[j].Width = 40;
                 lbl[j].Height = 20;
@@ -69,8 +69,8 @@ namespace MFCcontrol
                     tb[deviceIterator] = new TextBox();
                     relayName = "r" + i.ToString() + "c" + j.ToString();
                     tb[deviceIterator].Name = "textBox" + relayName;
-                    tb[deviceIterator].Width = 35;
-                    tb[deviceIterator].Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    tb[deviceIterator].Width = 45;
+                    tb[deviceIterator].Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
                     tb[deviceIterator].Height = 10;
                     tb[deviceIterator].Margin = new Padding(3);
@@ -85,7 +85,7 @@ namespace MFCcontrol
 
                     deviceIterator++;
                 }
-                xcoord += 40;
+                xcoord += 50;
             }
 
         }
@@ -111,8 +111,10 @@ namespace MFCcontrol
                         parentControl.switchSession.RelayOperations.RelayControl(relayNameRow0, SwitchRelayAction.CloseRelay);
                         parentControl.switchSession.RelayOperations.RelayControl(relayNameRow1, SwitchRelayAction.OpenRelay);
 
+                        // TODO Need to wait for switch to stabilize? may need to add wait here
+
                         //Read Current
-                        tb[j].Text = parentControl.parentForm.PicoammControl.GetReading().ToString("0.000");
+                        tb[j].Text = parentControl.parentForm.PicoammControl.GetReading().ToString("0.0e0");
 
                         Thread.Sleep(50);
 
