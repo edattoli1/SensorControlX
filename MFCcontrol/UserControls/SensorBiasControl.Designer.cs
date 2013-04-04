@@ -57,14 +57,14 @@
             this.panel4.Controls.Add(this.tableLayoutPanel3);
             this.panel4.Controls.Add(this.biasOutsBox);
             this.panel4.Controls.Add(this.label8);
-            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Location = new System.Drawing.Point(1, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(379, 159);
+            this.panel4.Size = new System.Drawing.Size(379, 145);
             this.panel4.TabIndex = 25;
             // 
             // configBiasOutputButton
             // 
-            this.configBiasOutputButton.Location = new System.Drawing.Point(26, 105);
+            this.configBiasOutputButton.Location = new System.Drawing.Point(14, 89);
             this.configBiasOutputButton.Name = "configBiasOutputButton";
             this.configBiasOutputButton.Size = new System.Drawing.Size(93, 30);
             this.configBiasOutputButton.TabIndex = 28;
@@ -90,7 +90,7 @@
             this.tableLayoutPanel3.Controls.Add(this.label24, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.vdsPresValTextBox, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.vgsPresValTextBox, 2, 2);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(147, 44);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(136, 38);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -239,7 +239,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel4);
             this.Name = "SensorBiasControl";
-            this.Size = new System.Drawing.Size(382, 161);
+            this.Size = new System.Drawing.Size(382, 151);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);

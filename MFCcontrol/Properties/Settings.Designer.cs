@@ -430,5 +430,42 @@ namespace MFCcontrol.Properties {
                 this["SweepMatrixDuringRecipe"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DigitalOutputEnable {
+            get {
+                return ((bool)(this["DigitalOutputEnable"]));
+            }
+            set {
+                this["DigitalOutputEnable"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public int DigitalOutputNumLines {
+            get {
+                return ((int)(this["DigitalOutputNumLines"]));
+            }
+            set {
+                this["DigitalOutputNumLines"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dev1/Port0/line0,Dev1/Port0/line1,Dev1/Port0/line2,Dev1/Port0/line3,Dev1/Port0/li" +
+            "ne4,Dev1/Port0/line5,Dev1/Port0/line6,Dev1/Port0/line7")]
+        public string DigitalOutputLineNames {
+            get {
+                return ((string)(this["DigitalOutputLineNames"]));
+            }
+            set {
+                this["DigitalOutputLineNames"] = value;
+            }
+        }
     }
 }

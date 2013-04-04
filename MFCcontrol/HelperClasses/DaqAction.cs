@@ -25,6 +25,16 @@ namespace MFCcontrol
             daqOutputRangeMax = daqOutputRangeMaxIn;
         }
 
+        public void UpdateDigitalOutPort(string portAddress, bool newState)
+        {
+            using (myTask = new NationalInstruments.DAQmx.Task())
+            {
+                myTask.DOChannels.CreateChannel(portAddress, "",
+                    ChannelLineGrouping.OneChannelForAllLines);
+                DigitalSingleChannelWriter writer = new DigitalSingleChannelWriter(myTask.Stream);
+                writer.WriteSingleSampleSingleLine(true, newState);
+            }
+        }
 
         // Reads input values from DAQ,
         // which DAQs to read from is controlled from Properties.Settings.Default.DAQ_CreateVoltageChannel_AI_chans

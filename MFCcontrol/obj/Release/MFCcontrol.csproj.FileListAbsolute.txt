@@ -27,3 +27,5 @@ C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\ob
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Release\SensorControl.application
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Release\SensorControl.exe
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Release\SensorControl.pdb
+C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Release\MFCcontrol.csprojResolveAssemblyReference.cache
+C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Release\MFCcontrol.DigitalOutputControl.resources

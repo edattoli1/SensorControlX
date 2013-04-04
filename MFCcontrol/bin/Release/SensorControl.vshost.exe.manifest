@@ -121,24 +121,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SensorControl.exe" size="110592">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SensorControl.exe" size="113152">
       <assemblyIdentity name="SensorControl" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>pCzU2a/u6G5DPmTas/472qdAV0mKbMu//x13WJmQE2g=</dsig:DigestValue>
+        <dsig:DigestValue>YsHhtYXXhRKlfdiBRPKWUYfVmNvlOaDM0ZCKzDYBMk4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="SensorControl.exe.config" size="5338">
+  <file name="SensorControl.exe.config" size="5471">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>rNEg8dfDRG3cImaF71DYnwnAopsc2Wz3p1zJt96UQuk=</dsig:DigestValue>
+      <dsig:DigestValue>ScZU8aVmSsY2vICLkm/tBUGxABqd6ObpcYaWROkf58I=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

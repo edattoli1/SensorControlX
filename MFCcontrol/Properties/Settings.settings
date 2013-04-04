@@ -104,5 +104,14 @@
     <Setting Name="SweepMatrixDuringRecipe" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="DigitalOutputEnable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DigitalOutputNumLines" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
+    <Setting Name="DigitalOutputLineNames" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Dev1/Port0/line0,Dev1/Port0/line1,Dev1/Port0/line2,Dev1/Port0/line3,Dev1/Port0/line4,Dev1/Port0/line5,Dev1/Port0/line6,Dev1/Port0/line7</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
