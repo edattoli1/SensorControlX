@@ -65,6 +65,7 @@
             this.configureDigitalOutButton.TabIndex = 24;
             this.configureDigitalOutButton.Text = "Configure";
             this.configureDigitalOutButton.UseVisualStyleBackColor = true;
+            this.configureDigitalOutButton.Click += new System.EventHandler(this.configureDigitalOutButton_Click);
             // 
             // enableDigitalOutCheckBox
             // 

@@ -457,8 +457,8 @@ namespace MFCcontrol.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Dev1/Port0/line0,Dev1/Port0/line1,Dev1/Port0/line2,Dev1/Port0/line3,Dev1/Port0/li" +
-            "ne4,Dev1/Port0/line5,Dev1/Port0/line6,Dev1/Port0/line7")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dev1/port0/line0,Dev1/port0/line1,Dev1/port0/line2,Dev1/port0/line3,Dev1/port0/li" +
+            "ne4,Dev1/port0/line5,Dev1/port0/line6,Dev1/port0/line7")]
         public string DigitalOutputLineNames {
             get {
                 return ((string)(this["DigitalOutputLineNames"]));

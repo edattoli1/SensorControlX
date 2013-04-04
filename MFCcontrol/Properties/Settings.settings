@@ -111,7 +111,7 @@
       <Value Profile="(Default)">8</Value>
     </Setting>
     <Setting Name="DigitalOutputLineNames" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Dev1/Port0/line0,Dev1/Port0/line1,Dev1/Port0/line2,Dev1/Port0/line3,Dev1/Port0/line4,Dev1/Port0/line5,Dev1/Port0/line6,Dev1/Port0/line7</Value>
+      <Value Profile="(Default)">Dev1/port0/line0,Dev1/port0/line1,Dev1/port0/line2,Dev1/port0/line3,Dev1/port0/line4,Dev1/port0/line5,Dev1/port0/line6,Dev1/port0/line7</Value>
     </Setting>
   </Settings>
 </SettingsFile>

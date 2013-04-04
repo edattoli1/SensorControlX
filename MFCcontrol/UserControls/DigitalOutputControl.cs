@@ -49,6 +49,17 @@ namespace MFCcontrol
                 enableDigitalOutCheckBox.Checked = true;
         }
 
+        private void configureDigitalOutButton_Click(object sender, EventArgs e)
+        {
+            ConfigureDigitalOut configDigOut = new ConfigureDigitalOut();
+            configDigOut.parentControl = this;
+
+            configDigOut.ShowDialog();
+
+            // reload Digital Output assignments if change has been made
+            digitalOutLineArray = Util.StringToStringArray(Settings.Default.DigitalOutputLineNames);
+        }
+
 
 
     }
