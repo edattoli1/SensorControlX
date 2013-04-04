@@ -45,17 +45,19 @@
             this.panel1.Controls.Add(this.label7);
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(222, 135);
+            this.panel1.Size = new System.Drawing.Size(221, 138);
             this.panel1.TabIndex = 0;
             // 
             // viewDigitalOutStateButton
             // 
+            this.viewDigitalOutStateButton.Enabled = false;
             this.viewDigitalOutStateButton.Location = new System.Drawing.Point(114, 73);
             this.viewDigitalOutStateButton.Name = "viewDigitalOutStateButton";
             this.viewDigitalOutStateButton.Size = new System.Drawing.Size(93, 45);
             this.viewDigitalOutStateButton.TabIndex = 25;
             this.viewDigitalOutStateButton.Text = "View, Edit States";
             this.viewDigitalOutStateButton.UseVisualStyleBackColor = true;
+            this.viewDigitalOutStateButton.Click += new System.EventHandler(this.viewDigitalOutStateButton_Click);
             // 
             // configureDigitalOutButton
             // 
@@ -95,7 +97,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Name = "DigitalOutputControl";
-            this.Size = new System.Drawing.Size(227, 140);
+            this.Size = new System.Drawing.Size(237, 143);
             this.Load += new System.EventHandler(this.DigitalOutputControl_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -107,8 +109,8 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox enableDigitalOutCheckBox;
-        private System.Windows.Forms.Button configureDigitalOutButton;
-        private System.Windows.Forms.Button viewDigitalOutStateButton;
+        internal System.Windows.Forms.CheckBox enableDigitalOutCheckBox;
+        internal System.Windows.Forms.Button configureDigitalOutButton;
+        internal System.Windows.Forms.Button viewDigitalOutStateButton;
     }
 }

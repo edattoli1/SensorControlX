@@ -467,5 +467,29 @@ namespace MFCcontrol.Properties {
                 this["DigitalOutputLineNames"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        public int DigitalOutRefreshTime {
+            get {
+                return ((int)(this["DigitalOutRefreshTime"]));
+            }
+            set {
+                this["DigitalOutRefreshTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DigitalOutRefreshEnable {
+            get {
+                return ((bool)(this["DigitalOutRefreshEnable"]));
+            }
+            set {
+                this["DigitalOutRefreshEnable"] = value;
+            }
+        }
     }
 }

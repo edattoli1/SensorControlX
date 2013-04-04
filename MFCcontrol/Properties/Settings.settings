@@ -113,5 +113,11 @@
     <Setting Name="DigitalOutputLineNames" Type="System.String" Scope="User">
       <Value Profile="(Default)">Dev1/port0/line0,Dev1/port0/line1,Dev1/port0/line2,Dev1/port0/line3,Dev1/port0/line4,Dev1/port0/line5,Dev1/port0/line6,Dev1/port0/line7</Value>
     </Setting>
+    <Setting Name="DigitalOutRefreshTime" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">200</Value>
+    </Setting>
+    <Setting Name="DigitalOutRefreshEnable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

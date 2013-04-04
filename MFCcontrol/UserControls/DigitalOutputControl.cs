@@ -17,6 +17,7 @@ namespace MFCcontrol
         internal DaqAction digitalWrite;
         internal string[] digitalOutLineArray;
         internal bool [] digitalOutStates;
+        internal static DigitalOutLineStatesForm digOutStatesForm1;
         
         public DigitalOutputControl()
         {
@@ -35,12 +36,16 @@ namespace MFCcontrol
                 for (int i = 0; i < Settings.Default.DigitalOutputNumLines; i++)
                     digitalWrite.UpdateDigitalOutPort(digitalOutLineArray[i], digitalOutStates[i]);
 
+                viewDigitalOutStateButton.Enabled = true;
             }
             else
             {
                 for (int i = 0; i < Settings.Default.DigitalOutputNumLines; i++)
                     digitalWrite.UpdateDigitalOutPort(digitalOutLineArray[i], false);
+
+                viewDigitalOutStateButton.Enabled = false;
             }
+            Settings.Default.DigitalOutputEnable = enableDigitalOutCheckBox.Checked;
         }
 
         private void DigitalOutputControl_Load(object sender, EventArgs e)
@@ -58,6 +63,16 @@ namespace MFCcontrol
 
             // reload Digital Output assignments if change has been made
             digitalOutLineArray = Util.StringToStringArray(Settings.Default.DigitalOutputLineNames);
+        }
+
+        private void viewDigitalOutStateButton_Click(object sender, EventArgs e)
+        {
+            digOutStatesForm1 = new DigitalOutLineStatesForm();
+            digOutStatesForm1.parentControl = this;
+            viewDigitalOutStateButton.Enabled = false;
+            configureDigitalOutButton.Enabled = false;
+            enableDigitalOutCheckBox.Enabled = false;
+            digOutStatesForm1.Show();
         }
 
 

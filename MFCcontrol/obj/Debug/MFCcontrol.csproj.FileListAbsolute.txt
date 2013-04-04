@@ -90,3 +90,4 @@ C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\ob
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.ViewPresentCurrentsForm.resources
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.ConfigureDigitalOut.resources
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.DigitalOutputControl.resources
+C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.DigitalOutLineStatesForm.resources
