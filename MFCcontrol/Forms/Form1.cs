@@ -473,6 +473,10 @@ namespace MFCcontrol
             if (Properties.Settings.Default.mfcMainControlEnable == true)
                 ZeroAllMFCOutputs();
 
+            // Zero all Digital Outputs
+            if (Properties.Settings.Default.DigitalOutputEnable == true)
+                digitalOutputControl1.ZeroAllDigOuts();
+
             // Write All Array Configuration Settings to Settings File
             Settings.Default.MfcControlEnableList = Util.BoolArrayToString(stateMFCs);
             Settings.Default.MfcGasNamesList = Util.StringArrayToString(mfcGasNames);

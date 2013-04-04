@@ -75,6 +75,12 @@ namespace MFCcontrol
             digOutStatesForm1.Show();
         }
 
+        internal void ZeroAllDigOuts()
+        {
+            for (int i = 0; i < Settings.Default.DigitalOutputNumLines; i++)
+                digitalWrite.UpdateDigitalOutPort(digitalOutLineArray[i], false);
+
+        }
 
 
     }

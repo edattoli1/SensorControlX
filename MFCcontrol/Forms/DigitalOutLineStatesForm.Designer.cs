@@ -320,6 +320,7 @@
             0,
             0,
             0});
+            this.refreshRateUpDown.ValueChanged += new System.EventHandler(this.refreshRateUpDown_ValueChanged);
             // 
             // refreshListCheckBox
             // 
@@ -330,6 +331,7 @@
             this.refreshListCheckBox.TabIndex = 25;
             this.refreshListCheckBox.Text = "Refresh List";
             this.refreshListCheckBox.UseVisualStyleBackColor = true;
+            this.refreshListCheckBox.CheckedChanged += new System.EventHandler(this.refreshListCheckBox_CheckedChanged);
             // 
             // DigitalOutLineStatesForm
             // 
