@@ -123,7 +123,7 @@
             this.mfc1CheckBox.Location = new System.Drawing.Point(159, 8);
             this.mfc1CheckBox.Margin = new System.Windows.Forms.Padding(8);
             this.mfc1CheckBox.Name = "mfc1CheckBox";
-            this.mfc1CheckBox.Size = new System.Drawing.Size(15, 14);
+            this.mfc1CheckBox.Size = new System.Drawing.Size(18, 17);
             this.mfc1CheckBox.TabIndex = 15;
             this.mfc1CheckBox.UseVisualStyleBackColor = true;
             this.mfc1CheckBox.CheckedChanged += new System.EventHandler(this.mfc1CheckBox_CheckedChanged);
@@ -136,7 +136,7 @@
             this.mfc1PlotCheck.Location = new System.Drawing.Point(456, 8);
             this.mfc1PlotCheck.Margin = new System.Windows.Forms.Padding(8);
             this.mfc1PlotCheck.Name = "mfc1PlotCheck";
-            this.mfc1PlotCheck.Size = new System.Drawing.Size(15, 14);
+            this.mfc1PlotCheck.Size = new System.Drawing.Size(18, 17);
             this.mfc1PlotCheck.TabIndex = 27;
             this.mfc1PlotCheck.UseVisualStyleBackColor = true;
             this.mfc1PlotCheck.CheckedChanged += new System.EventHandler(this.mfc1PlotCheck_CheckedChanged);
@@ -160,12 +160,12 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox mfc1PresFlowBox;
-        private System.Windows.Forms.NumericUpDown mfc1TextBox;
         private System.Windows.Forms.Label mfc1maxLabel;
         private System.Windows.Forms.Label mfc1GasName;
         private System.Windows.Forms.Label mfc1Display;
         private System.Windows.Forms.CheckBox mfc1CheckBox;
         private System.Windows.Forms.CheckBox mfc1PlotCheck;
+        internal System.Windows.Forms.NumericUpDown mfc1TextBox;
 
     }
 }

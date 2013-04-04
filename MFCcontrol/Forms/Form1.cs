@@ -37,7 +37,7 @@ namespace MFCcontrol
         internal bool recipeRunning;
         internal bool AinGraphUpdateState;
         private int ADgraphUpdateCnt;
-        private double[] presentMFCsetting;
+        internal double[] presentMFCsetting;
         private static Ke648xGUI PicoammForm;
         internal  Ke648xControl PicoammControl;
 

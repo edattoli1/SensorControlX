@@ -120,7 +120,7 @@ namespace MFCcontrol
 
                 string[] currentRow = new string[numCols];
 
-                for (int i = 1; i <= 4; i++)
+                for (int i = 1; i <= Properties.Settings.Default.MFCcontrol_numMFCs; i++)
                 {
                     currentRow = XLGetDeviceRow(numCols, rowIterator.ToString(), wsPart);
 
@@ -186,7 +186,7 @@ namespace MFCcontrol
             string[] returnList = new string[numCols];
             int returnListIterator = 0;
 
-            for (char c = 'A'; c <= 'E'; c++)
+            for (char c = 'A'; c <= 'I'; c++)
             {
                 returnList[returnListIterator] = XLGetCellValue(wsPart, c + sSheetRowNum);
                 returnListIterator++;

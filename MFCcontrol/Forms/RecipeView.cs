@@ -33,7 +33,7 @@ namespace MFCcontrol
             dataGridView1.ReadOnly = true;
             
             // Create an unbound DataGridView by declaring a column count.
-            dataGridView1.ColumnCount = Properties.Settings.Default.MFCcontrol_numMFCs + 1;
+            dataGridView1.ColumnCount = Properties.Settings.Default.MFCcontrol_numMFCs + 1 + Properties.Settings.Default.DigitalOutputNumLines;
             dataGridView1.ColumnHeadersVisible = true;
 
             // Set the column header style.
@@ -49,7 +49,18 @@ namespace MFCcontrol
             dataGridView1.Columns[2].Name = "MFC2";
             dataGridView1.Columns[3].Name = "MFC3";
             dataGridView1.Columns[4].Name = "MFC4";
-
+            dataGridView1.Columns[5].Name = "MFC5";
+            dataGridView1.Columns[6].Name = "MFC6";
+            dataGridView1.Columns[7].Name = "MFC7";
+            dataGridView1.Columns[8].Name = "MFC8";
+            dataGridView1.Columns[9].Name = "DigOut1";
+            dataGridView1.Columns[10].Name = "DigOut2";
+            dataGridView1.Columns[11].Name = "DigOut3";
+            dataGridView1.Columns[12].Name = "DigOut4";
+            dataGridView1.Columns[13].Name = "DigOut5";
+            dataGridView1.Columns[14].Name = "DigOut6";
+            dataGridView1.Columns[15].Name = "DigOut7";
+            dataGridView1.Columns[16].Name = "DigOut8";
 
 
             LoadValuesDataGridView(tableList);

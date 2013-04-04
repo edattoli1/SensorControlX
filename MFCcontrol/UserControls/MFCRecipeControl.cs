@@ -106,6 +106,9 @@ namespace MFCcontrol
                     try
                     {
                         parentForm.daqOutputMFC.UpdateDaqOut(parentForm.mfcAoutChannels[i - 1], parentForm.ADoutTableVolts[0][i]);
+                        parentForm.presentMFCsetting[i - 1] = (parentForm.ADoutTableValues_d[0][i]);
+                        
+                        //parentForm.mfcControlArray[i - 1].mfc1TextBox.Value = Convert.ToDecimal(parentForm.ADoutTableValues_d);
                     }
                     catch
                     {
@@ -188,10 +191,8 @@ namespace MFCcontrol
 
                 parentForm.maxFlowMFCs = sshtLoad1.LoadMFCmaxFlows(this.openFileDialog1.FileName);
 
-                parentForm.mfcControl1.SetMFCnumber(1);
-                parentForm.mfcControl2.SetMFCnumber(2);
-                parentForm.mfcControl3.SetMFCnumber(3);
-                parentForm.mfcControl4.SetMFCnumber(4);
+                for (int i = 0; i < parentForm.mfcControlArray.Length; i++)
+                    parentForm.mfcControlArray[i].SetMFCnumber(i+1);
 
                 // Load all rows of recipe Spreadsheet into ADoutTableValues_s
                 // Empty cells are marked translated into -1 (means do nothing)
@@ -206,7 +207,7 @@ namespace MFCcontrol
                     currentRow_d = new double[Properties.Settings.Default.MFCcontrol_numMFCs + 1];
                     for (int i = 0; i < Properties.Settings.Default.MFCcontrol_numMFCs + 1; i++)
                     {
-                        if (rowArray[i] == "")
+                        if ( (rowArray[i] == "") || (rowArray[i] == null) )
                             currentRow_d[i] = -1.0;
                         else
                             currentRow_d[i] = Convert.ToDouble(rowArray[i]);
@@ -228,7 +229,7 @@ namespace MFCcontrol
 
                     for (int i = 1; i <= parentForm.stateMFCs.Length; i++)
                     {
-                        if (rowArray[i] == "")
+                        if (rowArray[i] == "" || (rowArray[i] == null))
                             currentRow_d[i] = -1.0;
                         else
                             currentRow_d[i] = DaqAction.GetVoltsFromMFCflow(rowArray[i], i-1, parentForm.maxFlowMFCs);

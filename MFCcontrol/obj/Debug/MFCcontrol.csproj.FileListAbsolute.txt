@@ -91,3 +91,12 @@ C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\ob
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.ConfigureDigitalOut.resources
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.DigitalOutputControl.resources
 C:\Users\Eric\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.DigitalOutLineStatesForm.resources
+C:\Users\pat\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.DigitalOutLineStatesForm.resources
+C:\Users\pat\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.ConfigureDigitalOut.resources
+C:\Users\pat\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.ConfigureSwitchMatrix.resources
+C:\Users\pat\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.ScanDeviceCurrentsForm.resources
+C:\Users\pat\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.SwitchStateForm.resources
+C:\Users\pat\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.ScanListView.resources
+C:\Users\pat\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.DigitalOutputControl.resources
+C:\Users\pat\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.SwitchMatrixControl.resources
+C:\Users\pat\Documents\Visual Studio 2012\Projects\SensorControlX\MFCcontrol\obj\Debug\MFCcontrol.ViewPresentCurrentsForm.resources
