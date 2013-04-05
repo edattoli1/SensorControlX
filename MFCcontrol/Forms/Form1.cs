@@ -152,7 +152,7 @@ namespace MFCcontrol
             timerADoutUpdate.AutoResetEnable();
             timerADoutUpdate.SetInterval(Properties.Settings.Default.ADoutRefreshTime_ms);
 
-
+            timerADoutUpdate.TimerElapsed += UpdateADoutputHandler;
         }
 
         internal void Form1_Load(object sender, EventArgs e)
@@ -657,7 +657,7 @@ namespace MFCcontrol
                     mfcControlArray[i].EnableUserControl();
                 timerADacquire.StartTimer();
                 timerADgraph.StartTimer();
-                timerADoutUpdate.StartTimer();
+                //timerADoutUpdate.StartTimer();
                 timerUI.StartTimer();
                 mfcRecipeControl1.loadFlowsButton.Enabled = true;
                 // If a recipe is loaded, enable start button to recipe
@@ -670,7 +670,7 @@ namespace MFCcontrol
                     mfcControlArray[i].DisableUserControl();
                 timerADacquire.StopTimer();
                 timerADgraph.StopTimer();
-                timerADoutUpdate.StopTimer();
+                //timerADoutUpdate.StopTimer();
                 timerUI.StopTimer();
                 //mfcRecipeControl1.loadFlowsButton.Enabled = false;
                 mfcRecipeControl1.startButton.Enabled = false;

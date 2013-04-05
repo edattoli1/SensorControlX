@@ -140,8 +140,8 @@ namespace MFCcontrol
             //start AD output update timer (when to update output for A/D), units of ms
             parentForm.timerADoutUpdate.SetInterval(parentForm.ADoutTableVolts[1][0] * 60 * 1000);
             nextRecipeTimeEventBox.Text = parentForm.ADoutTableVolts[1][0].ToString();
+            parentForm.timerADoutUpdate.StopTimer();
             parentForm.timerADoutUpdate.StartTimer();
-            parentForm.timerADoutUpdate.TimerElapsed += parentForm.UpdateADoutputHandler;
 
             // If Switch Sweeping is enabled, Start it, disable user from messing with the switch matrix control
             if (parentForm.switchMatrixControl1.sweepMatrixCheckBox.Checked == true)
@@ -321,6 +321,8 @@ namespace MFCcontrol
                 return;
             }
 
+            nextRecipeTimeEventBox.Text = "Finished";
+
             parentForm.watch.StopStopwatch();
             parentForm.watch.ResetStopwatch();
 
@@ -329,7 +331,6 @@ namespace MFCcontrol
             if (parentForm.switchMatrixControl1.sweepMatrixCheckBox.Checked == true)
                 tokenSource.Cancel();
 
-            parentForm.recipeRunning = false;
             // GCSettings.LatencyMode = GCLatencyMode.Interactive;
             //disable writing to disk for last AD acquire events due to last callbacks from HiResTimer class
             //UpdateADacquireBusy = true;
@@ -344,6 +345,8 @@ namespace MFCcontrol
                 parentForm.swriter.Close();
                 parentForm.IsADoutfileOpen = false;
             }
+
+            parentForm.updateADoutputBusy = false;
 
             startButton.Enabled = true;
             parentForm.configMFCsButton.Enabled = true;
@@ -388,7 +391,6 @@ namespace MFCcontrol
 
             parentForm.mfcMainControlEnable.Enabled = true;
             parentForm.digitalOutputControl1.enableDigitalOutCheckBox.Enabled = true;
-
 
         }
 
