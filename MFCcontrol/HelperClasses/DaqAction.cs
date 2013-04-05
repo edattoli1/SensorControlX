@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NationalInstruments.DAQmx;
+using System.Windows.Forms;
 
 namespace MFCcontrol
 {
@@ -27,12 +28,20 @@ namespace MFCcontrol
 
         public void UpdateDigitalOutPort(string portAddress, bool newState)
         {
-            using (myTask = new NationalInstruments.DAQmx.Task())
+            try
             {
-                myTask.DOChannels.CreateChannel(portAddress, "",
-                    ChannelLineGrouping.OneChannelForAllLines);
-                DigitalSingleChannelWriter writer = new DigitalSingleChannelWriter(myTask.Stream);
-                writer.WriteSingleSampleSingleLine(true, newState);
+                using (myTask = new NationalInstruments.DAQmx.Task())
+                {
+                    myTask.DOChannels.CreateChannel(portAddress, "",
+                        ChannelLineGrouping.OneChannelForAllLines);
+                    DigitalSingleChannelWriter writer = new DigitalSingleChannelWriter(myTask.Stream);
+                    writer.WriteSingleSampleSingleLine(true, newState);
+                }
+            }
+            catch (DaqException exception)
+            {
+                DaqOutputProblem();
+
             }
         }
 
@@ -123,6 +132,19 @@ namespace MFCcontrol
 
         }
 
+        internal void DaqOutputProblem()
+        {
+            string messageBoxText = "Do you want to exit?";
+            string caption = "DAQ Output Problem";
+            var result = MessageBox.Show(messageBoxText, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Properties.Settings.Default.mfcMainControlEnable = false;
+                Properties.Settings.Default.sensorBiasEnable = false;
+                Properties.Settings.Default.Save();
+                Environment.Exit(0);
+            }
+        }
 
     }
 

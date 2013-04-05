@@ -90,6 +90,7 @@ namespace MFCcontrol
                 }
                 swriterCurrents.Write(headerString2 + Environment.NewLine);
 
+
             }
 
             // //////////////////////////////////////////////////////////////////////////
@@ -117,6 +118,17 @@ namespace MFCcontrol
 
                 }
             }
+
+            //Output initial Digital Output values
+            // Check whether changes are being made to DigOut states, if so update the TTL voltage out
+            for (int i = 0; i < Properties.Settings.Default.DigitalOutputNumLines; i++)
+            {
+                if (parentForm.DigOutTableValues_i[parentForm.curRow_ADoutTable][i] > 0)
+                    parentForm.digitalOutputControl1.UpdateDigOutput(i, true);
+                else if (parentForm.DigOutTableValues_i[parentForm.curRow_ADoutTable][i] == 0)
+                    parentForm.digitalOutputControl1.UpdateDigOutput(i, false);
+            }
+
 
             parentForm.curRow_ADoutTable = 1;
 
@@ -167,6 +179,9 @@ namespace MFCcontrol
             exitRecipeButton.Enabled = true;
 
             parentForm.recipeRunning = true;
+            parentForm.mfcMainControlEnable.Enabled = false;
+            parentForm.digitalOutputControl1.enableDigitalOutCheckBox.Checked = true;
+            parentForm.digitalOutputControl1.enableDigitalOutCheckBox.Enabled = false;
 
             lastRecipeTimeEventBox.Text = "0";
 
@@ -370,6 +385,9 @@ namespace MFCcontrol
                 parentForm.switchMatrixControl1.ScanDeviceCurrentsButton.Enabled = true;
                 parentForm.switchMatrixControl1.loadDeviceListButton.Enabled = true;
             }
+
+            parentForm.mfcMainControlEnable.Enabled = true;
+            parentForm.digitalOutputControl1.enableDigitalOutCheckBox.Enabled = true;
 
 
         }

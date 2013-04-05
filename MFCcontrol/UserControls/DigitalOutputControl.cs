@@ -82,6 +82,17 @@ namespace MFCcontrol
 
         }
 
+        internal void UpdateDigOutput(int digOutNum, bool state)
+        {
+
+            if (state == true)
+                digitalOutStates[digOutNum] = true;
+            else
+                digitalOutStates[digOutNum] = false;
+
+            digitalWrite.UpdateDigitalOutPort(digitalOutLineArray[digOutNum], state);
+        }
+
 
     }
 }

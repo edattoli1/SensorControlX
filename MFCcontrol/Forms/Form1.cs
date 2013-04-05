@@ -285,6 +285,8 @@ namespace MFCcontrol
             else
             {
                 updateADoutputBusy = true;
+                
+                // Check whether changes are being made to MFC states, if so update the voltage out
                 for (int i = 1; i <= Properties.Settings.Default.MFCcontrol_numMFCs; i++)
                 {
                     // check record of AD out values has a current output for the AD at this particular time (i.e., row)
@@ -292,6 +294,16 @@ namespace MFCcontrol
                     if ((ADoutTableVolts[curRow_ADoutTable][i] >= 0) && (stateMFCs[i - 1] == true))
                         UpdateADoutput(ADoutTableVolts, i);
                 }
+
+                // Check whether changes are being made to DigOut states, if so update the TTL voltage out
+                for (int i = 0; i < Properties.Settings.Default.DigitalOutputNumLines; i++)
+                {
+                    if (DigOutTableValues_i[curRow_ADoutTable][i] > 0)
+                        digitalOutputControl1.UpdateDigOutput(i, true);
+                    else if (DigOutTableValues_i[curRow_ADoutTable][i] == 0)
+                        digitalOutputControl1.UpdateDigOutput(i, false);
+                }
+
                 curRow_ADoutTable++;
                 timerADoutUpdate.StopTimer();
 
@@ -311,6 +323,8 @@ namespace MFCcontrol
                 updateADoutputBusy = false;
             }
         }
+
+        
 
         private void UpdateADoutput(List<double[]> ADoutTable, int mfcNumber)
         {

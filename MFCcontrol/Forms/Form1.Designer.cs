@@ -446,8 +446,8 @@
         internal MFCcontrolTemplate mfcControl8;
         internal GraphMfcs graphMfcs1;
         internal SwitchMatrixControl switchMatrixControl1;
-        private DigitalOutputControl digitalOutputControl1;
         internal System.Windows.Forms.CheckBox mfcMainControlEnable;
+        internal DigitalOutputControl digitalOutputControl1;
         
     }
 }
