@@ -121,7 +121,7 @@ namespace MFCcontrol
 
                 string[] currentRow = new string[numCols];
 
-                for (int i = 1; i <= Properties.Settings.Default.MFCcontrol_numMFCs; i++)
+                for (int i = 1; i <= 4; i++)
                 {
                     currentRow = XLGetDeviceRow(numCols, rowIterator.ToString(), wsPart);
 

@@ -28,6 +28,26 @@ namespace MFCcontrol
 
         private void startButton_Click(object sender, EventArgs e)
         {
+            // Check if output files exist, if so, ask you user if its OK to overwrite or abort the recipe
+
+            if (File.Exists("adInput.txt"))
+            {
+                string messageBoxText = "File adInput.txt already exists. Do you want to overwrite this file and continue running the recipe?";
+                string caption = "Older Log File Exists";
+                var result = MessageBox.Show(messageBoxText, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No)
+                    return;
+            }
+
+            if (File.Exists("currentMeasurements.txt"))
+            {
+                string messageBoxText = "File currentMeasurements.txt already exists. Do you want to overwrite this file and continue running the recipe?";
+                string caption = "Older Log File Exists";
+                var result = MessageBox.Show(messageBoxText, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No)
+                    return;
+            }
+            
             //Create AD results text file, put headers in
             //Make sure writes are done asynchronously using FileStream to open file async
 
