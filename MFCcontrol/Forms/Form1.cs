@@ -29,6 +29,9 @@ namespace MFCcontrol
         internal List<double[]> ADoutTableValues_d;
         internal List<double[]> ADoutTableVolts;
 
+        internal List<string[]> DigOutTableValues_s;
+        internal List<int[]> DigOutTableValues_i;
+
         private static double[] currentADin;
         private DaqAction daqInput;
         public DaqAction daqOutputMFC;
@@ -643,6 +646,9 @@ namespace MFCcontrol
                 timerADoutUpdate.StartTimer();
                 timerUI.StartTimer();
                 mfcRecipeControl1.loadFlowsButton.Enabled = true;
+                // If a recipe is loaded, enable start button to recipe
+                if (mfcRecipeControl1.viewFlowRecipe.Enabled == true)
+                    mfcRecipeControl1.startButton.Enabled = true;
             }
             else
             {
@@ -652,11 +658,13 @@ namespace MFCcontrol
                 timerADgraph.StopTimer();
                 timerADoutUpdate.StopTimer();
                 timerUI.StopTimer();
-                mfcRecipeControl1.loadFlowsButton.Enabled = false;
+                //mfcRecipeControl1.loadFlowsButton.Enabled = false;
                 mfcRecipeControl1.startButton.Enabled = false;
             }
             Properties.Settings.Default.mfcMainControlEnable = mfcMainControlEnable.Checked;
             graphMfcs1.AinGraphUpdateBox_CheckedChanged(this, EventArgs.Empty);
+
+
         }
 
 

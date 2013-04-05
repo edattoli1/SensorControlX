@@ -12,6 +12,7 @@ namespace MFCcontrol
     {
         private const string sheetName = "Sheet1";
         private List<string[]> tableLoad = new List<string[]>();
+        private List<string[]> tableLoadDigOut = new List<string[]>();
 
         public bool[] LoadMFCstate(string fileName)
         {
@@ -39,7 +40,7 @@ namespace MFCcontrol
 
                 string[] currentRow = new string[numCols];
 
-                currentRow = XLGetRow(numCols, 1.ToString(), wsPart);
+                currentRow = XLGetRowMFC(numCols, 1.ToString(), wsPart);
 
                 for (int i = 1; i <= Properties.Settings.Default.MFCcontrol_numMFCs; i++)
                 {
@@ -80,7 +81,7 @@ namespace MFCcontrol
 
                 string[] currentRow = new string[numCols];
 
-                currentRow = XLGetRow(numCols, 2.ToString(), wsPart);
+                currentRow = XLGetRowMFC(numCols, 2.ToString(), wsPart);
 
                 for (int i = 1; i <= Properties.Settings.Default.MFCcontrol_numMFCs; i++)
                 {
@@ -135,7 +136,7 @@ namespace MFCcontrol
         
         
         
-        public List<string[]> Load(string fileName)
+        public List<string[]> LoadMfc(string fileName)
         {
             using (SpreadsheetDocument document = SpreadsheetDocument.Open(fileName, false))
             {
@@ -164,7 +165,7 @@ namespace MFCcontrol
 
                 while (true)
                 {
-                    currentRow = XLGetRow(numCols, rowIterator.ToString(), wsPart);
+                    currentRow = XLGetRowMFC(numCols, rowIterator.ToString(), wsPart);
 
                     // stop loading spreadsheet once you hit -1 in the first column of a row
                     if (Convert.ToDouble(currentRow[0]) < 0)
@@ -180,8 +181,64 @@ namespace MFCcontrol
             return tableLoad;
         }
 
+        public List<string[]> LoadDigOut(string fileName, int numRows)
+        {
+            using (SpreadsheetDocument document = SpreadsheetDocument.Open(fileName, false))
+            {
+                WorkbookPart wbPart = document.WorkbookPart;
 
-        public static string[] XLGetRow(int numCols, string sSheetRowNum, WorksheetPart wsPart)
+                // Find the sheet with the supplied name, and then use that Sheet object
+                // to retrieve a reference to the appropriate worksheet.
+                Sheet theSheet = wbPart.Workbook.Descendants<Sheet>().
+                  Where(s => s.Name == sheetName).FirstOrDefault();
+
+                if (theSheet == null)
+                {
+                    throw new ArgumentException("sheetName");
+                }
+
+                // Retrieve a reference to the worksheet part, and then use its Worksheet property to get 
+                // a reference to the cell whose address matches the address you've supplied:
+                WorksheetPart wsPart = (WorksheetPart)(wbPart.GetPartById(theSheet.Id));
+
+                int numCols = Properties.Settings.Default.DigitalOutputNumLines;
+
+                //start at this row in the spreadsheet file
+                int rowIterator = 4;
+
+                string[] currentRow = new string[numCols];
+
+                for (int i = 0; i < numRows; i++)
+                {
+                    currentRow = XLGetRowDigOut(numCols, rowIterator.ToString(), wsPart);
+
+                    // stop loading spreadsheet once you hit -1 in the first column of a row
+
+                    tableLoadDigOut.Add(currentRow);
+                    rowIterator++;
+                }
+            }
+
+            return tableLoadDigOut;
+        }
+
+        public static string[] XLGetRowDigOut(int numCols, string sSheetRowNum, WorksheetPart wsPart)
+        {
+            string[] returnList = new string[numCols];
+            int returnListIterator = 0;
+
+            for (char c = 'J'; c <= 'Q'; c++)
+            {
+                returnList[returnListIterator] = XLGetCellValue(wsPart, c + sSheetRowNum);
+                returnListIterator++;
+            }
+
+            return returnList;
+        }
+
+
+
+        public static string[] XLGetRowMFC(int numCols, string sSheetRowNum, WorksheetPart wsPart)
         {
             string[] returnList = new string[numCols];
             int returnListIterator = 0;

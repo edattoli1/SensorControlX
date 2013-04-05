@@ -198,7 +198,7 @@ namespace MFCcontrol
                 // Empty cells are marked translated into -1 (means do nothing)
                 // ADoutTableValues_d is in format of Flow (sccm)
 
-                parentForm.ADoutTableValues_s = sshtLoad1.Load(this.openFileDialog1.FileName);
+                parentForm.ADoutTableValues_s = sshtLoad1.LoadMfc(this.openFileDialog1.FileName);
 
                 parentForm.ADoutTableValues_d = new List<double[]>();
                 double[] currentRow_d;
@@ -237,7 +237,29 @@ namespace MFCcontrol
                     parentForm.ADoutTableVolts.Add(currentRow_d);
                 }
 
-                startButton.Enabled = true;
+                // Load DigOut Recipe part
+
+                parentForm.DigOutTableValues_s = sshtLoad1.LoadDigOut(this.openFileDialog1.FileName, parentForm.ADoutTableValues_d.Count);
+
+                parentForm.DigOutTableValues_i = new List<int[]>();
+                int[] currentRow_i;
+                foreach (string[] rowArray in parentForm.DigOutTableValues_s)
+                {
+                    currentRow_i = new int[Properties.Settings.Default.DigitalOutputNumLines];
+                    for (int i = 0; i < currentRow_i.Length; i++)
+                    {
+                        if ((rowArray[i] == "") || (rowArray[i] == null))
+                            currentRow_i[i] = -1;
+                        else
+                            currentRow_i[i] = Convert.ToInt32(rowArray[i]);
+                    }
+                    parentForm.DigOutTableValues_i.Add(currentRow_i);
+                }
+
+
+
+                if (parentForm.mfcMainControlEnable.Checked == true)
+                    startButton.Enabled = true;
                 viewFlowRecipe.Enabled = true;
             }
         }
@@ -246,7 +268,7 @@ namespace MFCcontrol
 
         private void viewFlowRecipe_Click(object sender, EventArgs e)
         {
-            RecipeView1 = new RecipeView(this, parentForm.ADoutTableValues_s, parentForm.stateMFCs);
+            RecipeView1 = new RecipeView(this, parentForm.ADoutTableValues_s, parentForm.DigOutTableValues_s, parentForm.stateMFCs);
 
             RecipeView1.Show();
         }

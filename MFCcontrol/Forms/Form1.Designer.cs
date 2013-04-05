@@ -430,7 +430,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.CheckBox mfcMainControlEnable;
         internal System.Windows.Forms.Button configMFCsButton;
         internal MFCcontrolTemplate mfcControl4;
         internal MFCcontrolTemplate mfcControl1;
@@ -448,6 +447,7 @@
         internal GraphMfcs graphMfcs1;
         internal SwitchMatrixControl switchMatrixControl1;
         private DigitalOutputControl digitalOutputControl1;
+        internal System.Windows.Forms.CheckBox mfcMainControlEnable;
         
     }
 }
