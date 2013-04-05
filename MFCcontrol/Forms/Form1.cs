@@ -153,6 +153,9 @@ namespace MFCcontrol
             timerADoutUpdate.SetInterval(Properties.Settings.Default.ADoutRefreshTime_ms);
 
             timerADoutUpdate.TimerElapsed += UpdateADoutputHandler;
+            timerUI.TimerElapsed += UpdateUIhandler;
+            timerADacquire.TimerElapsed += UpdateADacquireHandlerAsync;
+            timerADgraph.TimerElapsed += UpdateADgraphHandler;
         }
 
         internal void Form1_Load(object sender, EventArgs e)
@@ -179,16 +182,12 @@ namespace MFCcontrol
             //start StopWatch
             watch.StartStopwatch();
 
-            //start UI Timer
-            timerUI.TimerElapsed += UpdateUIhandler;
-
-
             //start AD timer (when to acquire from A/D)
             UpdateADacquireBusy = false;
-            timerADacquire.TimerElapsed += UpdateADacquireHandlerAsync;
+
 
             //start AD graph timer (when to graph data from A/D)
-            timerADgraph.TimerElapsed += UpdateADgraphHandler;
+
 
             //Disable User Control if MFC Control is Saved to Be OFF
             if (Properties.Settings.Default.mfcMainControlEnable == false)

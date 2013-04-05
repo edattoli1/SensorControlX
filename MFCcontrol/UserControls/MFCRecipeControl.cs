@@ -324,7 +324,7 @@ namespace MFCcontrol
             nextRecipeTimeEventBox.Text = "Finished";
 
             parentForm.watch.StopStopwatch();
-            parentForm.watch.ResetStopwatch();
+            //parentForm.watch.ResetStopwatch();
 
             parentForm.timerADoutUpdate.StopTimer();
 
@@ -359,7 +359,7 @@ namespace MFCcontrol
 
             parentForm.recipeRunning = false;
             recipePauseCheckbox.Enabled = false;
-            parentForm.resetGraphButton_Click(this, EventArgs.Empty);
+            //parentForm.resetGraphButton_Click(this, EventArgs.Empty);
             parentForm.Form1_Load(this, EventArgs.Empty);
             startButton.Enabled = true;
             loadFlowsButton.Enabled = true;
