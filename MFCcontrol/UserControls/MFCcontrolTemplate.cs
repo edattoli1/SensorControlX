@@ -120,7 +120,7 @@ namespace MFCcontrol
                 mfc1TextBox.Value = 0;
                 parentForm.stateMFCs[mfcNumber - 1] = false;
             }
-            else
+            else if (Properties.Settings.Default.mfcMainControlEnable == true)
             {
                 mfc1TextBox.Enabled = true;
                 try

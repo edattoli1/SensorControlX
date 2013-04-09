@@ -141,6 +141,7 @@ namespace MFCcontrol
             {
                 Properties.Settings.Default.mfcMainControlEnable = false;
                 Properties.Settings.Default.sensorBiasEnable = false;
+                Properties.Settings.Default.DigitalOutputEnable = false;
                 Properties.Settings.Default.Save();
                 Environment.Exit(0);
             }
