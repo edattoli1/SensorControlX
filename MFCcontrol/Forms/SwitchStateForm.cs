@@ -254,6 +254,8 @@ namespace MFCcontrol
             //this.Visible = false;
 
             //Allow Main Form Control over Switch Box Enable
+            refreshListCheckBox.Checked = false;
+
             parentControl.enableSwitchCheckBox.Enabled = true;
             parentControl.configureSwitchButton.Enabled = true;
             parentControl.viewSwitchStateButton.Enabled = true;
