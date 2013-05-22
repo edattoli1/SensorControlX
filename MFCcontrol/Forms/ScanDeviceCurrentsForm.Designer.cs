@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.scanCurrentsButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // scanCurrentsButton
             // 
-            this.scanCurrentsButton.Location = new System.Drawing.Point(12, 356);
+            this.scanCurrentsButton.Location = new System.Drawing.Point(12, 432);
             this.scanCurrentsButton.Name = "scanCurrentsButton";
             this.scanCurrentsButton.Size = new System.Drawing.Size(85, 48);
             this.scanCurrentsButton.TabIndex = 0;
@@ -41,11 +42,20 @@
             this.scanCurrentsButton.UseVisualStyleBackColor = true;
             this.scanCurrentsButton.Click += new System.EventHandler(this.scanCurrentsButton_Click);
             // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1448, 392);
+            this.panel1.TabIndex = 1;
+            // 
             // ScanDeviceCurrentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1765, 418);
+            this.ClientSize = new System.Drawing.Size(1499, 506);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.scanCurrentsButton);
             this.Name = "ScanDeviceCurrentsForm";
             this.Text = "ScanDeviceCurrentsForm";
@@ -58,5 +68,6 @@
         #endregion
 
         private System.Windows.Forms.Button scanCurrentsButton;
+        private System.Windows.Forms.Panel panel1;
     }
 }

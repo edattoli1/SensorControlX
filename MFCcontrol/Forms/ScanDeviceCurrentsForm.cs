@@ -61,7 +61,7 @@ namespace MFCcontrol
                 lbl[j].Width = 40;
                 lbl[j].Height = 20;
                 ycoord += 5;
-                this.Controls.Add(lbl[j]);
+                this.panel1.Controls.Add(lbl[j]);
 
 
                 for (int i = 0; i < 1; i++)
@@ -81,7 +81,7 @@ namespace MFCcontrol
                     tb[deviceIterator].Visible = true;
                     tb[deviceIterator].Location = new Point(xcoord, ycoord);
 
-                    this.Controls.Add(tb[deviceIterator]);
+                    this.panel1.Controls.Add(tb[deviceIterator]);
 
                     deviceIterator++;
                 }
