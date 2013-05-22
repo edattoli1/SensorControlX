@@ -94,7 +94,7 @@ namespace MFCcontrol
         {
             SwitchOperations.OpenAllRelays(parentControl.switchSession);
             SwitchOperations.CloseRow2Relays(parentControl.switchSession);
-            
+            SwitchOperations.CloseVoltBusRelays(parentControl.switchSession);
 
             for (int j = 0; j < Settings.Default.SwitchMatrixColsNum; j++)
             {

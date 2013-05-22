@@ -170,6 +170,8 @@ namespace MFCcontrol
             device.Write(":INIT");
             device.Write(":READ?");
 
+            device.IOTimeout = TimeoutValue.T1s;
+
             retrievedString = device.ReadString(14);
             returnValue = Convert.ToDouble(retrievedString);
             }

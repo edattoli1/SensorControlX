@@ -92,6 +92,17 @@ namespace MFCcontrol
             return returnValue;
         }
 
+        public static void CloseVoltBusRelays(NISwitch switchSession)
+        {
+            switchSession.RelayOperations.RelayControl("kr2c1", SwitchRelayAction.CloseRelay);
+            switchSession.RelayOperations.RelayControl("kr2c66", SwitchRelayAction.CloseRelay);
+            switchSession.RelayOperations.RelayControl("kr2c37", SwitchRelayAction.CloseRelay);
+            switchSession.RelayOperations.RelayControl("kr2c39", SwitchRelayAction.CloseRelay);
+
+
+        }
+
+
       public static void  SweepAndMeasureDevices(NISwitch switchSession, Ke648xControl PicoammControl, StreamWriter sw, bool [] deviceList, GenStopwatch watch, ref double[] presCurrentArray, CancellationToken ct)
         {    
             double presCurrent;
