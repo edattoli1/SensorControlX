@@ -94,12 +94,23 @@ namespace MFCcontrol
 
         public static void CloseVoltBusRelays(NISwitch switchSession)
         {
+            // left cable 34
             switchSession.RelayOperations.RelayControl("kr2c1", SwitchRelayAction.CloseRelay);
-            switchSession.RelayOperations.RelayControl("kr2c66", SwitchRelayAction.CloseRelay);
+            //left cable, 35 is 17
+            switchSession.RelayOperations.RelayControl("kr2c35", SwitchRelayAction.CloseRelay);
+            // left cable 16
             switchSession.RelayOperations.RelayControl("kr2c37", SwitchRelayAction.CloseRelay);
+            // left cable 15
             switchSession.RelayOperations.RelayControl("kr2c39", SwitchRelayAction.CloseRelay);
 
-
+            // right cable, 15
+            switchSession.RelayOperations.RelayControl("kr2c38", SwitchRelayAction.CloseRelay);
+            // right cable, 16
+            switchSession.RelayOperations.RelayControl("kr2c36", SwitchRelayAction.CloseRelay);
+            // right cable, 34
+            switchSession.RelayOperations.RelayControl("kr2c0", SwitchRelayAction.CloseRelay);
+            // right cable, 35 is 51
+            switchSession.RelayOperations.RelayControl("kr2c34", SwitchRelayAction.CloseRelay);
         }
 
 
@@ -107,6 +118,8 @@ namespace MFCcontrol
         {    
             double presCurrent;
             string outLine;
+
+            CloseVoltBusRelays(switchSession);
 
             while (! ct.IsCancellationRequested)
             {
