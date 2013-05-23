@@ -131,6 +131,9 @@ namespace MFCcontrol
 
                 //Start measurements
                 device.Write(":INIT");
+
+                device.IOTimeout = TimeoutValue.T1s;    
+
             }
             catch (Exception Ex)
             {
@@ -165,13 +168,15 @@ namespace MFCcontrol
             
             try
             {
+            
+            //    
             device.Write(":ABORT");
             device.Write(":ARM:COUNT 1");
             device.Write(":INIT");
             device.Write(":READ?");
 
+           
             device.IOTimeout = TimeoutValue.T1s;
-
             retrievedString = device.ReadString(14);
             returnValue = Convert.ToDouble(retrievedString);
             }
@@ -179,6 +184,7 @@ namespace MFCcontrol
             {
                 System.Windows.Forms.MessageBox.Show(Ex.Message);
                 ErrorMessage();
+                //return 0;
             }
 
 

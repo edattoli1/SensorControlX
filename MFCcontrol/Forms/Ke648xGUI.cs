@@ -78,17 +78,22 @@ namespace MFCcontrol
         // Prevent this Form from being Disposed on its Form Close
         private void Ke648xGUI_FormClosing(object sender, FormClosingEventArgs e)
         {
+            refreshPicoammRead.Checked = false;
+            
             // Hides the Form
             this.Visible = false;
 
             //Allow Main Form Control over Picoammeter Enable
             parentForm.controlPicoammBox.Enabled = true;
 
+            
 
             // This cancels the closing event, prevents Dispose of the Form
             e.Cancel = true;
             // Throw OnClosing event (normal behavior on Form Closing)
             base.OnClosing(e);
+
+            //this.Close();
         }
 
         private void picoammRangeUpDown_ValueChanged(object sender, EventArgs e)
