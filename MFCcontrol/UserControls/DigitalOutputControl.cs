@@ -24,6 +24,8 @@ namespace MFCcontrol
             digitalWrite = new DaqAction();
 
             digitalOutStates = new bool[Settings.Default.DigitalOutputNumLines];
+            for (int i = 0; i < digitalOutStates.Length; i++)
+                digitalOutStates[i] = !digitalOutStates[i];
             digitalOutLineArray = Util.StringToStringArray(Settings.Default.DigitalOutputLineNames);
 
             InitializeComponent();
@@ -40,8 +42,9 @@ namespace MFCcontrol
             }
             else
             {
+                // make sure digital outs are high when control is turned off
                 for (int i = 0; i < Settings.Default.DigitalOutputNumLines; i++)
-                    digitalWrite.UpdateDigitalOutPort(digitalOutLineArray[i], false);
+                    digitalWrite.UpdateDigitalOutPort(digitalOutLineArray[i], true);
 
                 viewDigitalOutStateButton.Enabled = false;
             }
@@ -78,7 +81,7 @@ namespace MFCcontrol
         internal void ZeroAllDigOuts()
         {
             for (int i = 0; i < Settings.Default.DigitalOutputNumLines; i++)
-                digitalWrite.UpdateDigitalOutPort(digitalOutLineArray[i], false);
+                digitalWrite.UpdateDigitalOutPort(digitalOutLineArray[i], true);
 
         }
 
