@@ -46,7 +46,24 @@ namespace MFCcontrol
             //int switchIterator = 0;
             string relayName = "";
 
-            for (int j = 0; j < Settings.Default.SwitchMatrixColsNum; j++)
+            for (int j = 2; j <= 29; j++)
+            {
+
+                relayName = "kr" + 1.ToString() + "c" + j.ToString();
+                // cb[switchIterator].CheckedChanged -= SwitchStateForm_CheckedChanged;
+                try
+                {
+                    switchSession.RelayOperations.RelayControl(relayName, SwitchRelayAction.CloseRelay);
+                }
+                catch (System.Exception ex)
+                {
+                    ShowError(ex.Message);
+                }
+                //switchIterator++;
+
+            }
+
+            for (int j = 40; j <= 67; j++)
             {
 
                 relayName = "kr" + 1.ToString() + "c" + j.ToString();
