@@ -138,6 +138,7 @@
     </Compile>
     <Compile Include="HelperClasses\GenStopwatch.cs" />
     <Compile Include="HelperClasses\GenTimer.cs" />
+    <Compile Include="HelperClasses\K617Control.cs" />
     <Compile Include="HelperClasses\Ke648xControl.cs" />
     <Compile Include="Properties\Settings.cs" />
     <Compile Include="Forms\SwitchStateForm.cs">

@@ -15,6 +15,8 @@ namespace MFCcontrol
     public static class SwitchOperations
     {
         static public Task currentTask;
+
+        
         
         public static void OpenAllRelays(NISwitch switchSession)
         {
@@ -131,18 +133,21 @@ namespace MFCcontrol
         }
 
 
-      public static void  SweepAndMeasureDevices(NISwitch switchSession, Ke648xControl PicoammControl, StreamWriter sw, bool [] deviceList, GenStopwatch watch, ref double[] presCurrentArray, CancellationToken ct)
+      public static void  SweepAndMeasureDevices(NISwitch switchSession, Ke648xControl PicoammControl, K617Control k617, StreamWriter sw, bool [] deviceList, GenStopwatch watch, ref double[] presCurrentArray, CancellationToken ct)
         {    
             double presCurrent;
             string outLine;
 
+
             CloseVoltBusRelays(switchSession);
+            k617.InitSession();
 
             while (! ct.IsCancellationRequested)
             {
                 
                 outLine = (string.Format("{0:F3}", watch.GetMsElapsed() * .001));
-                
+
+                //PicoammControl.InitSession();
 
                 for (int i = 0; i < deviceList.Length; i++)
                 {
@@ -157,7 +162,14 @@ namespace MFCcontrol
 
                     }
                 }
+                //PicoammControl.EndSession();
+
                 string stringBuffer = outLine;
+
+                //k617.InitSession();
+                k617.ChangeVolt(5);
+                //k617.EndSession();
+
 
                 if (ct.IsCancellationRequested)
                     break;
