@@ -160,6 +160,12 @@
     <Compile Include="UserControls\DigitalOutputControl.Designer.cs">
       <DependentUpon>DigitalOutputControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\GateSweepControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\GateSweepControl.Designer.cs">
+      <DependentUpon>GateSweepControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SwitchMatrixControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -239,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\DigitalOutputControl.resx">
       <DependentUpon>DigitalOutputControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\GateSweepControl.resx">
+      <DependentUpon>GateSweepControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SwitchMatrixControl.resx">
       <DependentUpon>SwitchMatrixControl.cs</DependentUpon>

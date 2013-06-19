@@ -173,7 +173,8 @@ namespace MFCcontrol
                 SwitchOperations.OpenAllRelays(parentForm.switchMatrixControl1.switchSession);
                 SwitchOperations.CloseRow2Relays(parentForm.switchMatrixControl1.switchSession);
 
-                Task.Run(() => SwitchOperations.SweepAndMeasureDevices(parentForm.switchMatrixControl1.switchSession, parentForm.PicoammControl, parentForm.k617, swriterCurrents, parentForm.devicesToScan, parentForm.watch, ref parentForm.presCurrentArr, ct), ct);
+                Task.Run(() => SwitchOperations.SweepAndMeasureDevices(parentForm.switchMatrixControl1.switchSession, parentForm.PicoammControl, parentForm.k617, parentForm.gateSweepControl1,
+                   swriterCurrents, parentForm.devicesToScan, parentForm.watch, ref parentForm.presCurrentArr, ct), ct);
 
                 parentForm.switchMatrixControl1.configureSwitchButton.Enabled = false;
                 parentForm.switchMatrixControl1.sweepMatrixCheckBox.Enabled = false;

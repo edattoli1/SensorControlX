@@ -133,14 +133,23 @@ namespace MFCcontrol
         }
 
 
-      public static void  SweepAndMeasureDevices(NISwitch switchSession, Ke648xControl PicoammControl, K617Control k617, StreamWriter sw, bool [] deviceList, GenStopwatch watch, ref double[] presCurrentArray, CancellationToken ct)
+      public static void  SweepAndMeasureDevices(NISwitch switchSession, Ke648xControl PicoammControl, K617Control k617, UserControls.GateSweepControl gateSweepControl1, StreamWriter sw, bool [] deviceList, GenStopwatch watch, ref double[] presCurrentArray, CancellationToken ct)
         {    
             double presCurrent;
             string outLine;
+            int loopIterator = 0;
+
+
+            if (gateSweepControl1.enableGateCheckBox.Checked == true)
+            {
+                int gatePoints = Convert.ToInt32 (gateSweepControl1.hiSweepUpDown.Value - gateSweepControl1.lowSweepUpDown.Value);
+
+
+            }
+
 
 
             CloseVoltBusRelays(switchSession);
-            k617.InitSession();
 
             while (! ct.IsCancellationRequested)
             {
@@ -166,9 +175,11 @@ namespace MFCcontrol
 
                 string stringBuffer = outLine;
 
-                //k617.InitSession();
-                k617.ChangeVolt(5);
-                //k617.EndSession();
+                if (gateSweepControl1.enableGateCheckBox.Checked == true)
+                {
+                    k617.ChangeVolt(5);
+                }
+                
 
 
                 if (ct.IsCancellationRequested)

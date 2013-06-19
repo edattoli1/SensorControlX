@@ -43,7 +43,7 @@ namespace MFCcontrol
         internal double[] presentMFCsetting;
         private static Ke648xGUI PicoammForm;
         internal  Ke648xControl PicoammControl;
-        public K617Control k617;
+        internal K617Control k617;
 
         // Array which contains all the individual MFC Controls on this form
         internal MFCcontrolTemplate[] mfcControlArray;
@@ -89,6 +89,9 @@ namespace MFCcontrol
             sensorBiasControl1.parentForm = this;
 
             switchMatrixControl1.parentForm = this;
+
+            gateSweepControl1.parentForm = this;
+            
 
             // Init Picoammeter
             PicoammControl = new Ke648xControl();

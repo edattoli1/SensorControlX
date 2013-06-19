@@ -33,6 +33,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.mfcControl8 = new MFCcontrol.MFCcontrolTemplate();
+            this.mfcControl7 = new MFCcontrol.MFCcontrolTemplate();
+            this.mfcControl4 = new MFCcontrol.MFCcontrolTemplate();
+            this.mfcControl1 = new MFCcontrol.MFCcontrolTemplate();
+            this.mfcControl2 = new MFCcontrol.MFCcontrolTemplate();
+            this.mfcControl3 = new MFCcontrol.MFCcontrolTemplate();
+            this.mfcControl5 = new MFCcontrol.MFCcontrolTemplate();
+            this.mfcControl6 = new MFCcontrol.MFCcontrolTemplate();
             this.mfcMainControlEnable = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label16 = new System.Windows.Forms.Label();
@@ -51,14 +59,7 @@
             this.graphMfcs1 = new MFCcontrol.GraphMfcs();
             this.sensorBiasControl1 = new MFCcontrol.SensorBiasControl();
             this.mfcRecipeControl1 = new MFCcontrol.MfcRecipeControl();
-            this.mfcControl8 = new MFCcontrol.MFCcontrolTemplate();
-            this.mfcControl7 = new MFCcontrol.MFCcontrolTemplate();
-            this.mfcControl4 = new MFCcontrol.MFCcontrolTemplate();
-            this.mfcControl1 = new MFCcontrol.MFCcontrolTemplate();
-            this.mfcControl2 = new MFCcontrol.MFCcontrolTemplate();
-            this.mfcControl3 = new MFCcontrol.MFCcontrolTemplate();
-            this.mfcControl5 = new MFCcontrol.MFCcontrolTemplate();
-            this.mfcControl6 = new MFCcontrol.MFCcontrolTemplate();
+            this.gateSweepControl1 = new MFCcontrol.UserControls.GateSweepControl();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -135,6 +136,62 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(496, 321);
             this.tableLayoutPanel2.TabIndex = 36;
+            // 
+            // mfcControl8
+            // 
+            this.mfcControl8.Location = new System.Drawing.Point(3, 283);
+            this.mfcControl8.Name = "mfcControl8";
+            this.mfcControl8.Size = new System.Drawing.Size(487, 34);
+            this.mfcControl8.TabIndex = 41;
+            // 
+            // mfcControl7
+            // 
+            this.mfcControl7.Location = new System.Drawing.Point(3, 243);
+            this.mfcControl7.Name = "mfcControl7";
+            this.mfcControl7.Size = new System.Drawing.Size(487, 34);
+            this.mfcControl7.TabIndex = 40;
+            // 
+            // mfcControl4
+            // 
+            this.mfcControl4.Location = new System.Drawing.Point(3, 123);
+            this.mfcControl4.Name = "mfcControl4";
+            this.mfcControl4.Size = new System.Drawing.Size(487, 34);
+            this.mfcControl4.TabIndex = 35;
+            // 
+            // mfcControl1
+            // 
+            this.mfcControl1.Location = new System.Drawing.Point(3, 3);
+            this.mfcControl1.Name = "mfcControl1";
+            this.mfcControl1.Size = new System.Drawing.Size(490, 34);
+            this.mfcControl1.TabIndex = 36;
+            // 
+            // mfcControl2
+            // 
+            this.mfcControl2.Location = new System.Drawing.Point(3, 43);
+            this.mfcControl2.Name = "mfcControl2";
+            this.mfcControl2.Size = new System.Drawing.Size(490, 31);
+            this.mfcControl2.TabIndex = 37;
+            // 
+            // mfcControl3
+            // 
+            this.mfcControl3.Location = new System.Drawing.Point(3, 83);
+            this.mfcControl3.Name = "mfcControl3";
+            this.mfcControl3.Size = new System.Drawing.Size(490, 33);
+            this.mfcControl3.TabIndex = 38;
+            // 
+            // mfcControl5
+            // 
+            this.mfcControl5.Location = new System.Drawing.Point(3, 163);
+            this.mfcControl5.Name = "mfcControl5";
+            this.mfcControl5.Size = new System.Drawing.Size(487, 34);
+            this.mfcControl5.TabIndex = 39;
+            // 
+            // mfcControl6
+            // 
+            this.mfcControl6.Location = new System.Drawing.Point(3, 203);
+            this.mfcControl6.Name = "mfcControl6";
+            this.mfcControl6.Size = new System.Drawing.Size(487, 34);
+            this.mfcControl6.TabIndex = 40;
             // 
             // mfcMainControlEnable
             // 
@@ -263,7 +320,7 @@
             this.panel5.Controls.Add(this.controlPicoammBox);
             this.panel5.Controls.Add(this.label7);
             this.panel5.Controls.Add(this.picoammSettingsButton);
-            this.panel5.Location = new System.Drawing.Point(421, 776);
+            this.panel5.Location = new System.Drawing.Point(418, 702);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(176, 117);
             this.panel5.TabIndex = 23;
@@ -294,14 +351,14 @@
             // 
             // digitalOutputControl1
             // 
-            this.digitalOutputControl1.Location = new System.Drawing.Point(393, 628);
+            this.digitalOutputControl1.Location = new System.Drawing.Point(627, 633);
             this.digitalOutputControl1.Name = "digitalOutputControl1";
             this.digitalOutputControl1.Size = new System.Drawing.Size(227, 140);
             this.digitalOutputControl1.TabIndex = 23;
             // 
             // switchMatrixControl1
             // 
-            this.switchMatrixControl1.Location = new System.Drawing.Point(638, 614);
+            this.switchMatrixControl1.Location = new System.Drawing.Point(915, 354);
             this.switchMatrixControl1.Name = "switchMatrixControl1";
             this.switchMatrixControl1.Size = new System.Drawing.Size(276, 286);
             this.switchMatrixControl1.TabIndex = 40;
@@ -315,7 +372,7 @@
             // 
             // sensorBiasControl1
             // 
-            this.sensorBiasControl1.Location = new System.Drawing.Point(6, 718);
+            this.sensorBiasControl1.Location = new System.Drawing.Point(4, 690);
             this.sensorBiasControl1.Name = "sensorBiasControl1";
             this.sensorBiasControl1.Size = new System.Drawing.Size(383, 161);
             this.sensorBiasControl1.TabIndex = 27;
@@ -327,67 +384,19 @@
             this.mfcRecipeControl1.Size = new System.Drawing.Size(302, 273);
             this.mfcRecipeControl1.TabIndex = 25;
             // 
-            // mfcControl8
+            // gateSweepControl1
             // 
-            this.mfcControl8.Location = new System.Drawing.Point(3, 283);
-            this.mfcControl8.Name = "mfcControl8";
-            this.mfcControl8.Size = new System.Drawing.Size(487, 34);
-            this.mfcControl8.TabIndex = 41;
-            // 
-            // mfcControl7
-            // 
-            this.mfcControl7.Location = new System.Drawing.Point(3, 243);
-            this.mfcControl7.Name = "mfcControl7";
-            this.mfcControl7.Size = new System.Drawing.Size(487, 34);
-            this.mfcControl7.TabIndex = 40;
-            // 
-            // mfcControl4
-            // 
-            this.mfcControl4.Location = new System.Drawing.Point(3, 123);
-            this.mfcControl4.Name = "mfcControl4";
-            this.mfcControl4.Size = new System.Drawing.Size(487, 34);
-            this.mfcControl4.TabIndex = 35;
-            // 
-            // mfcControl1
-            // 
-            this.mfcControl1.Location = new System.Drawing.Point(3, 3);
-            this.mfcControl1.Name = "mfcControl1";
-            this.mfcControl1.Size = new System.Drawing.Size(490, 34);
-            this.mfcControl1.TabIndex = 36;
-            // 
-            // mfcControl2
-            // 
-            this.mfcControl2.Location = new System.Drawing.Point(3, 43);
-            this.mfcControl2.Name = "mfcControl2";
-            this.mfcControl2.Size = new System.Drawing.Size(490, 31);
-            this.mfcControl2.TabIndex = 37;
-            // 
-            // mfcControl3
-            // 
-            this.mfcControl3.Location = new System.Drawing.Point(3, 83);
-            this.mfcControl3.Name = "mfcControl3";
-            this.mfcControl3.Size = new System.Drawing.Size(490, 33);
-            this.mfcControl3.TabIndex = 38;
-            // 
-            // mfcControl5
-            // 
-            this.mfcControl5.Location = new System.Drawing.Point(3, 163);
-            this.mfcControl5.Name = "mfcControl5";
-            this.mfcControl5.Size = new System.Drawing.Size(487, 34);
-            this.mfcControl5.TabIndex = 39;
-            // 
-            // mfcControl6
-            // 
-            this.mfcControl6.Location = new System.Drawing.Point(3, 203);
-            this.mfcControl6.Name = "mfcControl6";
-            this.mfcControl6.Size = new System.Drawing.Size(487, 34);
-            this.mfcControl6.TabIndex = 40;
+            this.gateSweepControl1.Location = new System.Drawing.Point(878, 646);
+            this.gateSweepControl1.Name = "gateSweepControl1";
+            this.gateSweepControl1.Size = new System.Drawing.Size(333, 191);
+            this.gateSweepControl1.TabIndex = 41;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(938, 902);
+            this.ClientSize = new System.Drawing.Size(1223, 848);
+            this.Controls.Add(this.gateSweepControl1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.digitalOutputControl1);
             this.Controls.Add(this.switchMatrixControl1);
@@ -448,6 +457,7 @@
         internal SwitchMatrixControl switchMatrixControl1;
         internal System.Windows.Forms.CheckBox mfcMainControlEnable;
         internal DigitalOutputControl digitalOutputControl1;
+        internal UserControls.GateSweepControl gateSweepControl1;
         
     }
 }

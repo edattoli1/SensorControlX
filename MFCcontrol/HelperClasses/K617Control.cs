@@ -1,4 +1,4 @@
-﻿//#define K6487
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NationalInstruments.NI4882;
 
-// Controls the Keithly 6485 or 6487
-// Undefine #define K6487 if you have a 6487 and want to control voltage output
-// This is a singleton class (only one instance is allowed)
+
+// Controls the Keithly 617
+
 
 namespace MFCcontrol
 {
