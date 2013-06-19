@@ -501,8 +501,9 @@ namespace MFCcontrol
                 digitalOutputControl1.ZeroAllDigOuts();
 
             // Zero Gate Output if in use
-            if (gateSweepControl1.enableGateCheckBox.Enabled == true)
+            if (gateSweepControl1.enableGateCheckBox.Checked == true)
                 gateSweepControl1.onCloseProgram();
+
 
             // Write All Array Configuration Settings to Settings File
             Settings.Default.MfcControlEnableList = Util.BoolArrayToString(stateMFCs);

@@ -151,6 +151,8 @@ namespace MFCcontrol
                 
                 outLine = (string.Format("{0:F3}", watch.GetMsElapsed() * .001));
 
+                //k617.InitSession();
+
                 //Change Gate Voltage if Enabled
                 if (gateSweepControl1.enableGateCheckBox.Checked == true)
                 {
@@ -187,9 +189,12 @@ namespace MFCcontrol
 
                     }
 
+                    
+
                     outLine += '\t' + lastGateValue.ToString("0.000");
                 }
-
+                //k617.EndSession();
+                //PicoammControl.InitSession();
 
                 for (int i = 0; i < deviceList.Length; i++)
                 {
@@ -204,7 +209,7 @@ namespace MFCcontrol
 
                     }
                 }
-
+                // PicoammControl.EndSession();
                 string stringBuffer = outLine;
 
                 //if (gateSweepControl1.enableGateCheckBox.Checked == true)
