@@ -8,6 +8,7 @@ using NationalInstruments.ModularInstruments.NISwitch;
 using System.Windows.Forms;
 using MFCcontrol.Properties;
 using System.IO;
+using System.Threading;
 
 
 namespace MFCcontrol
@@ -138,16 +139,10 @@ namespace MFCcontrol
             double presCurrent;
             string outLine;
             int loopIterator = 0;
-
-
-            if (gateSweepControl1.enableGateCheckBox.Checked == true)
-            {
-                int gatePoints = Convert.ToInt32 (gateSweepControl1.hiSweepUpDown.Value - gateSweepControl1.lowSweepUpDown.Value);
-
-
-            }
-
-
+            bool firstLoopRun = true;
+            bool isLoopAscending = true;
+            double lastGateValue = 0;
+            double newGateValue;
 
             CloseVoltBusRelays(switchSession);
 
@@ -156,7 +151,45 @@ namespace MFCcontrol
                 
                 outLine = (string.Format("{0:F3}", watch.GetMsElapsed() * .001));
 
-                //PicoammControl.InitSession();
+                //Change Gate Voltage if Enabled
+                if (gateSweepControl1.enableGateCheckBox.Checked == true)
+                {
+                    if (firstLoopRun == true)
+                    {
+                        k617.ChangeVolt(Convert.ToDouble(gateSweepControl1.lowSweepUpDown.Value));
+                        lastGateValue = Convert.ToDouble(gateSweepControl1.lowSweepUpDown.Value);
+                        Thread.Sleep(Convert.ToInt32(gateSweepControl1.gateSettleTimeUpDown.Value));
+                        gateSweepControl1.updatePresentGateV(lastGateValue);
+                        firstLoopRun = false;
+                    }
+                    else
+                    {
+                        if (isLoopAscending == true)
+                            newGateValue = lastGateValue + Convert.ToDouble(gateSweepControl1.stepSweepUpDown.Value);
+                        else
+                            newGateValue = lastGateValue - Convert.ToDouble(gateSweepControl1.stepSweepUpDown.Value);
+
+                        if (newGateValue > Convert.ToDouble(gateSweepControl1.hiSweepUpDown.Value))
+                        {
+                            isLoopAscending = false;
+                            newGateValue = lastGateValue - Convert.ToDouble(gateSweepControl1.stepSweepUpDown.Value);
+                        }
+                        else if (newGateValue < Convert.ToDouble(gateSweepControl1.lowSweepUpDown.Value))
+                        {
+                            isLoopAscending = true;
+                            newGateValue = lastGateValue + Convert.ToDouble(gateSweepControl1.stepSweepUpDown.Value);
+                        }
+
+                        k617.ChangeVolt(newGateValue);
+                        Thread.Sleep(Convert.ToInt32(gateSweepControl1.gateSettleTimeUpDown.Value));
+                        lastGateValue = newGateValue;
+                        gateSweepControl1.updatePresentGateV(lastGateValue);
+
+                    }
+
+                    outLine += '\t' + lastGateValue.ToString("0.000");
+                }
+
 
                 for (int i = 0; i < deviceList.Length; i++)
                 {
@@ -171,14 +204,13 @@ namespace MFCcontrol
 
                     }
                 }
-                //PicoammControl.EndSession();
 
                 string stringBuffer = outLine;
 
-                if (gateSweepControl1.enableGateCheckBox.Checked == true)
-                {
-                    k617.ChangeVolt(5);
-                }
+                //if (gateSweepControl1.enableGateCheckBox.Checked == true)
+                //{
+                //    k617.ChangeVolt(5);
+                //}
                 
 
 

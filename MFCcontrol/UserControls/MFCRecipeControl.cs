@@ -101,6 +101,10 @@ namespace MFCcontrol
 
                 string headerString2 = "Time (s)";
 
+                if (parentForm.gateSweepControl1.enableGateCheckBox.Checked == true)
+                    headerString2 += "\tGate (V)";
+
+
                 for (int i = 0; i < parentForm.devicesToScan.Length; i++)
                 {
                     if (parentForm.devicesToScan[i] == true)
@@ -204,6 +208,10 @@ namespace MFCcontrol
             parentForm.digitalOutputControl1.enableDigitalOutCheckBox.Checked = true;
             parentForm.digitalOutputControl1.enableDigitalOutCheckBox.Enabled = false;
 
+            //Disable Gate Bias Controls
+            parentForm.gateSweepControl1.DisableUserControl();
+
+
             lastRecipeTimeEventBox.Text = "0";
 
             viewPresentCurrentsButton.Enabled = true;
@@ -294,7 +302,7 @@ namespace MFCcontrol
 
 
 
-                if (parentForm.mfcMainControlEnable.Checked == true)
+                if ( (parentForm.mfcMainControlEnable.Checked == true) )
                     startButton.Enabled = true;
                 viewFlowRecipe.Enabled = true;
             }
@@ -412,6 +420,10 @@ namespace MFCcontrol
 
             parentForm.mfcMainControlEnable.Enabled = true;
             parentForm.digitalOutputControl1.enableDigitalOutCheckBox.Enabled = true;
+
+            // Enable Gate Bias Control
+            parentForm.gateSweepControl1.EnableUserControl();
+
 
         }
 

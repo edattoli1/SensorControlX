@@ -503,5 +503,53 @@ namespace MFCcontrol.Properties {
                 this["GateSweepEnable"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int GateSettleTime {
+            get {
+                return ((int)(this["GateSettleTime"]));
+            }
+            set {
+                this["GateSettleTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double GateLow {
+            get {
+                return ((double)(this["GateLow"]));
+            }
+            set {
+                this["GateLow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public double GateHi {
+            get {
+                return ((double)(this["GateHi"]));
+            }
+            set {
+                this["GateHi"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.001")]
+        public double GateStep {
+            get {
+                return ((double)(this["GateStep"]));
+            }
+            set {
+                this["GateStep"] = value;
+            }
+        }
     }
 }
