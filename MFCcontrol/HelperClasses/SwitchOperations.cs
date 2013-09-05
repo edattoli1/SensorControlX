@@ -118,6 +118,9 @@ namespace MFCcontrol
 
             for (int i = 0; i < busPinsList.Length; i++)
             {
+                string openString = "kr1" + busPinsList[i].Substring(3);
+                //MessageBox.Show(openString);
+                switchSession.RelayOperations.RelayControl(openString, SwitchRelayAction.OpenRelay);
                 switchSession.RelayOperations.RelayControl(busPinsList[i], SwitchRelayAction.CloseRelay);
             }
 
