@@ -16,7 +16,7 @@ namespace MFCcontrol
     public static class SwitchOperations
     {
         static public Task currentTask;
-
+        static internal string[] busPinsList;
         
         
         public static void OpenAllRelays(NISwitch switchSession)
@@ -114,6 +114,15 @@ namespace MFCcontrol
 
         public static void CloseVoltBusRelays(NISwitch switchSession)
         {
+            busPinsList = Util.StringToStringArray(Settings.Default.BusPins);
+
+            for (int i = 0; i < busPinsList.Length; i++)
+            {
+                switchSession.RelayOperations.RelayControl(busPinsList[i], SwitchRelayAction.CloseRelay);
+            }
+
+            //Hard Coded Bus Pin Assignments
+            /*
             // left cable 34
             switchSession.RelayOperations.RelayControl("kr2c1", SwitchRelayAction.CloseRelay);
             //left cable, 35 is 17
@@ -131,6 +140,7 @@ namespace MFCcontrol
             switchSession.RelayOperations.RelayControl("kr2c0", SwitchRelayAction.CloseRelay);
             // right cable, 35 is 51
             switchSession.RelayOperations.RelayControl("kr2c34", SwitchRelayAction.CloseRelay);
+             * */
         }
 
 

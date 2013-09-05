@@ -17,6 +17,7 @@ namespace MFCcontrol
     public partial class ConfigureSwitchMatrix : Form
     {
         
+        
         public ConfigureSwitchMatrix()
         {
             InitializeComponent();
@@ -52,10 +53,16 @@ namespace MFCcontrol
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            Settings.Default.BusPins = busPinsEditTextBox.Text;
             Settings.Default.PxiResourceName = resourceNameComboBox.Text;
             Settings.Default.SwitchTopologyName = topologyNameComboBox.Text;
             Settings.Default.Save();
             this.Close();
+        }
+
+        private void ConfigureSwitchMatrix_Load(object sender, EventArgs e)
+        {
+            busPinsEditTextBox.Text = Settings.Default.BusPins;
         }
 
 
